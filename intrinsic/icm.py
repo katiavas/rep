@@ -9,10 +9,10 @@ class ICM(nn.Module):
         self.alpha = alpha
         self.beta = beta
 
-        self.conv1 = nn.Conv2d(input_dims[0], 32, 3, stride=2, padding=1)
-        self.conv2 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
-        self.conv3 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
-        self.phi = nn.Conv2d(32, 32, 3, stride=2, padding=1)
+        self.conv1 = nn.Conv2d(input_dims[0], 32, (1, 1))
+        self.conv2 = nn.Conv2d(32, 32, (1, 1))
+        self.conv3 = nn.Conv2d(32, 32, (1, 1))
+        self.phi = nn.Conv2d(32, 32, (1, 1))
 
         self.inverse = nn.Linear(288*2, 256)
         self.pi_logits = nn.Linear(256, n_actions)

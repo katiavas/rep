@@ -11,11 +11,11 @@ class ActorCritic(nn.Module):
 
         self.gamma = gamma
         self.tau = tau
-
-        self.conv1 = nn.Conv2d(input_dims[0], 32, (1, 1))
-        self.conv2 = nn.Conv2d(32, 32, (1, 1))
-        self.conv3 = nn.Conv2d(32, 32, (1, 1))
-        self.conv4 = nn.Conv2d(32, 32, (1, 1))
+        
+        self.conv1 = nn.Conv2d(input_dims[0], 32, 1, stride=2, padding=1)
+        self.conv2 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
+        self.conv3 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
+        self.conv4 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
 
         conv_shape = self.calc_conv_output(input_dims)
 

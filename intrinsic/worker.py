@@ -87,8 +87,8 @@ def worker(name, input_shape, n_actions, global_agent,
                                                 avg_score))
     if name == '1':
         x = [z for z in range(episode)]
-        plot_learning_curve(x, scores, 'ICM_hallway_final.png')
-        np.savetxt("ICM.csv",
+        plot_learning_curve(x, scores, 'A3C_hallway_final.png')
+        np.savetxt("A3C.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')

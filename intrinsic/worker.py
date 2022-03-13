@@ -79,12 +79,16 @@ def worker(name, input_shape, n_actions, global_agent,
         if name == '1':
             scores.append(score)
             avg_score = np.mean(scores[-100:])
-            avg_score_5000 = np.mean(scores[max(0, episode-5000): episode+1])
+            # avg_score_5000 = np.mean(scores[max(0, episode-5000): episode+1])
             print('ICM episode {} thread {} of {} steps {:.2f}M score {:.2f} '
-                  'avg score (100) (5000) {:.2f} {:.2f}'.format(
+                  'avg score (100) {:.2f}'.format(
                                                 episode, name, n_threads,
                                                 t_steps/1e6, score,
-                                                avg_score, avg_score_5000))
+                                                avg_score))
     if name == '1':
         x = [z for z in range(episode)]
         plot_learning_curve(x, scores, 'ICM_hallway_final.png')
+        np.savetxt("ICM.csv",
+                   scores,
+                   delimiter=",",
+                   fmt='% s')

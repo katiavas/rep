@@ -9,6 +9,7 @@ os.environ['OMP_NUM_THREADS'] = '1'
 
 
 if __name__ == '__main__':
+    torch.manual_seed(5)
     mp.set_start_method('spawn')
     global_ep = mp.Value('i', 0)
     # env_id = 'PongNoFrameskip-v4'

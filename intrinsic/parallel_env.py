@@ -6,7 +6,6 @@ from worker import worker
 import torch as T
 
 
-
 class ParallelEnv:
     def __init__(self, env_id, global_idx,
                  input_shape, n_actions, num_threads, icm=False):

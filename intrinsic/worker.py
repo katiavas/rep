@@ -26,7 +26,7 @@ def worker(name, input_shape, n_actions, global_agent,
     env = make_env(env_id, shape=frame_buffer)
 
     episode, max_steps, t_steps, scores = 0, 3000, 0, []
-    intr = []
+    # intr = []
 
     while episode < max_steps:
         obs = env.reset()
@@ -48,7 +48,7 @@ def worker(name, input_shape, n_actions, global_agent,
                     intrinsic_reward, L_I, L_F = \
                             local_icm.calc_loss(states, new_states, actions)
 
-                loss = local_agent.calc_cost(obs, hx, done, rewards,
+                loss = local_agent.calc_loss(obs, hx, done, rewards,
                                              values, log_probs,
                                              intrinsic_reward)
                 optimizer.zero_grad()
@@ -82,7 +82,7 @@ def worker(name, input_shape, n_actions, global_agent,
             # intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)
             avg_score = np.mean(scores[-100:])
-            # avg_score_5000 = np.mean(scores[max(0, episode-5000): episode+1])
+            avg_score_5000 = np.mean(scores[max(0, episode-3000): episode+1])
             print('ICM episode {} thread {} of {} steps {:.2f}M score {:.2f} '
                   'avg score (100) {:.2f}'.format(
                                                 episode, name, n_threads,
@@ -91,11 +91,11 @@ def worker(name, input_shape, n_actions, global_agent,
     if name == '1':
         x = [z for z in range(episode)]
         plot_learning_curve(x, scores, 'ICM_4frames.png')
-        np.savetxt("ICM_150322_4frames.csv",
+        np.savetxt("AC3_150322_4frames.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("ICM_intrinic_4frames.csv",
+        '''np.savetxt("AC3_intrinic_4frames.csv",
                    scores,
                    delimiter=",",
-                   fmt='% s')
+                   fmt='% s')'''

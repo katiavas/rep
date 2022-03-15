@@ -90,7 +90,7 @@ class ActorCritic(nn.Module):
                                 dtype=T.float).reshape(values.size())
         return batch_return
 
-    def calc_cost(self, new_state, hx, done,
+    def calc_loss(self, new_state, hx, done,
                   rewards, values, log_probs, intrinsic_reward=None):
 
         if intrinsic_reward is not None:

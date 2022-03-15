@@ -18,10 +18,9 @@ class Encoder(nn.Module):
         enc = F.elu(self.conv2(enc))
         enc = F.elu(self.conv3(enc))
         enc = self.conv4(enc)
-
+        # [T, 32, 3, 3] to [T, 288]
         enc_flatten = T.flatten(enc, start_dim=1)
         # conv = enc.view(enc.size()[0], -1).to(T.float)
-
         return enc_flatten
 
 
@@ -46,9 +45,7 @@ class ICM(nn.Module):
         with T.no_grad():
             phi_new = self.encoder(new_obs)
 
-        # [T, 32, 3, 3] to [T, 288]
-        # phi = phi.view(phi.size()[0], -1).to(T.float)
-        # phi_new = phi_new.view(phi_new.size()[0], -1).to(T.float)
+
         phi = phi.to(T.float)
         phi_new = phi_new.to(T.float)
 

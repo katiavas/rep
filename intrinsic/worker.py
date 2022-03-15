@@ -81,7 +81,7 @@ def worker(name, input_shape, n_actions, global_agent,
         #    global_idx.value += 1
         if name == '1':
             l.append(loss.detach().numpy())
-            print(l)
+            # print(l)
             a = T.sum(intrinsic_reward)
             intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)

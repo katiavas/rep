@@ -57,8 +57,8 @@ class RepeatAction(gym.Wrapper):
 class PreprocessFrame(gym.ObservationWrapper):
     def __init__(self, shape, env):
         super(PreprocessFrame, self).__init__(env)
-        self.shape = shape.transpose(2, 0, 1)
-        # self.shape = (shape[2], shape[0], shape[1])
+        # self.shape = shape.transpose(2, 0, 1)
+        self.shape = (shape[2], shape[0], shape[1])
         self.observation_space = gym.spaces.Box(low=0.0, high=1.0,
                                                 shape=self.shape,
                                                 dtype=np.float32)

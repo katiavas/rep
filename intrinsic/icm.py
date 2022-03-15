@@ -3,36 +3,45 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-class ICM(nn.Module):
-    def __init__(self, input_dims, n_actions=4, alpha=0.1, beta=0.2):
-        super(ICM, self).__init__()
-        self.alpha = alpha
-        self.beta = beta
+class Encoder(nn.Module):
 
+    def __init__(self, input_dims, feature_dim=288):
+        super(Encoder, self).__init__()
+        
         self.conv1 = nn.Conv2d(input_dims[0], 32, 3,stride=2, padding=1 )
         self.conv2 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
         self.conv3 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
         self.phi = nn.Conv2d(32, 32, 3, stride=2, padding=1)
+        
+    def forward(self, img):
+        conv = F.elu(self.conv1(img))
+        conv = F.elu(self.conv2(conv))
+        conv = F.elu(self.conv3(conv))
+        phi = self.phi(conv)
+        
+        return phi
 
-        self.inverse = nn.Linear(288*2, 256)
+
+class ICM(nn.Module):
+    def __init__(self, input_dims, n_actions=4, alpha=0.1, beta=0.2, feature_dims = 288):
+        super(ICM, self).__init__()
+        self.alpha = alpha
+        self.beta = beta
+        self.encoder = Encoder(input_dims)
+
+        self.inverse = nn.Linear(feature_dims*2, 256)
         self.pi_logits = nn.Linear(256, n_actions)
 
-        self.dense1 = nn.Linear(288+1, 256)
-        self.phi_hat_new = nn.Linear(256, 288)
+        self.dense1 = nn.Linear(feature_dims+1, 256)
+        self.phi_hat_new = nn.Linear(256, feature_dims)
 
         device = T.device('cpu')
         self.to(device)
 
     def forward(self, state, new_state, action):
-        conv = F.elu(self.conv1(state))
-        conv = F.elu(self.conv2(conv))
-        conv = F.elu(self.conv3(conv))
-        phi = self.phi(conv)
-
-        conv_new = F.elu(self.conv1(new_state))
-        conv_new = F.elu(self.conv2(conv_new))
-        conv_new = F.elu(self.conv3(conv_new))
-        phi_new = self.phi(conv_new)
+        phi = self.encoder(state)
+        with T.no_grad():
+            phi_new = self.encoder(new_state)
 
         # [T, 32, 3, 3] to [T, 288]
         phi = phi.view(phi.size()[0], -1).to(T.float)
@@ -66,3 +75,4 @@ class ICM(nn.Module):
 
         intrinsic_reward = self.alpha*0.5*((phi_hat_new-phi_new).pow(2)).mean(dim=1)
         return intrinsic_reward, L_I, L_F
+

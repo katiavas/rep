@@ -50,9 +50,6 @@ class RepeatAction(gym.Wrapper):
 
     def reset(self):
         obs = self.env.reset()
-        if self.fire_first:
-            assert self.env.unwrapped.get_action_meanings()[1] == 'FIRE'
-            obs, _, _, _ = self.env_step(1)
         return obs
 
 

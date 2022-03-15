@@ -91,11 +91,11 @@ def worker(name, input_shape, n_actions, global_agent,
     if name == '1':
         x = [z for z in range(episode)]
         plot_learning_curve(x, scores, 'ICM.png')
-        ''' np.savetxt("ICM_140322.csv",
+        np.savetxt("ICM_150322_4frames.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("ICM_intrinic.csv",
+        np.savetxt("ICM_intrinic_4frames.csv",
                    scores,
                    delimiter=",",
-                   fmt='% s')'''
+                   fmt='% s')

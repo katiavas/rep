@@ -18,7 +18,7 @@ if __name__ == '__main__':
     env_id = 'ALE/Breakout-v5'
     n_threads = 12
     n_actions = 4
-    input_shape = [1, 42, 42]
+    input_shape = [4, 42, 42]
     env = ParallelEnv(env_id=env_id, num_threads=n_threads,
                       n_actions=n_actions, global_idx=global_ep,
                       input_shape=input_shape, icm=True)

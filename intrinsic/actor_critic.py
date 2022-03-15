@@ -5,23 +5,17 @@ import torch.nn.functional as F
 from torch.distributions import Categorical
 
 
-class ActorCritic(nn.Module):
-    def __init__(self, input_dims, n_actions, gamma=0.99, tau=1.0):
-        super(ActorCritic, self).__init__()
+class Encoder(nn.Module):
 
-        self.gamma = gamma
-        self.tau = tau
-        
+    def __init__(self, input_dims, feature_dim=288):
+        super(Encoder, self).__init__()
         self.conv1 = nn.Conv2d(input_dims[0], 32, 3, stride=2, padding=1)
         self.conv2 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
         self.conv3 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
         self.conv4 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
 
-        conv_shape = self.calc_conv_output(input_dims)
-
-        self.gru = nn.GRUCell(conv_shape, 256)
-        self.pi = nn.Linear(256, n_actions)
-        self.v = nn.Linear(256, 1)
+        shape = self.calc_conv_output(input_dims)
+        self.fc1 = nn.Linear(shape, feature_dim)
 
     def calc_conv_output(self, input_dims):
         state = T.zeros(1, *input_dims)
@@ -31,15 +25,40 @@ class ActorCritic(nn.Module):
         dims = self.conv4(dims)
         return int(np.prod(dims.size()))
 
-    def forward(self, state, hx):
+    def forward(self, state):
         conv = F.elu(self.conv1(state))
         conv = F.elu(self.conv2(conv))
         conv = F.elu(self.conv3(conv))
         conv = F.elu(self.conv4(conv))
 
-        conv_state = conv.view((conv.size()[0], -1))
+        conv_flatten = conv.view((conv.size()[0], -1))
+        features = self.fc1(conv_flatten)
 
-        hx = self.gru(conv_state, (hx))
+        return features
+
+
+class ActorCritic(nn.Module):
+    def __init__(self, input_dims, n_actions, gamma=0.99, tau=1.0, feature_dims=288):
+        super(ActorCritic, self).__init__()
+
+        self.gamma = gamma
+        self.tau = tau
+        self.encoder = Encoder(input_dims)
+
+        # conv_shape = self.calc_conv_output(input_dims)
+
+        self.gru = nn.GRUCell(feature_dims, 256)
+        self.pi = nn.Linear(256, n_actions)
+        self.v = nn.Linear(256, 1)
+
+        # conv_state = self.encoder()
+        # conv_state = conv.view((conv.size()[0], -1))
+
+    def forward(self, img, hx):
+        
+        state = self.encoder(img)
+        
+        hx = self.gru(state, hx)
 
         pi = self.pi(hx)
         v = self.v(hx)
@@ -101,8 +120,5 @@ class ActorCritic(nn.Module):
 
         total_loss = actor_loss + critic_loss - 0.01 * entropy_loss
         return total_loss
-
-
-
 
 

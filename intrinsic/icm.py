@@ -11,15 +11,17 @@ class Encoder(nn.Module):
         self.conv1 = nn.Conv2d(input_dims[0], 32, 3,stride=2, padding=1 )
         self.conv2 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
         self.conv3 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
-        self.phi = nn.Conv2d(32, 32, 3, stride=2, padding=1)
+        self.conv4 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
         
     def forward(self, img):
         conv = F.elu(self.conv1(img))
         conv = F.elu(self.conv2(conv))
         conv = F.elu(self.conv3(conv))
-        phi = self.phi(conv)
-        
-        return phi
+        conv = self.conv4(conv)
+
+        conv = conv.view(conv.size()[0], -1).to(T.float)
+
+        return conv
 
 
 class ICM(nn.Module):
@@ -38,14 +40,16 @@ class ICM(nn.Module):
         device = T.device('cpu')
         self.to(device)
 
-    def forward(self, state, new_state, action):
-        phi = self.encoder(state)
+    def forward(self, obs, new_obs, action):
+        phi = self.encoder(obs)
         with T.no_grad():
-            phi_new = self.encoder(new_state)
+            phi_new = self.encoder(new_obs)
 
         # [T, 32, 3, 3] to [T, 288]
-        phi = phi.view(phi.size()[0], -1).to(T.float)
-        phi_new = phi_new.view(phi_new.size()[0], -1).to(T.float)
+        # phi = phi.view(phi.size()[0], -1).to(T.float)
+        # phi_new = phi_new.view(phi_new.size()[0], -1).to(T.float)
+        phi = phi.to(T.float)
+        phi_new = phi_new.to(T.float)
 
         inverse = self.inverse(T.cat([phi, phi_new], dim=1))
         pi_logits = self.pi_logits(inverse)

@@ -14,16 +14,19 @@ class Encoder(nn.Module):
         self.conv3 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
         self.conv4 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
 
-        shape = self.calc_conv_output(input_dims)
+        shape = self.conv_output(input_dims)
         self.fc1 = nn.Linear(shape, feature_dim)
 
-    def calc_conv_output(self, input_dims):
+    def conv_output(self, input_dims):
         state = T.zeros(1, *input_dims)
-        dims = self.conv1(state)
-        dims = self.conv2(dims)
-        dims = self.conv3(dims)
-        dims = self.conv4(dims)
-        return int(np.prod(dims.size()))
+        x = self.conv1(state)
+        x = self.conv2(x)
+        x = self.conv3(x)
+        x = self.conv4(x)
+        print(x.shape())
+        shape = x[0].shape[0]*x[0].shape[1]*x[0].shape[2]*x[0].shape[3]
+        # return int(np.prod(dims.size()))
+        return shape
 
     def forward(self, state):
         conv = F.elu(self.conv1(state))
@@ -45,14 +48,10 @@ class ActorCritic(nn.Module):
         self.tau = tau
         self.encoder = Encoder(input_dims)
 
-        # conv_shape = self.calc_conv_output(input_dims)
 
         self.gru = nn.GRUCell(feature_dims, 256)
         self.pi = nn.Linear(256, n_actions)
         self.v = nn.Linear(256, 1)
-
-        # conv_state = self.encoder()
-        # conv_state = conv.view((conv.size()[0], -1))
 
     def forward(self, img, hx):
         

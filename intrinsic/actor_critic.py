@@ -9,30 +9,34 @@ class Encoder(nn.Module):
 
     def __init__(self, input_dims, feature_dim=288):
         super(Encoder, self).__init__()
-        self.conv1 = nn.Conv2d(input_dims[0], 32, 3, stride=2, padding=1)
-        self.conv2 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
-        self.conv3 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
-        self.conv4 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
+        self.conv1 = nn.Conv2d(input_dims[0], 32, (3, 3), stride=2, padding=1)
+        self.conv2 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
+        self.conv3 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
+        self.conv4 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
 
-        shape = self.calc_conv_output(input_dims)
+        shape = self.conv_output(input_dims)
+        # Layer that will extract the features
         self.fc1 = nn.Linear(shape, feature_dim)
 
-    def calc_conv_output(self, input_dims):
-        state = T.zeros(1, *input_dims)
-        dims = self.conv1(state)
-        dims = self.conv2(dims)
-        dims = self.conv3(dims)
-        dims = self.conv4(dims)
-        return int(np.prod(dims.size()))
+    def conv_output(self, input_dims):
+        img = T.zeros(1, *input_dims)
+        x = self.conv1(img)
+        x = self.conv2(x)
+        x = self.conv3(x)
+        x = self.conv4(x)
+        shape = x.size()[0]*x.size()[1]*x.size()[2]*x.size()[3]
+        # return int(np.prod(x.size()))
+        return shape
 
     def forward(self, state):
-        conv = F.elu(self.conv1(state))
-        conv = F.elu(self.conv2(conv))
-        conv = F.elu(self.conv3(conv))
-        conv = F.elu(self.conv4(conv))
+        enc = F.elu(self.conv1(state))
+        enc = F.elu(self.conv2(enc))
+        enc = F.elu(self.conv3(enc))
+        enc = F.elu(self.conv4(enc))
 
-        conv_flatten = conv.view((conv.size()[0], -1))
-        features = self.fc1(conv_flatten)
+        enc_flatten = T.flatten(enc, start_dim=1)
+        # enc_flatten = enc.view((enc.size()[0], -1))
+        features = self.fc1(enc_flatten)
 
         return features
 
@@ -45,29 +49,28 @@ class ActorCritic(nn.Module):
         self.tau = tau
         self.encoder = Encoder(input_dims)
 
-        # conv_shape = self.calc_conv_output(input_dims)
-
         self.gru = nn.GRUCell(feature_dims, 256)
         self.pi = nn.Linear(256, n_actions)
         self.v = nn.Linear(256, 1)
 
-        # conv_state = self.encoder()
-        # conv_state = conv.view((conv.size()[0], -1))
-
+    # It will take a state/image and a hidden state for our GRU as an input
+    # def forward(self, state, hx):
     def forward(self, img, hx):
-        
+
         state = self.encoder(img)
-        
         hx = self.gru(state, hx)
 
+        # Pass hidden state into our pi and v layer to get our logs for our policy(pi) and out value function
         pi = self.pi(hx)
         v = self.v(hx)
 
-        probs = T.softmax(pi, dim=1)
+        # Choose action function/ Get the actual probability distribution
+        probs = T.softmax(pi, dim=1) # soft max activation on the first dimension
         dist = Categorical(probs)
         action = dist.sample()
         log_prob = dist.log_prob(action)
 
+        # return predicted action, value, log probability and hidden state
         return action.numpy()[0], v, log_prob, hx
 
     def calc_R(self, done, rewards, values):
@@ -87,7 +90,7 @@ class ActorCritic(nn.Module):
                                 dtype=T.float).reshape(values.size())
         return batch_return
 
-    def calc_cost(self, new_state, hx, done,
+    def calc_loss(self, new_state, hx, done,
                   rewards, values, log_probs, intrinsic_reward=None):
 
         if intrinsic_reward is not None:

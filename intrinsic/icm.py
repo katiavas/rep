@@ -8,20 +8,21 @@ class Encoder(nn.Module):
     def __init__(self, input_dims, feature_dim=288):
         super(Encoder, self).__init__()
         
-        self.conv1 = nn.Conv2d(input_dims[0], 32, 3,stride=2, padding=1 )
-        self.conv2 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
-        self.conv3 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
-        self.conv4 = nn.Conv2d(32, 32, 3, stride=2, padding=1)
+        self.conv1 = nn.Conv2d(input_dims[0], 32, (3, 3), stride=2, padding=1 )
+        self.conv2 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
+        self.conv3 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
+        self.conv4 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
         
     def forward(self, img):
-        conv = F.elu(self.conv1(img))
-        conv = F.elu(self.conv2(conv))
-        conv = F.elu(self.conv3(conv))
-        conv = self.conv4(conv)
+        enc = F.elu(self.conv1(img))
+        enc = F.elu(self.conv2(enc))
+        enc = F.elu(self.conv3(enc))
+        enc = self.conv4(enc)
 
-        conv = conv.view(conv.size()[0], -1).to(T.float)
+        enc_flatten = T.flatten(enc, start_dim=1)
+        # conv = enc.view(enc.size()[0], -1).to(T.float)
 
-        return conv
+        return enc_flatten
 
 
 class ICM(nn.Module):

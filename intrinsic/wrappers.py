@@ -42,7 +42,7 @@ class RepeatAction(gym.Wrapper):
         t_reward = 0.0
         done = False
         # For each frame
-        for i in range(self.num_stack):
+        for i in range(self.repeat):
             obs, reward, done, info = self.env.step(action)
             t_reward += reward
             if done:

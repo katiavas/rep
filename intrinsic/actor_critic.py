@@ -24,7 +24,7 @@ class Encoder(nn.Module):
         x = self.conv3(x)
         x = self.conv4(x)
         # print(x.size())
-        shape = x.size[0]*x.size[1]*x.size[2]*x.size[3]
+        shape = x.size()[0]*x.size()[1]*x.size()[2]*x.size()[3]
         # return int(np.prod(x.size()))
         return shape
 

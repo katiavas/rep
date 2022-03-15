@@ -26,6 +26,7 @@ def worker(name, input_shape, n_actions, global_agent,
     env = make_env(env_id, shape=frame_buffer)
 
     episode, max_steps, t_steps, scores = 0, 3000, 0, []
+    intr = []
 
     while episode < max_steps:
         obs = env.reset()
@@ -77,6 +78,8 @@ def worker(name, input_shape, n_actions, global_agent,
         # with global_idx.get_lock():
         #    global_idx.value += 1
         if name == '1':
+            a = T.sum(intrinsic_reward)
+            intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)
             avg_score = np.mean(scores[-100:])
             # avg_score_5000 = np.mean(scores[max(0, episode-5000): episode+1])
@@ -87,8 +90,12 @@ def worker(name, input_shape, n_actions, global_agent,
                                                 avg_score))
     if name == '1':
         x = [z for z in range(episode)]
-        plot_learning_curve(x, scores, 'A3C_hallway_final.png')
-        np.savetxt("A3C.csv",
+        plot_learning_curve(x, scores, 'ICM.png')
+        np.savetxt("ICM_140322.csv",
+                   scores,
+                   delimiter=",",
+                   fmt='% s')
+        np.savetxt("ICM_intrinic.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')

@@ -28,6 +28,7 @@ def worker(name, input_shape, n_actions, global_agent,
 
     episode, max_steps, t_steps, scores = 0, 5000, 0, []
     intr = []
+    l = []
 
     while episode < max_steps:
         obs = env.reset()
@@ -79,6 +80,8 @@ def worker(name, input_shape, n_actions, global_agent,
         # with global_idx.get_lock():
         #    global_idx.value += 1
         if name == '1':
+            print(loss)
+            l.append(loss)
             a = T.sum(intrinsic_reward)
             intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)
@@ -96,8 +99,13 @@ def worker(name, input_shape, n_actions, global_agent,
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("ICM_4frames_5000.csv",
-                   scores,
+        np.savetxt("ICM_4frames_intrinsic_5000.csv",
+                   intr,
+                   delimiter=",",
+                   fmt='% s')
+
+        np.savetxt("ICM_LOSS.csv",
+                   loss,
                    delimiter=",",
                    fmt='% s')
         plot_learning_curve_with_shaded_error(x, scores, 'ICM_shaded_error_5000.png')

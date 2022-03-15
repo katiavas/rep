@@ -24,9 +24,9 @@ class Encoder(nn.Module):
         x = self.conv3(x)
         x = self.conv4(x)
         print(x.size())
-        shape = x[0].shape[0]*x[0].shape[1]*x[0].shape[2]*x[0].shape[3]
-        # return int(np.prod(dims.size()))
-        return shape
+        # shape = x[0].shape[0]*x[0].shape[1]*x[0].shape[2]*x[0].shape[3]
+        return int(np.prod(x.size()))
+        # return shape
 
     def forward(self, state):
         conv = F.elu(self.conv1(state))

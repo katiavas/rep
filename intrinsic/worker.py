@@ -5,6 +5,7 @@ from icm import ICM
 from memory import Memory
 from utils import plot_learning_curve
 from wrappers import make_env
+from utils import plot_learning_curve_with_shaded_error
 
 
 def worker(name, input_shape, n_actions, global_agent,
@@ -25,8 +26,8 @@ def worker(name, input_shape, n_actions, global_agent,
     frame_buffer = [input_shape[1], input_shape[2], 1]
     env = make_env(env_id, shape=frame_buffer)
 
-    episode, max_steps, t_steps, scores = 0, 3000, 0, []
-    # intr = []
+    episode, max_steps, t_steps, scores = 0, 5000, 0, []
+    intr = []
 
     while episode < max_steps:
         obs = env.reset()
@@ -78,11 +79,11 @@ def worker(name, input_shape, n_actions, global_agent,
         # with global_idx.get_lock():
         #    global_idx.value += 1
         if name == '1':
-            # a = T.sum(intrinsic_reward)
-            # intr.append(a.detach().numpy())  # for plotting intrinsic reward
+            a = T.sum(intrinsic_reward)
+            intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)
             avg_score = np.mean(scores[-100:])
-            avg_score_5000 = np.mean(scores[max(0, episode-3000): episode+1])
+            avg_score_5000 = np.mean(scores[max(0, episode-5000): episode+1])
             print('ICM episode {} thread {} of {} steps {:.2f}M score {:.2f} '
                   'avg score (100) {:.2f}'.format(
                                                 episode, name, n_threads,
@@ -91,11 +92,12 @@ def worker(name, input_shape, n_actions, global_agent,
     if name == '1':
         x = [z for z in range(episode)]
         plot_learning_curve(x, scores, 'ICM_4frames.png')
-        np.savetxt("AC3_150322_4frames.csv",
+        np.savetxt("ICM_4frames_5000.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        '''np.savetxt("AC3_intrinic_4frames.csv",
+        np.savetxt("ICM_4frames_5000.csv",
                    scores,
                    delimiter=",",
-                   fmt='% s')'''
+                   fmt='% s')
+        plot_learning_curve_with_shaded_error(x, scores, 'ICM_shaded_error_5000.png')

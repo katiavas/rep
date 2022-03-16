@@ -82,12 +82,8 @@ def worker(name, input_shape, n_actions, global_agent,
         if name == '1':
             b = T.sum(loss)
             l.append(b.detach().numpy())
-            # print(b, "sum")
-            # print(l,"loss")
-            a = T.sum(intrinsic_reward)
-            print(a, "sum a")
-            intr.append(a.detach().numpy())  # for plotting intrinsic reward
-            print(intr, "intr")
+            # a = T.sum(intrinsic_reward)
+            # intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)
             avg_score = np.mean(scores[-100:])
             avg_score_5000 = np.mean(scores[max(0, episode-5000): episode+1])
@@ -108,8 +104,8 @@ def worker(name, input_shape, n_actions, global_agent,
                    delimiter=",",
                    fmt='% s')'''
 
-        np.savetxt("ICM_LOSS.csv",
-                   loss,
+        np.savetxt("A3C_LOSS_5000.csv",
+                   l,
                    delimiter=",",
                    fmt='% s')
         # plot_learning_curve_with_shaded_error(x, scores, 'ICM_shaded_error_5000.png')

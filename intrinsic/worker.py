@@ -80,10 +80,11 @@ def worker(name, input_shape, n_actions, global_agent,
         # with global_idx.get_lock():
         #    global_idx.value += 1
         if name == '1':
-            l.append(loss.detach().numpy())
-            # print(l)
-            a = T.sum(intrinsic_reward)
-            intr.append(a.detach().numpy())  # for plotting intrinsic reward
+            b = T.sum(loss)
+            l.append(b.detach().numpy())
+            print(l)
+            # a = T.sum(intrinsic_reward)
+            # intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)
             avg_score = np.mean(scores[-100:])
             avg_score_5000 = np.mean(scores[max(0, episode-5000): episode+1])
@@ -94,15 +95,15 @@ def worker(name, input_shape, n_actions, global_agent,
                                                 avg_score))
     if name == '1':
         x = [z for z in range(episode)]
-        plot_learning_curve(x, scores, 'ICM_4frames.png')
-        np.savetxt("ICM_4frames_5000.csv",
+        plot_learning_curve(x, scores, 'A3C_4frames_5000.png')
+        np.savetxt("A3C_4frames_5000.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("ICM_4frames_intrinsic_5000.csv",
+        '''np.savetxt("ICM_4frames_intrinsic_5000.csv",
                    intr,
                    delimiter=",",
-                   fmt='% s')
+                   fmt='% s')'''
 
         np.savetxt("ICM_LOSS.csv",
                    loss,

@@ -109,4 +109,4 @@ def worker(name, input_shape, n_actions, global_agent,
                    loss,
                    delimiter=",",
                    fmt='% s')
-        plot_learning_curve_with_shaded_error(x, scores, 'ICM_shaded_error_5000.png')
+        # plot_learning_curve_with_shaded_error(x, scores, 'ICM_shaded_error_5000.png')

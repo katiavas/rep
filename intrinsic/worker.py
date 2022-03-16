@@ -82,10 +82,12 @@ def worker(name, input_shape, n_actions, global_agent,
         if name == '1':
             b = T.sum(loss)
             l.append(b.detach().numpy())
-            print(b, "sum")
-            print(l,"loss")
-            # a = T.sum(intrinsic_reward)
-            # intr.append(a.detach().numpy())  # for plotting intrinsic reward
+            # print(b, "sum")
+            # print(l,"loss")
+            a = T.sum(intrinsic_reward)
+            print(a, "sum a")
+            intr.append(a.detach().numpy())  # for plotting intrinsic reward
+            print(intr, "intr")
             scores.append(score)
             avg_score = np.mean(scores[-100:])
             avg_score_5000 = np.mean(scores[max(0, episode-5000): episode+1])

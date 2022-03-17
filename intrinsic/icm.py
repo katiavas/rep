@@ -25,7 +25,7 @@ class Encoder(nn.Module):
 
 
 class ICM(nn.Module):
-    def __init__(self, input_dims, n_actions=4, alpha=0.1, beta=0.2, feature_dims = 288):
+    def __init__(self, input_dims, n_actions=2, alpha=0.1, beta=0.2, feature_dims = 288):
         super(ICM, self).__init__()
         self.alpha = alpha
         self.beta = beta

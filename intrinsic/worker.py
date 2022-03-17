@@ -80,8 +80,8 @@ def worker(name, input_shape, n_actions, global_agent,
         # with global_idx.get_lock():
         #    global_idx.value += 1
         if name == '1':
-            b = T.sum(loss)
-            l.append(b.detach().numpy())
+            # b = T.sum(loss)
+            # l.append(b.detach().numpy())
             # a = T.sum(intrinsic_reward)
             # intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)
@@ -94,18 +94,18 @@ def worker(name, input_shape, n_actions, global_agent,
                                                 avg_score))
     if name == '1':
         x = [z for z in range(episode)]
-        plot_learning_curve(x, scores, 'A3C_4frames_5000.png')
-        np.savetxt("A3C_4frames_5000.csv",
+        plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
+        np.savetxt("CartPOle_ICM_pixels.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        '''np.savetxt("ICM_4frames_intrinsic_5000.csv",
+        np.savetxt("CartPole_ICM_r_i_pixels.csv",
                    intr,
                    delimiter=",",
-                   fmt='% s')'''
+                   fmt='% s')
 
-        np.savetxt("A3C_LOSS_5000.csv",
+        '''np.savetxt("A3C_LOSS_5000.csv",
                    l,
                    delimiter=",",
-                   fmt='% s')
+                   fmt='% s')'''
         # plot_learning_curve_with_shaded_error(x, scores, 'ICM_shaded_error_5000.png')

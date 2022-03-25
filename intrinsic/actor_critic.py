@@ -28,8 +28,8 @@ class Encoder(nn.Module):
         # return int(np.prod(x.size()))
         return shape
 
-    def forward(self, state):
-        enc = F.elu(self.conv1(state))
+    def forward(self, img):
+        enc = F.elu(self.conv1(img))
         enc = F.elu(self.conv2(enc))
         enc = F.elu(self.conv3(enc))
         enc = F.elu(self.conv4(enc))

@@ -4,7 +4,7 @@ from actor_critic import ActorCritic
 from icm import ICM
 from memory import Memory
 from utils import plot_learning_curve
-from wrappers import make_env
+from wrappers import make_atari
 from utils import plot_learning_curve_with_shaded_error
 
 
@@ -24,7 +24,7 @@ def worker(name, input_shape, n_actions, global_agent,
     memory = Memory()
 
     frame_buffer = [input_shape[1], input_shape[2], 1]
-    env = make_env(env_id, shape=frame_buffer)
+    env = make_atari(env_id, shape=frame_buffer)
 
     episode, max_steps, t_steps, scores = 0, 5000, 0, []
     intr = []
@@ -99,10 +99,10 @@ def worker(name, input_shape, n_actions, global_agent,
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("CartPole_ICM_r_i_pixels.csv",
+        '''np.savetxt("CartPole_ICM_r_i_pixels.csv",
                    intr,
                    delimiter=",",
-                   fmt='% s')
+                   fmt='% s')'''
 
         '''np.savetxt("A3C_LOSS_5000.csv",
                    l,

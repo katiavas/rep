@@ -30,15 +30,15 @@ def make_env(env_name, shape=(42, 42, 1)):
     env = PreprocessFrame(shape, env)
     return env'''
 
-''''
-class RepeatAction(gym.Wrapper):
+
+# Step the environment with the given action Repeat action, sum reward, and max over last observations
+class Step(gym.Wrapper):
     def __init__(self, env=None, repeat=4):
-        super(RepeatAction, self).__init__(env)
+        super(Step, self).__init__(env)
         self.repeat = repeat
         self.shape = env.observation_space.low.shape
-        print(env.observation_space.shape, "shape")
-        print(env.observation_space.high.shape, "high")
-
+        # print(env.observation_space.shape, "shape")
+        # print(env.observation_space.high.shape, "high")
 
     def step(self, action):
         total_reward = 0.0
@@ -55,7 +55,7 @@ class RepeatAction(gym.Wrapper):
 
     def reset(self):
         obs = self.env.reset()
-        return obs'''
+        return obs
 
 
 class PreprocessFrame(gym.ObservationWrapper):
@@ -109,7 +109,7 @@ class StackFrames(gym.ObservationWrapper):
 
 def make_atari(env_name, shape=(42, 42, 1), repeat=4):
     env = gym.make(env_name)
-    # env = RepeatAction(env, repeat)
+    env = Step(env, repeat)
     env = PreprocessFrame(shape, env)
     env = StackFrames(env, repeat)
     return env

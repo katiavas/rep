@@ -6,6 +6,7 @@ from memory import Memory
 from utils import plot_learning_curve
 from wrappers import make_atari
 from utils import plot_learning_curve_with_shaded_error
+import wandb
 
 
 def worker(name, input_shape, n_actions, global_agent,
@@ -29,6 +30,8 @@ def worker(name, input_shape, n_actions, global_agent,
     episode, max_steps, t_steps, scores = 0, 5000, 0, []
     intr = []
     l = []
+    l_i = []
+    l_f = []
 
     while episode < max_steps:
         obs = env.reset()
@@ -38,6 +41,7 @@ def worker(name, input_shape, n_actions, global_agent,
             state = T.tensor([obs], dtype=T.float)
             action, value, log_prob, hx = local_agent(state, hx)
             obs_, reward, done, info = env.step(action)
+
             memory.remember(obs, action, obs_, reward, value, log_prob)
             score += reward
             obs = obs_
@@ -49,7 +53,7 @@ def worker(name, input_shape, n_actions, global_agent,
                 if icm:
                     intrinsic_reward, L_I, L_F = \
                             local_icm.calc_loss(states, new_states, actions)
-
+                    # wandb.log({'forward_loss':L_F.item(), 'inverse_loss':L_I.item(), 'intrinsic_reward': intrinsic_reward})
                 loss = local_agent.calc_loss(obs, hx, done, rewards,
                                              values, log_probs,
                                              intrinsic_reward)
@@ -77,13 +81,18 @@ def worker(name, input_shape, n_actions, global_agent,
 
                 memory.clear_memory()
         episode += 1
+        # wandb.log({'episode_score': score})
         # with global_idx.get_lock():
         #    global_idx.value += 1
         if name == '1':
-            # b = T.sum(loss)
-            # l.append(b.detach().numpy())
-            # a = T.sum(intrinsic_reward)
-            # intr.append(a.detach().numpy())  # for plotting intrinsic reward
+            loss_i = T.sum(L_I)
+            l_i.append(loss_i)
+            loss_f = T.sum(L_F)
+            l_f.append(loss_f)
+            b = T.sum(loss)
+            l.append(b.detach().numpy())
+            a = T.sum(intrinsic_reward)
+            intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)
             avg_score = np.mean(scores[-100:])
             avg_score_5000 = np.mean(scores[max(0, episode-5000): episode+1])
@@ -94,18 +103,26 @@ def worker(name, input_shape, n_actions, global_agent,
                                                 avg_score))
     if name == '1':
         x = [z for z in range(episode)]
-        plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
-        np.savetxt("CartPOle_ICM_pixels.csv",
+        # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
+        np.savetxt("Breakout_111_ICM.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        '''np.savetxt("CartPole_ICM_r_i_pixels.csv",
+        np.savetxt("Breakout_111_ICM_intr.csv",
                    intr,
                    delimiter=",",
-                   fmt='% s')'''
+                   fmt='% s')
 
-        '''np.savetxt("A3C_LOSS_5000.csv",
+        np.savetxt("ICM_ON_LOSS_111.csv",
                    l,
                    delimiter=",",
-                   fmt='% s')'''
+                   fmt='% s')
+        np.savetxt("L_I_111.csv",
+                   l_i,
+                   delimiter=",",
+                   fmt='% s')
+        np.savetxt("L_F_111.csv",
+                   l_f,
+                   delimiter=",",
+                   fmt='% s')
         # plot_learning_curve_with_shaded_error(x, scores, 'ICM_shaded_error_5000.png')

@@ -36,7 +36,9 @@ class RepeatAction(gym.Wrapper):
         super(RepeatAction, self).__init__(env)
         self.repeat = repeat
         self.shape = env.observation_space.low.shape
-        print(self.shape, "shape")
+        print(env.observation_space.low.shape, "shape")
+        print(env.observation_space.high.shape, "high")
+
 
     def step(self, action):
         total_reward = 0.0

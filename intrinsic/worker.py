@@ -6,7 +6,7 @@ from memory import Memory
 from utils import plot_learning_curve
 from wrappers import make_atari
 from utils import plot_learning_curve_with_shaded_error
-import wandb
+# import wandb
 
 
 def worker(name, input_shape, n_actions, global_agent,

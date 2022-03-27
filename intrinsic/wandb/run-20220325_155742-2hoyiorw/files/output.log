@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "main.py", line 21, in <module>
+    mp.set_start_method('spawn')
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/context.py", line 243, in set_start_method
+    raise RuntimeError('context has already been set')
+RuntimeError: context has already been set

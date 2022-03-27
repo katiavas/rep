@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "main.py", line 33, in <module>
+    env = ParallelEnv(env_id=env_id, num_threads=n_threads,
+  File "/home/katia/rep/intrinsic/parallel_env.py", line 34, in __init__
+    [p.join() for p in self.ps]
+  File "/home/katia/rep/intrinsic/parallel_env.py", line 34, in <listcomp>
+    [p.join() for p in self.ps]
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/process.py", line 149, in join
+    res = self._popen.wait(timeout)
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/popen_fork.py", line 47, in wait
+    return self.poll(os.WNOHANG if timeout == 0.0 else 0)
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/popen_fork.py", line 27, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+KeyboardInterrupt

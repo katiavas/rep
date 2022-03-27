@@ -1,0 +1,37 @@
+2022-03-25 19:23:05,665 INFO    MainThread:15254 [wandb_setup.py:_flush():75] Loading settings from /home/katia/.config/wandb/settings
+2022-03-25 19:23:05,665 INFO    MainThread:15254 [wandb_setup.py:_flush():75] Loading settings from /home/katia/rep/intrinsic/wandb/settings
+2022-03-25 19:23:05,665 INFO    MainThread:15254 [wandb_setup.py:_flush():75] Loading settings from environment variables: {'start_method': 'thread', 'project': 'icm', 'entity': 'katiavas'}
+2022-03-25 19:23:05,665 INFO    MainThread:15254 [wandb_setup.py:_flush():75] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2022-03-25 19:23:05,665 INFO    MainThread:15254 [wandb_init.py:_log_setup():405] Logging user logs to ./wandb/run-20220325_192305-36un0d7u/logs/debug.log
+2022-03-25 19:23:05,666 INFO    MainThread:15254 [wandb_init.py:_log_setup():406] Logging internal logs to ./wandb/run-20220325_192305-36un0d7u/logs/debug-internal.log
+2022-03-25 19:23:05,666 INFO    MainThread:15254 [wandb_init.py:init():439] calling init triggers
+2022-03-25 19:23:05,666 INFO    MainThread:15254 [wandb_init.py:init():442] wandb.init called with sweep_config: {}
+config: {}
+2022-03-25 19:23:05,666 INFO    MainThread:15254 [wandb_init.py:init():492] starting backend
+2022-03-25 19:23:05,687 INFO    MainThread:15254 [backend.py:ensure_launched():219] starting backend process...
+2022-03-25 19:23:05,688 INFO    MainThread:15254 [backend.py:ensure_launched():224] started backend process with pid: 0
+2022-03-25 19:23:05,688 INFO    BackendThr:15254 [internal.py:wandb_internal():92] W&B internal server running at pid: 15254, started at: 2022-03-25 19:23:05.687800
+2022-03-25 19:23:05,689 INFO    MainThread:15254 [wandb_init.py:init():501] backend started and connected
+2022-03-25 19:23:05,697 INFO    MainThread:15254 [wandb_init.py:init():565] updated telemetry
+2022-03-25 19:23:05,733 INFO    WriterThread:15254 [datastore.py:open_for_write():77] open: ./wandb/run-20220325_192305-36un0d7u/run-36un0d7u.wandb
+2022-03-25 19:23:05,739 INFO    MainThread:15254 [wandb_init.py:init():596] communicating run to backend with 30 second timeout
+2022-03-25 19:23:06,104 INFO    MainThread:15254 [wandb_run.py:_on_init():1759] communicating current version
+2022-03-25 19:23:06,184 INFO    SenderThread:15254 [dir_watcher.py:__init__():169] watching files in: ./wandb/run-20220325_192305-36un0d7u/files
+2022-03-25 19:23:06,184 INFO    SenderThread:15254 [sender.py:_start_run_threads():812] run started: 36un0d7u with start time 1648236185
+2022-03-25 19:23:06,185 INFO    SenderThread:15254 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 19:23:06,349 INFO    MainThread:15254 [wandb_run.py:_on_init():1763] got version response 
+2022-03-25 19:23:06,349 INFO    MainThread:15254 [wandb_init.py:init():625] starting run threads in backend
+2022-03-25 19:23:07,169 INFO    Thread-10 :15254 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_192305-36un0d7u/files/requirements.txt
+2022-03-25 19:23:07,170 INFO    Thread-10 :15254 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_192305-36un0d7u/files/wandb-summary.json
+2022-03-25 19:23:07,171 INFO    Thread-10 :15254 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_192305-36un0d7u/files/conda-environment.yaml
+2022-03-25 19:23:11,410 INFO    MainThread:15254 [wandb_run.py:_console_start():1733] atexit reg
+2022-03-25 19:23:11,411 INFO    MainThread:15254 [wandb_run.py:_redirect():1606] redirect: SettingsConsole.WRAP
+2022-03-25 19:23:11,413 INFO    MainThread:15254 [wandb_run.py:_redirect():1643] Wrapping output streams.
+2022-03-25 19:23:11,469 INFO    MainThread:15254 [wandb_run.py:_redirect():1667] Redirects installed.
+2022-03-25 19:23:11,470 INFO    MainThread:15254 [wandb_init.py:init():664] run started, returning control to user process
+2022-03-25 19:23:13,546 INFO    Thread-10 :15254 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_192305-36un0d7u/files/output.log
+2022-03-25 19:23:27,098 INFO    MainThread:15254 [wandb_run.py:_atexit_cleanup():1702] got exitcode: 1
+2022-03-25 19:23:27,101 INFO    MainThread:15254 [wandb_run.py:_restore():1674] restore
+2022-03-25 19:23:27,880 INFO    WriterThread:15254 [datastore.py:close():281] close: ./wandb/run-20220325_192305-36un0d7u/run-36un0d7u.wandb
+2022-03-25 19:23:28,097 INFO    SenderThread:15254 [sender.py:finish():1078] shutting down sender
+2022-03-25 19:23:28,098 INFO    SenderThread:15254 [dir_watcher.py:finish():283] shutting down directory watcher

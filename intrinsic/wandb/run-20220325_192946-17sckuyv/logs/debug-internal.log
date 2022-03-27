@@ -1,0 +1,115 @@
+2022-03-25 19:29:46,176 INFO    BackendThr:16071 [internal.py:wandb_internal():92] W&B internal server running at pid: 16071, started at: 2022-03-25 19:29:46.176394
+2022-03-25 19:29:46,177 INFO    MainThread:16071 [wandb_init.py:init():501] backend started and connected
+2022-03-25 19:29:46,178 DEBUG   MainThread:16071 [config_util.py:dict_from_config_file():102] no default config file found in config-defaults.yaml
+2022-03-25 19:29:46,182 INFO    MainThread:16071 [wandb_init.py:init():565] updated telemetry
+2022-03-25 19:29:46,183 DEBUG   SenderThread:16071 [sender.py:send():235] send: header
+2022-03-25 19:29:46,183 INFO    WriterThread:16071 [datastore.py:open_for_write():77] open: ./wandb/run-20220325_192946-17sckuyv/run-17sckuyv.wandb
+2022-03-25 19:29:46,193 INFO    MainThread:16071 [wandb_init.py:init():596] communicating run to backend with 30 second timeout
+2022-03-25 19:29:46,194 DEBUG   SenderThread:16071 [sender.py:send():235] send: run
+2022-03-25 19:29:46,419 INFO    MainThread:16071 [wandb_run.py:_on_init():1759] communicating current version
+2022-03-25 19:29:46,420 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: check_version
+2022-03-25 19:29:46,430 INFO    SenderThread:16071 [dir_watcher.py:__init__():169] watching files in: ./wandb/run-20220325_192946-17sckuyv/files
+2022-03-25 19:29:46,431 INFO    SenderThread:16071 [sender.py:_start_run_threads():812] run started: 17sckuyv with start time 1648236586
+2022-03-25 19:29:46,431 DEBUG   SenderThread:16071 [sender.py:send():235] send: summary
+2022-03-25 19:29:46,431 INFO    SenderThread:16071 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 19:29:46,432 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: check_version
+2022-03-25 19:29:46,531 INFO    MainThread:16071 [wandb_run.py:_on_init():1763] got version response 
+2022-03-25 19:29:46,531 INFO    MainThread:16071 [wandb_init.py:init():625] starting run threads in backend
+2022-03-25 19:29:46,533 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: run_start
+2022-03-25 19:29:46,539 DEBUG   HandlerThread:16071 [meta.py:__init__():37] meta init
+2022-03-25 19:29:46,539 DEBUG   HandlerThread:16071 [meta.py:__init__():51] meta init done
+2022-03-25 19:29:46,539 DEBUG   HandlerThread:16071 [meta.py:probe():211] probe
+2022-03-25 19:29:46,553 DEBUG   HandlerThread:16071 [meta.py:_setup_git():201] setup git
+2022-03-25 19:29:46,611 DEBUG   HandlerThread:16071 [meta.py:_setup_git():208] setup git done
+2022-03-25 19:29:46,612 DEBUG   HandlerThread:16071 [meta.py:_save_pip():55] save pip
+2022-03-25 19:29:46,613 DEBUG   HandlerThread:16071 [meta.py:_save_pip():69] save pip done
+2022-03-25 19:29:46,613 DEBUG   HandlerThread:16071 [meta.py:_save_conda():76] save conda
+2022-03-25 19:29:47,434 INFO    Thread-10 :16071 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_192946-17sckuyv/files/requirements.txt
+2022-03-25 19:29:47,436 INFO    Thread-10 :16071 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_192946-17sckuyv/files/conda-environment.yaml
+2022-03-25 19:29:47,436 INFO    Thread-10 :16071 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_192946-17sckuyv/files/wandb-summary.json
+2022-03-25 19:29:51,595 INFO    MainThread:16071 [wandb_run.py:_console_start():1733] atexit reg
+2022-03-25 19:29:51,596 INFO    MainThread:16071 [wandb_run.py:_redirect():1606] redirect: SettingsConsole.WRAP
+2022-03-25 19:29:51,597 INFO    MainThread:16071 [wandb_run.py:_redirect():1643] Wrapping output streams.
+2022-03-25 19:29:51,679 INFO    MainThread:16071 [wandb_run.py:_redirect():1667] Redirects installed.
+2022-03-25 19:29:51,680 INFO    MainThread:16071 [wandb_init.py:init():664] run started, returning control to user process
+2022-03-25 19:29:53,547 INFO    Thread-10 :16071 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_192946-17sckuyv/files/output.log
+2022-03-25 19:30:09,727 INFO    Thread-10 :16071 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_192946-17sckuyv/files/conda-environment.yaml
+2022-03-25 19:30:10,722 DEBUG   HandlerThread:16071 [meta.py:_save_conda():86] save conda done
+2022-03-25 19:30:10,723 DEBUG   HandlerThread:16071 [meta.py:probe():249] probe done
+2022-03-25 19:30:10,739 INFO    Thread-10 :16071 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_192946-17sckuyv/files/wandb-metadata.json
+2022-03-25 19:30:10,773 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:30:10,779 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:30:11,019 DEBUG   SenderThread:16071 [sender.py:send():235] send: telemetry
+2022-03-25 19:30:11,032 DEBUG   SenderThread:16071 [sender.py:send():235] send: files
+2022-03-25 19:30:11,032 INFO    SenderThread:16071 [sender.py:_save_file():947] saving file wandb-metadata.json with policy now
+2022-03-25 19:30:11,684 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:30:11,685 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:30:11,817 INFO    Thread-20 :16071 [upload_job.py:push():137] Uploaded file /tmp/tmpexj3uywbwandb/2in5deul-wandb-metadata.json
+2022-03-25 19:30:17,756 INFO    Thread-10 :16071 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_192946-17sckuyv/files/config.yaml
+2022-03-25 19:30:19,897 DEBUG   SenderThread:16071 [sender.py:send():235] send: stats
+2022-03-25 19:30:26,974 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:30:26,974 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:30:42,186 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:30:42,186 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:30:52,593 DEBUG   SenderThread:16071 [sender.py:send():235] send: stats
+2022-03-25 19:30:57,515 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:30:57,515 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:31:12,772 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:31:12,773 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:31:24,895 DEBUG   SenderThread:16071 [sender.py:send():235] send: stats
+2022-03-25 19:31:27,979 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:31:27,980 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:31:43,225 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:31:43,226 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:31:57,417 DEBUG   SenderThread:16071 [sender.py:send():235] send: stats
+2022-03-25 19:31:58,564 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:31:58,564 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:32:13,822 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:32:13,823 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:32:29,157 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:32:29,158 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:32:30,138 DEBUG   SenderThread:16071 [sender.py:send():235] send: stats
+2022-03-25 19:32:44,433 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:32:44,435 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:32:59,868 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:32:59,869 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:33:02,901 DEBUG   SenderThread:16071 [sender.py:send():235] send: stats
+2022-03-25 19:33:15,153 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:33:15,154 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:33:30,371 DEBUG   HandlerThread:16071 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:33:30,372 DEBUG   SenderThread:16071 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:33:35,288 DEBUG   SenderThread:16071 [sender.py:send():235] send: stats
+2022-03-25 19:33:40,824 WARNING MsgRouterThr:16071 [router.py:message_loop():73] EOFError seen in message_loop
+2022-03-25 19:33:40,913 INFO    MainThread:16071 [wandb_run.py:_atexit_cleanup():1702] got exitcode: 1
+2022-03-25 19:33:40,916 INFO    MainThread:16071 [wandb_run.py:_restore():1674] restore
+2022-03-25 19:33:41,036 INFO    SenderThread:16071 [sender.py:finish():1078] shutting down sender
+2022-03-25 19:33:41,036 INFO    SenderThread:16071 [dir_watcher.py:finish():283] shutting down directory watcher
+2022-03-25 19:33:41,319 INFO    WriterThread:16071 [datastore.py:close():281] close: ./wandb/run-20220325_192946-17sckuyv/run-17sckuyv.wandb
+2022-03-25 19:33:41,586 INFO    SenderThread:16071 [dir_watcher.py:finish():313] scan: ./wandb/run-20220325_192946-17sckuyv/files
+2022-03-25 19:33:41,586 INFO    SenderThread:16071 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_192946-17sckuyv/files/config.yaml config.yaml
+2022-03-25 19:33:41,591 INFO    SenderThread:16071 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_192946-17sckuyv/files/output.log output.log
+2022-03-25 19:33:41,591 INFO    SenderThread:16071 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_192946-17sckuyv/files/wandb-summary.json wandb-summary.json
+2022-03-25 19:33:41,591 INFO    SenderThread:16071 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_192946-17sckuyv/files/conda-environment.yaml conda-environment.yaml
+2022-03-25 19:33:41,591 INFO    SenderThread:16071 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_192946-17sckuyv/files/wandb-metadata.json wandb-metadata.json
+2022-03-25 19:33:41,591 INFO    SenderThread:16071 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_192946-17sckuyv/files/requirements.txt requirements.txt
+2022-03-25 19:33:41,591 INFO    SenderThread:16071 [file_pusher.py:finish():145] shutting down file pusher
+2022-03-25 19:33:41,595 INFO    SenderThread:16071 [file_pusher.py:join():150] waiting for file pusher
+2022-03-25 19:33:42,169 INFO    Thread-23 :16071 [upload_job.py:push():137] Uploaded file ./wandb/run-20220325_192946-17sckuyv/files/conda-environment.yaml
+2022-03-25 19:33:42,180 INFO    Thread-21 :16071 [upload_job.py:push():137] Uploaded file ./wandb/run-20220325_192946-17sckuyv/files/config.yaml
+2022-03-25 19:33:42,185 INFO    Thread-24 :16071 [upload_job.py:push():137] Uploaded file ./wandb/run-20220325_192946-17sckuyv/files/requirements.txt
+2022-03-25 19:33:42,216 INFO    Thread-22 :16071 [upload_job.py:push():137] Uploaded file ./wandb/run-20220325_192946-17sckuyv/files/wandb-summary.json
+2022-03-25 19:33:42,760 ERROR   BackendThr:16071 [internal.py:wandb_internal():167] Thread HandlerThread:
+Traceback (most recent call last):
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/site-packages/wandb/sdk/internal/internal_util.py", line 54, in run
+    self._run()
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/site-packages/wandb/sdk/internal/internal_util.py", line 101, in _run
+    record = self._input_record_q.get(timeout=1)
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/queues.py", line 111, in get
+    res = self._recv_bytes()
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/connection.py", line 216, in recv_bytes
+    buf = self._recv_bytes(maxlength)
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/connection.py", line 414, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError

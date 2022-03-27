@@ -1,0 +1,138 @@
+2022-03-25 16:03:54,823 INFO    MainThread:12784 [wandb_setup.py:_flush():75] Loading settings from /home/katia/.config/wandb/settings
+2022-03-25 16:03:54,824 INFO    MainThread:12784 [wandb_setup.py:_flush():75] Loading settings from /home/katia/rep/intrinsic/wandb/settings
+2022-03-25 16:03:54,824 INFO    MainThread:12784 [wandb_setup.py:_flush():75] Loading settings from environment variables: {'start_method': 'thread', 'project': 'icm', 'entity': 'katiavas'}
+2022-03-25 16:03:54,824 INFO    MainThread:12784 [wandb_setup.py:_flush():75] Inferring run settings from compute environment: {'program': '<python with no main file>'}
+2022-03-25 16:03:54,825 INFO    MainThread:12784 [wandb_init.py:_log_setup():405] Logging user logs to ./wandb/run-20220325_160354-1z3o23rf/logs/debug.log
+2022-03-25 16:03:54,825 INFO    MainThread:12784 [wandb_init.py:_log_setup():406] Logging internal logs to ./wandb/run-20220325_160354-1z3o23rf/logs/debug-internal.log
+2022-03-25 16:03:54,825 INFO    MainThread:12784 [wandb_init.py:init():439] calling init triggers
+2022-03-25 16:03:54,825 INFO    MainThread:12784 [wandb_init.py:init():442] wandb.init called with sweep_config: {}
+config: {}
+2022-03-25 16:03:54,826 INFO    MainThread:12784 [wandb_init.py:init():492] starting backend
+2022-03-25 16:03:54,834 INFO    MainThread:12784 [backend.py:ensure_launched():219] starting backend process...
+2022-03-25 16:03:54,835 INFO    MainThread:12784 [backend.py:ensure_launched():224] started backend process with pid: 0
+2022-03-25 16:03:54,836 INFO    BackendThr:12784 [internal.py:wandb_internal():92] W&B internal server running at pid: 12784, started at: 2022-03-25 16:03:54.835018
+2022-03-25 16:03:54,841 INFO    MainThread:12784 [wandb_init.py:init():501] backend started and connected
+2022-03-25 16:03:54,849 INFO    MainThread:12784 [wandb_init.py:init():565] updated telemetry
+2022-03-25 16:03:54,851 INFO    WriterThread:12784 [datastore.py:open_for_write():77] open: ./wandb/run-20220325_160354-1z3o23rf/run-1z3o23rf.wandb
+2022-03-25 16:03:54,878 INFO    MainThread:12784 [wandb_init.py:init():596] communicating run to backend with 30 second timeout
+2022-03-25 16:03:55,157 INFO    MainThread:12784 [wandb_run.py:_on_init():1759] communicating current version
+2022-03-25 16:03:55,166 INFO    SenderThread:12784 [dir_watcher.py:__init__():169] watching files in: ./wandb/run-20220325_160354-1z3o23rf/files
+2022-03-25 16:03:55,167 INFO    SenderThread:12784 [sender.py:_start_run_threads():812] run started: 1z3o23rf with start time 1648224234
+2022-03-25 16:03:55,168 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:03:55,259 INFO    MainThread:12784 [wandb_run.py:_on_init():1763] got version response 
+2022-03-25 16:03:55,260 INFO    MainThread:12784 [wandb_init.py:init():625] starting run threads in backend
+2022-03-25 16:03:56,171 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:03:56,173 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_160354-1z3o23rf/files/requirements.txt
+2022-03-25 16:03:56,174 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_160354-1z3o23rf/files/conda-environment.yaml
+2022-03-25 16:04:00,313 INFO    MainThread:12784 [wandb_run.py:_console_start():1733] atexit reg
+2022-03-25 16:04:00,314 INFO    MainThread:12784 [wandb_run.py:_redirect():1606] redirect: SettingsConsole.WRAP
+2022-03-25 16:04:00,315 INFO    MainThread:12784 [wandb_run.py:_redirect():1643] Wrapping output streams.
+2022-03-25 16:04:00,370 INFO    MainThread:12784 [wandb_run.py:_redirect():1667] Redirects installed.
+2022-03-25 16:04:00,371 INFO    MainThread:12784 [wandb_init.py:init():664] run started, returning control to user process
+2022-03-25 16:04:02,882 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_160354-1z3o23rf/files/output.log
+2022-03-25 16:04:16,974 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/conda-environment.yaml
+2022-03-25 16:04:17,810 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:17,811 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:17,812 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-metadata.json with policy now
+2022-03-25 16:04:17,979 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:17,979 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-metadata.json
+2022-03-25 16:04:18,623 INFO    Thread-20 :12784 [upload_job.py:push():137] Uploaded file /tmp/tmph6l79rk4wandb/24qw2ici-wandb-metadata.json
+2022-03-25 16:04:19,590 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:19,998 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:21,118 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:22,003 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:25,404 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:26,096 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/config.yaml
+2022-03-25 16:04:26,097 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:28,021 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:28,099 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:31,385 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:32,122 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:33,835 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:34,129 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:35,411 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:36,130 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:37,521 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:38,134 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:39,451 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:40,139 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:43,362 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:44,148 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:46,183 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:47,183 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:49,245 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:50,189 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:52,225 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:53,221 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:55,901 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:04:56,236 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:04:59,608 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:00,248 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:01,488 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:02,252 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:05,039 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:05,284 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:07,951 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:08,294 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:12,323 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:13,317 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:14,999 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:15,319 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:17,599 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:18,330 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:19,669 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:20,331 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:22,857 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:23,360 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:25,360 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:25,366 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:28,941 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:29,369 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:31,313 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:31,379 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:33,071 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:33,380 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:37,016 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:37,403 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:39,223 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:39,409 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:44,477 INFO    SenderThread:12784 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:05:44,483 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:45,638 WARNING MsgRouterThr:12784 [router.py:message_loop():73] EOFError seen in message_loop
+2022-03-25 16:05:45,658 INFO    MainThread:12784 [wandb_run.py:_atexit_cleanup():1702] got exitcode: 1
+2022-03-25 16:05:45,661 INFO    MainThread:12784 [wandb_run.py:_restore():1674] restore
+2022-03-25 16:05:46,480 INFO    WriterThread:12784 [datastore.py:close():281] close: ./wandb/run-20220325_160354-1z3o23rf/run-1z3o23rf.wandb
+2022-03-25 16:05:46,481 INFO    SenderThread:12784 [sender.py:finish():1078] shutting down sender
+2022-03-25 16:05:46,481 INFO    SenderThread:12784 [dir_watcher.py:finish():283] shutting down directory watcher
+2022-03-25 16:05:46,484 INFO    Thread-10 :12784 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160354-1z3o23rf/files/output.log
+2022-03-25 16:05:46,485 INFO    SenderThread:12784 [dir_watcher.py:finish():313] scan: ./wandb/run-20220325_160354-1z3o23rf/files
+2022-03-25 16:05:46,486 INFO    SenderThread:12784 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_160354-1z3o23rf/files/config.yaml config.yaml
+2022-03-25 16:05:46,486 INFO    SenderThread:12784 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_160354-1z3o23rf/files/output.log output.log
+2022-03-25 16:05:46,504 INFO    SenderThread:12784 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json wandb-summary.json
+2022-03-25 16:05:46,509 INFO    SenderThread:12784 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_160354-1z3o23rf/files/conda-environment.yaml conda-environment.yaml
+2022-03-25 16:05:46,510 INFO    SenderThread:12784 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_160354-1z3o23rf/files/wandb-metadata.json wandb-metadata.json
+2022-03-25 16:05:46,513 INFO    SenderThread:12784 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_160354-1z3o23rf/files/requirements.txt requirements.txt
+2022-03-25 16:05:46,546 INFO    SenderThread:12784 [file_pusher.py:finish():145] shutting down file pusher
+2022-03-25 16:05:46,553 INFO    SenderThread:12784 [file_pusher.py:join():150] waiting for file pusher
+2022-03-25 16:05:47,066 INFO    Thread-23 :12784 [upload_job.py:push():137] Uploaded file ./wandb/run-20220325_160354-1z3o23rf/files/wandb-summary.json
+2022-03-25 16:05:47,088 INFO    Thread-25 :12784 [upload_job.py:push():137] Uploaded file ./wandb/run-20220325_160354-1z3o23rf/files/requirements.txt
+2022-03-25 16:05:47,102 INFO    Thread-24 :12784 [upload_job.py:push():137] Uploaded file ./wandb/run-20220325_160354-1z3o23rf/files/conda-environment.yaml
+2022-03-25 16:05:47,149 INFO    Thread-21 :12784 [upload_job.py:push():137] Uploaded file ./wandb/run-20220325_160354-1z3o23rf/files/config.yaml
+2022-03-25 16:05:47,376 INFO    Thread-22 :12784 [upload_job.py:push():137] Uploaded file ./wandb/run-20220325_160354-1z3o23rf/files/output.log
+2022-03-25 16:05:48,224 ERROR   BackendThr:12784 [internal.py:wandb_internal():167] Thread HandlerThread:
+Traceback (most recent call last):
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/site-packages/wandb/sdk/internal/internal_util.py", line 54, in run
+    self._run()
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/site-packages/wandb/sdk/internal/internal_util.py", line 101, in _run
+    record = self._input_record_q.get(timeout=1)
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/queues.py", line 111, in get
+    res = self._recv_bytes()
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/connection.py", line 216, in recv_bytes
+    buf = self._recv_bytes(maxlength)
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/connection.py", line 414, in _recv_bytes
+    buf = self._recv(4)
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/connection.py", line 383, in _recv
+    raise EOFError
+EOFError
+2022-03-25 16:05:51,000 INFO    MainThread:12784 [wandb_run.py:_on_finish():1831] got exit ret: None
+2022-03-25 16:05:51,100 INFO    MainThread:12784 [wandb_run.py:_restore():1674] restore

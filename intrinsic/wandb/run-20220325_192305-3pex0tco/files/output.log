@@ -1,0 +1,19 @@
+Process Process-5:
+Traceback (most recent call last):
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/katia/rep/intrinsic/worker.py", line 35, in worker
+    obs = env.reset()
+  File "/home/katia/rep/intrinsic/wrappers.py", line 98, in reset
+    observation = self.env.reset()
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/site-packages/gym/core.py", line 319, in reset
+    observation = self.env.reset(**kwargs)
+  File "/home/katia/rep/intrinsic/wrappers.py", line 57, in reset
+    obs = self.env.reset()
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/site-packages/gym/wrappers/time_limit.py", line 27, in reset
+    return self.env.reset(**kwargs)
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/site-packages/gym/envs/atari/environment.py", line 239, in reset
+    self.ale.reset_game()
+KeyboardInterrupt

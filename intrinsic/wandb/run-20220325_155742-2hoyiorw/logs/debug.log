@@ -1,0 +1,211 @@
+2022-03-25 15:57:42,246 INFO    MainThread:11753 [wandb_setup.py:_flush():75] Loading settings from /home/katia/.config/wandb/settings
+2022-03-25 15:57:42,246 INFO    MainThread:11753 [wandb_setup.py:_flush():75] Loading settings from /home/katia/rep/intrinsic/wandb/settings
+2022-03-25 15:57:42,246 INFO    MainThread:11753 [wandb_setup.py:_flush():75] Loading settings from environment variables: {'start_method': 'thread'}
+2022-03-25 15:57:42,246 INFO    MainThread:11753 [wandb_setup.py:_flush():75] Inferring run settings from compute environment: {'program_relpath': 'intrinsic/main.py', 'program': 'main.py'}
+2022-03-25 15:57:42,247 INFO    MainThread:11753 [wandb_init.py:_log_setup():405] Logging user logs to ./wandb/run-20220325_155742-2hoyiorw/logs/debug.log
+2022-03-25 15:57:42,247 INFO    MainThread:11753 [wandb_init.py:_log_setup():406] Logging internal logs to ./wandb/run-20220325_155742-2hoyiorw/logs/debug-internal.log
+2022-03-25 15:57:42,247 INFO    MainThread:11753 [wandb_init.py:init():439] calling init triggers
+2022-03-25 15:57:42,247 INFO    MainThread:11753 [wandb_init.py:init():442] wandb.init called with sweep_config: {}
+config: {}
+2022-03-25 15:57:42,248 INFO    MainThread:11753 [wandb_init.py:init():492] starting backend
+2022-03-25 15:57:42,261 INFO    MainThread:11753 [backend.py:ensure_launched():219] starting backend process...
+2022-03-25 15:57:42,262 INFO    MainThread:11753 [backend.py:ensure_launched():224] started backend process with pid: 0
+2022-03-25 15:57:42,264 INFO    BackendThr:11753 [internal.py:wandb_internal():92] W&B internal server running at pid: 11753, started at: 2022-03-25 15:57:42.262429
+2022-03-25 15:57:42,267 INFO    MainThread:11753 [wandb_init.py:init():501] backend started and connected
+2022-03-25 15:57:42,284 INFO    MainThread:11753 [wandb_init.py:init():565] updated telemetry
+2022-03-25 15:57:42,288 INFO    WriterThread:11753 [datastore.py:open_for_write():77] open: ./wandb/run-20220325_155742-2hoyiorw/run-2hoyiorw.wandb
+2022-03-25 15:57:42,319 INFO    MainThread:11753 [wandb_init.py:init():596] communicating run to backend with 30 second timeout
+2022-03-25 15:57:42,591 INFO    MainThread:11753 [wandb_run.py:_on_init():1759] communicating current version
+2022-03-25 15:57:42,597 INFO    SenderThread:11753 [dir_watcher.py:__init__():169] watching files in: ./wandb/run-20220325_155742-2hoyiorw/files
+2022-03-25 15:57:42,598 INFO    SenderThread:11753 [sender.py:_start_run_threads():812] run started: 2hoyiorw with start time 1648223862
+2022-03-25 15:57:42,599 INFO    SenderThread:11753 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 15:57:42,696 INFO    MainThread:11753 [wandb_run.py:_on_init():1763] got version response 
+2022-03-25 15:57:42,697 INFO    MainThread:11753 [wandb_init.py:init():625] starting run threads in backend
+2022-03-25 15:57:43,598 INFO    Thread-10 :11753 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_155742-2hoyiorw/files/wandb-summary.json
+2022-03-25 15:57:43,598 INFO    Thread-10 :11753 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_155742-2hoyiorw/files/requirements.txt
+2022-03-25 15:57:43,598 INFO    Thread-10 :11753 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_155742-2hoyiorw/files/conda-environment.yaml
+2022-03-25 15:57:44,249 INFO    SenderThread:11753 [sender.py:_save_file():947] saving file wandb-metadata.json with policy now
+2022-03-25 15:57:44,261 INFO    MainThread:11753 [wandb_run.py:_console_start():1733] atexit reg
+2022-03-25 15:57:44,262 INFO    MainThread:11753 [wandb_run.py:_redirect():1606] redirect: SettingsConsole.WRAP
+2022-03-25 15:57:44,262 INFO    MainThread:11753 [wandb_run.py:_redirect():1643] Wrapping output streams.
+2022-03-25 15:57:44,263 INFO    MainThread:11753 [wandb_run.py:_redirect():1667] Redirects installed.
+2022-03-25 15:57:44,263 INFO    MainThread:11753 [wandb_init.py:init():664] run started, returning control to user process
+2022-03-25 15:57:44,264 INFO    MainThread:11753 [wandb_run.py:_atexit_cleanup():1702] got exitcode: 1
+2022-03-25 15:57:44,265 INFO    MainThread:11753 [wandb_run.py:_restore():1674] restore
+2022-03-25 15:57:44,599 INFO    Thread-10 :11753 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_155742-2hoyiorw/files/conda-environment.yaml
+2022-03-25 15:57:44,604 INFO    Thread-10 :11753 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_155742-2hoyiorw/files/wandb-metadata.json
+2022-03-25 15:57:44,605 INFO    Thread-10 :11753 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_155742-2hoyiorw/files/output.log
+2022-03-25 15:57:44,776 INFO    SenderThread:11753 [sender.py:send_exit():371] handling exit code: 1
+2022-03-25 15:57:44,777 INFO    SenderThread:11753 [sender.py:send_exit():373] handling runtime: 2
+2022-03-25 15:57:44,777 INFO    SenderThread:11753 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 15:57:44,778 INFO    SenderThread:11753 [sender.py:send_exit():379] send defer
+2022-03-25 15:57:44,780 INFO    HandlerThread:11753 [handler.py:handle_request_defer():164] handle defer: 0
+2022-03-25 15:57:44,781 INFO    SenderThread:11753 [sender.py:send_request_defer():388] handle sender defer: 0
+2022-03-25 15:57:44,781 INFO    SenderThread:11753 [sender.py:transition_state():392] send defer: 1
+2022-03-25 15:57:44,782 INFO    MainThread:11753 [wandb_run.py:_on_finish():1831] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 733
+  total_bytes: 733
+}
+
+2022-03-25 15:57:44,783 INFO    HandlerThread:11753 [handler.py:handle_request_defer():164] handle defer: 1
+2022-03-25 15:57:44,838 INFO    SenderThread:11753 [sender.py:send_request_defer():388] handle sender defer: 1
+2022-03-25 15:57:44,838 INFO    SenderThread:11753 [sender.py:transition_state():392] send defer: 2
+2022-03-25 15:57:44,839 INFO    HandlerThread:11753 [handler.py:handle_request_defer():164] handle defer: 2
+2022-03-25 15:57:44,840 INFO    SenderThread:11753 [sender.py:send_request_defer():388] handle sender defer: 2
+2022-03-25 15:57:44,840 INFO    SenderThread:11753 [sender.py:transition_state():392] send defer: 3
+2022-03-25 15:57:44,840 INFO    HandlerThread:11753 [handler.py:handle_request_defer():164] handle defer: 3
+2022-03-25 15:57:44,841 INFO    SenderThread:11753 [sender.py:send_request_defer():388] handle sender defer: 3
+2022-03-25 15:57:44,841 INFO    SenderThread:11753 [sender.py:transition_state():392] send defer: 4
+2022-03-25 15:57:44,841 INFO    HandlerThread:11753 [handler.py:handle_request_defer():164] handle defer: 4
+2022-03-25 15:57:44,842 INFO    SenderThread:11753 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 15:57:44,842 INFO    SenderThread:11753 [sender.py:send_request_defer():388] handle sender defer: 4
+2022-03-25 15:57:44,843 INFO    SenderThread:11753 [sender.py:transition_state():392] send defer: 5
+2022-03-25 15:57:44,846 INFO    Thread-14 :11753 [upload_job.py:push():137] Uploaded file /tmp/tmp6ypq22a7wandb/1j3wm1y4-wandb-metadata.json
+2022-03-25 15:57:44,847 INFO    HandlerThread:11753 [handler.py:handle_request_defer():164] handle defer: 5
+2022-03-25 15:57:44,848 INFO    SenderThread:11753 [sender.py:send_request_defer():388] handle sender defer: 5
+2022-03-25 15:57:45,062 INFO    SenderThread:11753 [sender.py:transition_state():392] send defer: 6
+2022-03-25 15:57:45,065 INFO    HandlerThread:11753 [handler.py:handle_request_defer():164] handle defer: 6
+2022-03-25 15:57:45,066 INFO    MainThread:11753 [wandb_run.py:_on_finish():1831] got exit ret: file_counts {
+  wandb_count: 1
+}
+pusher_stats {
+  uploaded_bytes: 733
+  total_bytes: 733
+}
+
+2022-03-25 15:57:45,067 INFO    SenderThread:11753 [sender.py:send_request_defer():388] handle sender defer: 6
+2022-03-25 15:57:45,067 INFO    SenderThread:11753 [dir_watcher.py:finish():283] shutting down directory watcher
+2022-03-25 15:57:45,600 INFO    Thread-10 :11753 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_155742-2hoyiorw/files/output.log
+2022-03-25 15:57:45,601 INFO    SenderThread:11753 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_155742-2hoyiorw/files/wandb-summary.json
+2022-03-25 15:57:45,602 INFO    SenderThread:11753 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_155742-2hoyiorw/files/config.yaml
+2022-03-25 15:57:45,603 INFO    SenderThread:11753 [dir_watcher.py:finish():313] scan: ./wandb/run-20220325_155742-2hoyiorw/files
+2022-03-25 15:57:45,603 INFO    SenderThread:11753 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_155742-2hoyiorw/files/config.yaml config.yaml
+2022-03-25 15:57:45,604 INFO    SenderThread:11753 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_155742-2hoyiorw/files/output.log output.log
+2022-03-25 15:57:45,610 INFO    SenderThread:11753 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_155742-2hoyiorw/files/wandb-summary.json wandb-summary.json
+2022-03-25 15:57:45,621 INFO    SenderThread:11753 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_155742-2hoyiorw/files/conda-environment.yaml conda-environment.yaml
+2022-03-25 15:57:45,622 INFO    SenderThread:11753 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_155742-2hoyiorw/files/wandb-metadata.json wandb-metadata.json
+2022-03-25 15:57:45,629 INFO    SenderThread:11753 [dir_watcher.py:finish():327] scan save: ./wandb/run-20220325_155742-2hoyiorw/files/requirements.txt requirements.txt
+2022-03-25 15:57:45,629 INFO    SenderThread:11753 [sender.py:transition_state():392] send defer: 7
+2022-03-25 15:57:45,640 INFO    HandlerThread:11753 [handler.py:handle_request_defer():164] handle defer: 7
+2022-03-25 15:57:45,641 INFO    MainThread:11753 [wandb_run.py:_on_finish():1831] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 733
+  total_bytes: 8976
+}
+
+2022-03-25 15:57:45,642 INFO    SenderThread:11753 [sender.py:send_request_defer():388] handle sender defer: 7
+2022-03-25 15:57:45,642 INFO    SenderThread:11753 [file_pusher.py:finish():145] shutting down file pusher
+2022-03-25 15:57:45,745 INFO    MainThread:11753 [wandb_run.py:_on_finish():1831] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 733
+  total_bytes: 8976
+}
+
+2022-03-25 15:57:45,850 INFO    MainThread:11753 [wandb_run.py:_on_finish():1831] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 733
+  total_bytes: 8976
+}
+
+2022-03-25 15:57:45,952 INFO    MainThread:11753 [wandb_run.py:_on_finish():1831] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 8976
+  total_bytes: 8976
+}
+
+2022-03-25 15:57:46,056 INFO    MainThread:11753 [wandb_run.py:_on_finish():1831] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 8976
+  total_bytes: 8976
+}
+
+2022-03-25 15:57:46,160 INFO    MainThread:11753 [wandb_run.py:_on_finish():1831] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 8976
+  total_bytes: 8976
+}
+
+2022-03-25 15:57:46,264 INFO    MainThread:11753 [wandb_run.py:_on_finish():1831] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 8976
+  total_bytes: 8976
+}
+
+2022-03-25 15:57:46,309 INFO    Thread-23 :11753 [upload_job.py:push():137] Uploaded file ./wandb/run-20220325_155742-2hoyiorw/files/wandb-summary.json
+2022-03-25 15:57:46,314 INFO    Thread-22 :11753 [upload_job.py:push():137] Uploaded file ./wandb/run-20220325_155742-2hoyiorw/files/output.log
+2022-03-25 15:57:46,319 INFO    Thread-25 :11753 [upload_job.py:push():137] Uploaded file ./wandb/run-20220325_155742-2hoyiorw/files/requirements.txt
+2022-03-25 15:57:46,323 INFO    Thread-24 :11753 [upload_job.py:push():137] Uploaded file ./wandb/run-20220325_155742-2hoyiorw/files/conda-environment.yaml
+2022-03-25 15:57:46,327 INFO    Thread-21 :11753 [upload_job.py:push():137] Uploaded file ./wandb/run-20220325_155742-2hoyiorw/files/config.yaml
+2022-03-25 15:57:46,369 INFO    MainThread:11753 [wandb_run.py:_on_finish():1831] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 8976
+  total_bytes: 8976
+}
+
+2022-03-25 15:57:46,473 INFO    MainThread:11753 [wandb_run.py:_on_finish():1831] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 8976
+  total_bytes: 8976
+}
+
+2022-03-25 15:57:46,533 INFO    Thread-9  :11753 [sender.py:transition_state():392] send defer: 8
+2022-03-25 15:57:46,535 INFO    HandlerThread:11753 [handler.py:handle_request_defer():164] handle defer: 8
+2022-03-25 15:57:46,535 INFO    SenderThread:11753 [sender.py:send_request_defer():388] handle sender defer: 8
+2022-03-25 15:57:47,143 INFO    SenderThread:11753 [sender.py:transition_state():392] send defer: 9
+2022-03-25 15:57:47,147 INFO    HandlerThread:11753 [handler.py:handle_request_defer():164] handle defer: 9
+2022-03-25 15:57:47,147 INFO    MainThread:11753 [wandb_run.py:_on_finish():1831] got exit ret: file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 8976
+  total_bytes: 8976
+}
+
+2022-03-25 15:57:47,148 INFO    SenderThread:11753 [sender.py:send_request_defer():388] handle sender defer: 9
+2022-03-25 15:57:47,149 INFO    SenderThread:11753 [sender.py:transition_state():392] send defer: 10
+2022-03-25 15:57:47,153 INFO    HandlerThread:11753 [handler.py:handle_request_defer():164] handle defer: 10
+2022-03-25 15:57:47,154 INFO    SenderThread:11753 [sender.py:send_request_defer():388] handle sender defer: 10
+2022-03-25 15:57:47,251 INFO    SenderThread:11753 [file_pusher.py:join():150] waiting for file pusher
+2022-03-25 15:57:47,670 INFO    MainThread:11753 [wandb_run.py:_on_finish():1831] got exit ret: done: true
+exit_result {
+}
+file_counts {
+  wandb_count: 6
+}
+pusher_stats {
+  uploaded_bytes: 8976
+  total_bytes: 8976
+}
+local_info {
+}
+
+2022-03-25 15:57:47,779 INFO    HandlerThread:11753 [handler.py:finish():778] shutting down handler
+2022-03-25 15:57:48,153 INFO    WriterThread:11753 [datastore.py:close():281] close: ./wandb/run-20220325_155742-2hoyiorw/run-2hoyiorw.wandb
+2022-03-25 15:57:48,669 INFO    SenderThread:11753 [sender.py:finish():1078] shutting down sender
+2022-03-25 15:57:48,670 INFO    SenderThread:11753 [file_pusher.py:finish():145] shutting down file pusher
+2022-03-25 15:57:48,670 INFO    SenderThread:11753 [file_pusher.py:join():150] waiting for file pusher
+2022-03-25 15:57:48,782 INFO    MainThread:11753 [wandb_run.py:_footer_history_summary_info():2865] rendering history
+2022-03-25 15:57:48,783 INFO    MainThread:11753 [wandb_run.py:_footer_history_summary_info():2894] rendering summary
+2022-03-25 15:57:48,788 INFO    MainThread:11753 [wandb_run.py:_footer_sync_info():2822] logging synced files
+2022-03-25 15:57:48,789 INFO    MainThread:11753 [internal.py:handle_exit():82] Internal process exited

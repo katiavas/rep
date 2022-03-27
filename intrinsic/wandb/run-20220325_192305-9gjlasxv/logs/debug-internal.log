@@ -1,0 +1,45 @@
+2022-03-25 19:23:05,376 INFO    BackendThr:15257 [internal.py:wandb_internal():92] W&B internal server running at pid: 15257, started at: 2022-03-25 19:23:05.375570
+2022-03-25 19:23:05,377 INFO    MainThread:15257 [wandb_init.py:init():501] backend started and connected
+2022-03-25 19:23:05,379 DEBUG   MainThread:15257 [config_util.py:dict_from_config_file():102] no default config file found in config-defaults.yaml
+2022-03-25 19:23:05,389 INFO    MainThread:15257 [wandb_init.py:init():565] updated telemetry
+2022-03-25 19:23:05,391 DEBUG   SenderThread:15257 [sender.py:send():235] send: header
+2022-03-25 19:23:05,392 INFO    WriterThread:15257 [datastore.py:open_for_write():77] open: ./wandb/run-20220325_192305-9gjlasxv/run-9gjlasxv.wandb
+2022-03-25 19:23:05,415 INFO    MainThread:15257 [wandb_init.py:init():596] communicating run to backend with 30 second timeout
+2022-03-25 19:23:05,417 DEBUG   SenderThread:15257 [sender.py:send():235] send: run
+2022-03-25 19:23:05,747 INFO    MainThread:15257 [wandb_run.py:_on_init():1759] communicating current version
+2022-03-25 19:23:05,748 DEBUG   HandlerThread:15257 [handler.py:handle_request():141] handle_request: check_version
+2022-03-25 19:23:05,761 INFO    SenderThread:15257 [dir_watcher.py:__init__():169] watching files in: ./wandb/run-20220325_192305-9gjlasxv/files
+2022-03-25 19:23:05,761 INFO    SenderThread:15257 [sender.py:_start_run_threads():812] run started: 9gjlasxv with start time 1648236185
+2022-03-25 19:23:05,762 DEBUG   SenderThread:15257 [sender.py:send():235] send: summary
+2022-03-25 19:23:05,762 INFO    SenderThread:15257 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 19:23:05,763 DEBUG   SenderThread:15257 [sender.py:send_request():249] send_request: check_version
+2022-03-25 19:23:05,918 INFO    MainThread:15257 [wandb_run.py:_on_init():1763] got version response 
+2022-03-25 19:23:05,919 INFO    MainThread:15257 [wandb_init.py:init():625] starting run threads in backend
+2022-03-25 19:23:05,920 DEBUG   HandlerThread:15257 [handler.py:handle_request():141] handle_request: run_start
+2022-03-25 19:23:05,940 DEBUG   HandlerThread:15257 [meta.py:__init__():37] meta init
+2022-03-25 19:23:05,940 DEBUG   HandlerThread:15257 [meta.py:__init__():51] meta init done
+2022-03-25 19:23:05,940 DEBUG   HandlerThread:15257 [meta.py:probe():211] probe
+2022-03-25 19:23:05,949 DEBUG   HandlerThread:15257 [meta.py:_setup_git():201] setup git
+2022-03-25 19:23:06,004 DEBUG   HandlerThread:15257 [meta.py:_setup_git():208] setup git done
+2022-03-25 19:23:06,004 DEBUG   HandlerThread:15257 [meta.py:_save_pip():55] save pip
+2022-03-25 19:23:06,005 DEBUG   HandlerThread:15257 [meta.py:_save_pip():69] save pip done
+2022-03-25 19:23:06,006 DEBUG   HandlerThread:15257 [meta.py:_save_conda():76] save conda
+2022-03-25 19:23:06,765 INFO    Thread-10 :15257 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_192305-9gjlasxv/files/wandb-summary.json
+2022-03-25 19:23:06,766 INFO    Thread-10 :15257 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_192305-9gjlasxv/files/requirements.txt
+2022-03-25 19:23:06,767 INFO    Thread-10 :15257 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_192305-9gjlasxv/files/conda-environment.yaml
+2022-03-25 19:23:10,971 INFO    MainThread:15257 [wandb_run.py:_console_start():1733] atexit reg
+2022-03-25 19:23:10,972 INFO    MainThread:15257 [wandb_run.py:_redirect():1606] redirect: SettingsConsole.WRAP
+2022-03-25 19:23:10,973 INFO    MainThread:15257 [wandb_run.py:_redirect():1643] Wrapping output streams.
+2022-03-25 19:23:11,047 INFO    MainThread:15257 [wandb_run.py:_redirect():1667] Redirects installed.
+2022-03-25 19:23:11,048 INFO    MainThread:15257 [wandb_init.py:init():664] run started, returning control to user process
+2022-03-25 19:23:13,477 INFO    Thread-10 :15257 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_192305-9gjlasxv/files/output.log
+2022-03-25 19:23:27,099 INFO    MainThread:15257 [wandb_run.py:_atexit_cleanup():1702] got exitcode: 1
+2022-03-25 19:23:27,128 INFO    MainThread:15257 [wandb_run.py:_restore():1674] restore
+2022-03-25 19:23:27,956 DEBUG   HandlerThread:15257 [meta.py:_save_conda():86] save conda done
+2022-03-25 19:23:27,956 DEBUG   HandlerThread:15257 [meta.py:probe():249] probe done
+2022-03-25 19:23:27,962 DEBUG   HandlerThread:15257 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 19:23:27,963 DEBUG   SenderThread:15257 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 19:23:27,969 DEBUG   HandlerThread:15257 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 19:23:27,971 INFO    WriterThread:15257 [datastore.py:close():281] close: ./wandb/run-20220325_192305-9gjlasxv/run-9gjlasxv.wandb
+2022-03-25 19:23:28,196 INFO    SenderThread:15257 [sender.py:finish():1078] shutting down sender
+2022-03-25 19:23:28,197 INFO    SenderThread:15257 [dir_watcher.py:finish():283] shutting down directory watcher

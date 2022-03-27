@@ -1,0 +1,23 @@
+{
+    "os": "Linux-5.13.0-37-generic-x86_64-with-glibc2.10",
+    "python": "3.8.8",
+    "heartbeatAt": "2022-03-25T19:29:47.287278",
+    "startedAt": "2022-03-25T19:29:46.543933",
+    "docker": null,
+    "gpu": "NVIDIA GeForce MX250",
+    "gpu_count": 1,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "<python with no main file>",
+    "git": {
+        "remote": "https://github.com/katiavas/rep.git",
+        "commit": "2c6aa244902d6ca55604f5180144fb9601c3b59b"
+    },
+    "email": "bl19548@bristol.ac.uk",
+    "root": "/home/katia/rep",
+    "host": "katia-Inspiron-5480",
+    "username": "katia",
+    "executable": "/home/katia/anaconda3/envs/phil-env/bin/python3"
+}

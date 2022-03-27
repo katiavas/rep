@@ -1,0 +1,255 @@
+2022-03-25 16:01:49,911 INFO    BackendThr:12307 [internal.py:wandb_internal():92] W&B internal server running at pid: 12307, started at: 2022-03-25 16:01:49.907499
+2022-03-25 16:01:49,919 INFO    MainThread:12307 [wandb_init.py:init():501] backend started and connected
+2022-03-25 16:01:49,919 DEBUG   MainThread:12307 [config_util.py:dict_from_config_file():102] no default config file found in config-defaults.yaml
+2022-03-25 16:01:49,924 INFO    MainThread:12307 [wandb_init.py:init():565] updated telemetry
+2022-03-25 16:01:49,969 DEBUG   SenderThread:12307 [sender.py:send():235] send: header
+2022-03-25 16:01:49,970 INFO    WriterThread:12307 [datastore.py:open_for_write():77] open: ./wandb/run-20220325_160149-xbo30tnu/run-xbo30tnu.wandb
+2022-03-25 16:01:49,976 INFO    MainThread:12307 [wandb_init.py:init():596] communicating run to backend with 30 second timeout
+2022-03-25 16:01:49,978 DEBUG   SenderThread:12307 [sender.py:send():235] send: run
+2022-03-25 16:01:50,584 INFO    MainThread:12307 [wandb_run.py:_on_init():1759] communicating current version
+2022-03-25 16:01:50,584 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: check_version
+2022-03-25 16:01:50,588 INFO    SenderThread:12307 [dir_watcher.py:__init__():169] watching files in: ./wandb/run-20220325_160149-xbo30tnu/files
+2022-03-25 16:01:50,588 INFO    SenderThread:12307 [sender.py:_start_run_threads():812] run started: xbo30tnu with start time 1648224109
+2022-03-25 16:01:50,589 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:01:50,589 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:01:50,589 DEBUG   SenderThread:12307 [sender.py:send_request():249] send_request: check_version
+2022-03-25 16:01:50,672 INFO    MainThread:12307 [wandb_run.py:_on_init():1763] got version response 
+2022-03-25 16:01:50,672 INFO    MainThread:12307 [wandb_init.py:init():625] starting run threads in backend
+2022-03-25 16:01:50,673 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: run_start
+2022-03-25 16:01:50,676 DEBUG   HandlerThread:12307 [meta.py:__init__():37] meta init
+2022-03-25 16:01:50,676 DEBUG   HandlerThread:12307 [meta.py:__init__():51] meta init done
+2022-03-25 16:01:50,676 DEBUG   HandlerThread:12307 [meta.py:probe():211] probe
+2022-03-25 16:01:50,683 DEBUG   HandlerThread:12307 [meta.py:_setup_git():201] setup git
+2022-03-25 16:01:50,707 DEBUG   HandlerThread:12307 [meta.py:_setup_git():208] setup git done
+2022-03-25 16:01:50,707 DEBUG   HandlerThread:12307 [meta.py:_save_pip():55] save pip
+2022-03-25 16:01:50,708 DEBUG   HandlerThread:12307 [meta.py:_save_pip():69] save pip done
+2022-03-25 16:01:50,708 DEBUG   HandlerThread:12307 [meta.py:_save_conda():76] save conda
+2022-03-25 16:01:51,591 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:01:51,592 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_160149-xbo30tnu/files/conda-environment.yaml
+2022-03-25 16:01:51,592 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_160149-xbo30tnu/files/requirements.txt
+2022-03-25 16:01:55,704 INFO    MainThread:12307 [wandb_run.py:_console_start():1733] atexit reg
+2022-03-25 16:01:55,705 INFO    MainThread:12307 [wandb_run.py:_redirect():1606] redirect: SettingsConsole.WRAP
+2022-03-25 16:01:55,706 INFO    MainThread:12307 [wandb_run.py:_redirect():1643] Wrapping output streams.
+2022-03-25 16:01:55,763 INFO    MainThread:12307 [wandb_run.py:_redirect():1667] Redirects installed.
+2022-03-25 16:01:55,764 INFO    MainThread:12307 [wandb_init.py:init():664] run started, returning control to user process
+2022-03-25 16:01:57,668 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:03,702 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/conda-environment.yaml
+2022-03-25 16:02:04,314 DEBUG   HandlerThread:12307 [meta.py:_save_conda():86] save conda done
+2022-03-25 16:02:04,314 DEBUG   HandlerThread:12307 [meta.py:probe():249] probe done
+2022-03-25 16:02:04,362 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 16:02:04,363 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:04,366 DEBUG   SenderThread:12307 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 16:02:04,704 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:04,705 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_created():217] file/dir created: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-metadata.json
+2022-03-25 16:02:04,844 DEBUG   SenderThread:12307 [sender.py:send():235] send: telemetry
+2022-03-25 16:02:04,845 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:04,845 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:04,850 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:04,853 DEBUG   SenderThread:12307 [sender.py:send():235] send: files
+2022-03-25 16:02:04,854 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-metadata.json with policy now
+2022-03-25 16:02:05,667 INFO    Thread-20 :12307 [upload_job.py:push():137] Uploaded file /tmp/tmphupirhvwwandb/1zyv6tgk-wandb-metadata.json
+2022-03-25 16:02:05,724 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:07,724 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:07,726 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:07,727 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:07,728 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:07,792 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:08,793 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:10,078 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:10,086 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:10,149 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:10,155 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:10,808 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:12,819 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:13,542 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:13,546 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:13,546 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:13,547 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:13,822 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:14,823 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:15,709 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 16:02:15,709 DEBUG   SenderThread:12307 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 16:02:16,458 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:16,461 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:16,462 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:16,463 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:16,837 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:18,840 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:19,024 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:19,026 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:19,027 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:19,028 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:19,841 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:20,841 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:21,386 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:21,444 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:21,445 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:21,446 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:21,849 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:21,859 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/config.yaml
+2022-03-25 16:02:22,882 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:22,980 DEBUG   SenderThread:12307 [sender.py:send():235] send: stats
+2022-03-25 16:02:24,888 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:24,890 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:24,890 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:24,891 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:25,888 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:26,888 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:27,162 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:27,209 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:27,209 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:27,210 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:27,889 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:28,893 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:29,363 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:29,365 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:29,366 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:29,374 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:29,893 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:30,894 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:30,998 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 16:02:30,998 DEBUG   SenderThread:12307 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 16:02:33,186 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:33,234 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:33,234 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:33,235 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:33,946 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:34,936 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:35,763 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:35,765 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:35,765 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:35,765 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:35,937 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:37,505 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:37,506 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:37,507 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:37,507 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:37,949 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:37,950 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:39,761 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:39,763 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:39,763 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:39,833 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:39,963 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:41,964 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:42,629 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:42,632 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:42,632 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:42,634 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:42,975 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:43,978 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:46,667 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 16:02:46,668 DEBUG   SenderThread:12307 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 16:02:48,559 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:48,565 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:48,566 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:48,571 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:48,988 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:49,997 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:52,244 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:52,246 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:52,247 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:52,247 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:53,016 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:54,012 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:54,327 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:54,329 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:54,329 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:54,330 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:55,012 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:02:55,666 DEBUG   SenderThread:12307 [sender.py:send():235] send: stats
+2022-03-25 16:02:57,019 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:02:57,810 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:02:57,812 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:02:57,813 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:02:57,817 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:02:58,030 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:03:00,055 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:03:00,483 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:03:00,486 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:03:00,486 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:03:00,576 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:03:01,056 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:03:01,920 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 16:03:01,921 DEBUG   SenderThread:12307 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 16:03:02,057 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:03:03,433 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:03:03,435 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:03:03,515 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:03:03,516 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:03:04,068 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:03:04,069 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:03:05,739 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:03:05,741 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:03:05,742 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:03:05,742 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:03:06,070 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:03:06,071 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:03:10,278 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:03:10,300 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:03:10,301 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:03:10,309 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:03:11,085 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:03:12,085 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:03:13,303 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:03:13,306 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:03:13,306 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:03:13,307 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:03:14,087 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:03:14,088 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:03:17,145 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 16:03:17,149 DEBUG   SenderThread:12307 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 16:03:17,620 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:03:17,622 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:03:17,623 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:03:17,698 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:03:18,119 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:03:18,119 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:03:21,379 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:03:21,381 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:03:21,382 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:03:21,465 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:03:22,136 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:03:22,137 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:03:23,475 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:03:23,490 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:03:23,490 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:03:23,491 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:03:24,143 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:03:24,144 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:03:26,219 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:03:26,236 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:03:26,236 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:03:26,237 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:03:27,228 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:03:28,229 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:03:28,540 DEBUG   SenderThread:12307 [sender.py:send():235] send: stats
+2022-03-25 16:03:28,810 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:03:28,812 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:03:28,812 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:03:28,813 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:03:29,238 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:03:30,245 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:03:32,374 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: stop_status
+2022-03-25 16:03:32,374 DEBUG   SenderThread:12307 [sender.py:send_request():249] send_request: stop_status
+2022-03-25 16:03:32,470 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:03:32,676 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:03:32,681 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:03:32,687 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:03:33,252 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:03:34,259 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:03:35,514 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:03:35,516 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:03:35,517 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:03:35,517 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:03:36,261 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:03:36,262 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:03:37,901 DEBUG   HandlerThread:12307 [handler.py:handle_request():141] handle_request: partial_history
+2022-03-25 16:03:37,903 DEBUG   SenderThread:12307 [sender.py:send():235] send: history
+2022-03-25 16:03:37,904 DEBUG   SenderThread:12307 [sender.py:send():235] send: summary
+2022-03-25 16:03:37,992 INFO    SenderThread:12307 [sender.py:_save_file():947] saving file wandb-summary.json with policy end
+2022-03-25 16:03:38,281 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/wandb-summary.json
+2022-03-25 16:03:38,282 INFO    Thread-10 :12307 [dir_watcher.py:_on_file_modified():230] file/dir modified: ./wandb/run-20220325_160149-xbo30tnu/files/output.log
+2022-03-25 16:03:38,789 WARNING MsgRouterThr:12307 [router.py:message_loop():73] EOFError seen in message_loop
+2022-03-25 16:03:38,794 INFO    MainThread:12307 [wandb_run.py:_atexit_cleanup():1702] got exitcode: 1
+2022-03-25 16:03:38,797 INFO    MainThread:12307 [wandb_run.py:_restore():1674] restore

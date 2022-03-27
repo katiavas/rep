@@ -1,0 +1,45 @@
+
+ICM episode 1 thread 1 of 12 steps 0.00M score 0.00 avg score (100) 0.00
+ICM episode 2 thread 1 of 12 steps 0.00M score 1.00 avg score (100) 0.50
+ICM episode 3 thread 1 of 12 steps 0.00M score 3.00 avg score (100) 1.33
+ICM episode 4 thread 1 of 12 steps 0.00M score 7.00 avg score (100) 2.75
+ICM episode 5 thread 1 of 12 steps 0.00M score 1.00 avg score (100) 2.40
+ICM episode 6 thread 1 of 12 steps 0.00M score 1.00 avg score (100) 2.17
+ICM episode 7 thread 1 of 12 steps 0.00M score 0.00 avg score (100) 1.86
+ICM episode 8 thread 1 of 12 steps 0.00M score 5.00 avg score (100) 2.25
+ICM episode 9 thread 1 of 12 steps 0.00M score 2.00 avg score (100) 2.22
+ICM episode 10 thread 1 of 12 steps 0.00M score 2.00 avg score (100) 2.20
+ICM episode 11 thread 1 of 12 steps 0.00M score 3.00 avg score (100) 2.27
+ICM episode 12 thread 1 of 12 steps 0.00M score 0.00 avg score (100) 2.08
+ICM episode 13 thread 1 of 12 steps 0.00M score 3.00 avg score (100) 2.15
+ICM episode 14 thread 1 of 12 steps 0.00M score 1.00 avg score (100) 2.07
+ICM episode 15 thread 1 of 12 steps 0.00M score 2.00 avg score (100) 2.07
+ICM episode 16 thread 1 of 12 steps 0.00M score 2.00 avg score (100) 2.06
+ICM episode 17 thread 1 of 12 steps 0.00M score 11.00 avg score (100) 2.59
+ICM episode 18 thread 1 of 12 steps 0.00M score 5.00 avg score (100) 2.72
+ICM episode 19 thread 1 of 12 steps 0.00M score 3.00 avg score (100) 2.74
+ICM episode 20 thread 1 of 12 steps 0.00M score 2.00 avg score (100) 2.70
+ICM episode 21 thread 1 of 12 steps 0.00M score 7.00 avg score (100) 2.90
+ICM episode 22 thread 1 of 12 steps 0.00M score 1.00 avg score (100) 2.82
+ICM episode 23 thread 1 of 12 steps 0.00M score 3.00 avg score (100) 2.83
+ICM episode 24 thread 1 of 12 steps 0.00M score 1.00 avg score (100) 2.75
+ICM episode 25 thread 1 of 12 steps 0.00M score 4.00 avg score (100) 2.80
+ICM episode 26 thread 1 of 12 steps 0.00M score 2.00 avg score (100) 2.77
+ICM episode 27 thread 1 of 12 steps 0.00M score 2.00 avg score (100) 2.74
+ICM episode 28 thread 1 of 12 steps 0.00M score 1.00 avg score (100) 2.68
+ICM episode 29 thread 1 of 12 steps 0.00M score 1.00 avg score (100) 2.62
+ICM episode 30 thread 1 of 12 steps 0.00M score 2.00 avg score (100) 2.60
+ICM episode 31 thread 1 of 12 steps 0.00M score 2.00 avg score (100) 2.58
+Process Process-2:
+Traceback (most recent call last):
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/katia/rep/intrinsic/worker.py", line 62, in worker
+    loss.backward()
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/site-packages/torch/tensor.py", line 245, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home/katia/anaconda3/envs/phil-env/lib/python3.8/site-packages/torch/autograd/__init__.py", line 145, in backward
+    Variable._execution_engine.run_backward(
+KeyboardInterrupt

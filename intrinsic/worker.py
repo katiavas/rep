@@ -16,6 +16,7 @@ def worker(name, input_shape, n_actions, global_agent,
     T_MAX = 20
 
     local_agent = ActorCritic(input_shape, n_actions)
+    local_agent.save_models(input_dims=input_shape, n_actions=n_actions)
 
     if icm:
         local_icm = ICM(input_shape, n_actions)
@@ -89,7 +90,6 @@ def worker(name, input_shape, n_actions, global_agent,
         # with global_idx.get_lock():
         #    global_idx.value += 1
         if name == '1':
-            local_agent.save_models(input_dims=input_shape, n_actions= n_actions)
             # loss_i = T.sum(L_I)
             # l_i.append(loss_i)
             # loss_f = T.sum(L_F)

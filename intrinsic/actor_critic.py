@@ -56,7 +56,7 @@ class ActorCritic(nn.Module):
         self.pi = nn.Linear(256, n_actions)
         self.v = nn.Linear(256, 1)
         # self.checkpoint_file = os.path.join('intrinsic/', 'actor')
-        self.actor_critic = ActorCritic(input_dims=input_dims, n_actions=n_actions)
+        # self.actor_critic = ActorCritic(input_dims=input_dims, n_actions=n_actions)
 
     # It will take a state/image and a hidden state for our GRU as an input
     # def forward(self, state, hx):
@@ -78,10 +78,10 @@ class ActorCritic(nn.Module):
         # return predicted action, value, log probability and hidden state
         return action.numpy()[0], v, log_prob, hx
 
-    def save_models(self):
+    def save_models(self, input_dims, n_actions):
         '''with open(os.path.join('./', 'fn.pickle'), 'wb') as handle:
             pickle.dump(self.actor_critic, handle, protocol=pickle.HIGHEST_PROTOCOL)'''
-        np.save(os.path.join('./', 'actor'), self.actor_critic)
+        np.save(os.path.join('./', 'actor'), ActorCritic(input_dims=input_dims, n_actions=n_actions))
         print('... saving models ...')
 
     def calc_R(self, done, rewards, values):

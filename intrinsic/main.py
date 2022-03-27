@@ -14,10 +14,7 @@ os.environ['OMP_NUM_THREADS'] = '1'
 # wandb.init(project='icm', entity="katiavas", dir='./')
 
 if __name__ == '__main__':
-    SEED = 111
-    random.seed(SEED)
-    np.random.seed(SEED)
-    torch.manual_seed(SEED)
+
 
     mp.set_start_method('spawn', force=True)
     global_ep = mp.Value('i', 0)
@@ -34,7 +31,7 @@ if __name__ == '__main__':
     env = ParallelEnv(env_id=env_id, num_threads=n_threads,
                       n_actions=n_actions, global_idx=global_ep,
                       input_shape=input_shape, icm=ICM)
-                      
+
 # CartPole ++> n_actions = 2 , input_shape/input_dims = 4
 # Acrobot --> n_actions = 3 , input_shape/input_dims = 6
 '''the state-space of the Cart-Pole has four dimensions of continuous values 

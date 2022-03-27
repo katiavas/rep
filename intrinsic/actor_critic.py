@@ -78,7 +78,7 @@ class ActorCritic(nn.Module):
 
     def save_models(self):
         # self.actor_critic.save(self.checkpoint_file)
-        np.save(os.path.join('intrinsic/', 'actor'), self.actor_critic)
+        np.save(os.path.join('./', 'actor'), self.actor_critic)
 
         print('... saving models ...')
 

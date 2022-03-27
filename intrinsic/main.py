@@ -4,6 +4,7 @@ from parallel_env import ParallelEnv
 import torch as T
 import numpy as np
 import random
+import gym
 # import wandb
 from memory import Memory
 
@@ -13,16 +14,18 @@ os.environ['OMP_NUM_THREADS'] = '1'
 
 # wandb.init(project='icm', entity="katiavas", dir='./')
 
-SEED = 111
-random.seed(SEED)
-np.random.seed(SEED)
-T.manual_seed(SEED)
 if __name__ == '__main__':
+    SEED = 111
+    random.seed(SEED)
+    np.random.seed(SEED)
+    T.manual_seed(SEED)
     mp.set_start_method('spawn', force=True)
     global_ep = mp.Value('i', 0)
     # env_id = 'PongNoFrameskip-v4'
     # env_id = 'MiniWorld-FourRooms-v0'
-    env_id = 'ALE/Breakout-v5'
+    env1 = 'ALE/Breakout-v5'
+    env = gym.make(env1)
+    env.seed(111)
     # env_id = 'CartPole-v1'
     n_threads = 12
     # n_actions = 4
@@ -30,7 +33,7 @@ if __name__ == '__main__':
     input_shape = [4, 42, 42]
     ICM = True
     # wandb.run.name = env_id+'/'+str(SEED) + '/ICM='+str(ICM)
-    env = ParallelEnv(env_id=env_id, num_threads=n_threads,
+    env = ParallelEnv(env_id=env, num_threads=n_threads,
                       n_actions=n_actions, global_idx=global_ep,
                       input_shape=input_shape, icm=ICM)
 

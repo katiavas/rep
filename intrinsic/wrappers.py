@@ -108,8 +108,8 @@ class StackFrames(gym.ObservationWrapper):
         return np.array(self.stack).reshape(self.observation_space.low.shape)
 
 
-def make_atari(env_name, shape=(42, 42, 1), repeat=4):
-    env = gym.make(env_name)
+def make_atari(env, shape=(42, 42, 1), repeat=4):
+    # env = gym.make(env_name)
     env = Step(env, repeat)
     env = PreprocessFrame(shape, env)
     env = StackFrames(env, repeat)

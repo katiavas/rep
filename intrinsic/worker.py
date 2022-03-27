@@ -20,6 +20,7 @@ def worker(name, input_shape, n_actions, global_agent,
 
     if icm:
         local_icm = ICM(input_shape, n_actions)
+        local_icm.save_models()
     else:
         local_icm = None
         intrinsic_reward = None

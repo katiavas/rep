@@ -54,7 +54,7 @@ class ActorCritic(nn.Module):
         self.pi = nn.Linear(256, n_actions)
         self.v = nn.Linear(256, 1)
         # self.checkpoint_file = os.path.join('intrinsic/', 'actor')
-        self.actor_critic = ActorCritic
+        self.actor_critic = ActorCritic()
 
     # It will take a state/image and a hidden state for our GRU as an input
     # def forward(self, state, hx):
@@ -79,7 +79,6 @@ class ActorCritic(nn.Module):
     def save_models(self):
         # self.actor_critic.save(self.checkpoint_file)
         np.save(os.path.join('./', 'actor'), self.actor_critic)
-
         print('... saving models ...')
 
 

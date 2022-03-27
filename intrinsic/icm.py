@@ -1,6 +1,8 @@
 import torch as T
 import torch.nn as nn
 import torch.nn.functional as F
+import numpy as np
+import os
 
 
 class Encoder(nn.Module):
@@ -70,6 +72,8 @@ class ICM(nn.Module):
         self.dense1 = nn.Linear(feature_dims + 1, 256)
         self.phi_hat_new = nn.Linear(256, feature_dims)
 
+        self.icm = ICM(input_dims)
+
         device = T.device('cpu')
         self.to(device)
 
@@ -94,6 +98,12 @@ class ICM(nn.Module):
         phi_hat_new = self.phi_hat_new(dense)
 
         return phi_new, pi_logits, phi_hat_new
+
+    def save_models(self):
+        # self.actor_critic.save(self.checkpoint_file)
+        np.save(os.path.join('./', 'icm'), self.icm)
+        print('... saving models ...')
+
 
     '''This prediction along with the true next state are passed to a mean-squared error (or some other error) function 
     which produces the prediction error'''

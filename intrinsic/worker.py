@@ -28,7 +28,7 @@ def worker(name, input_shape, n_actions, global_agent,
     frame_buffer = [input_shape[1], input_shape[2], 1]
     env = make_atari(env_id, shape=frame_buffer)
 
-    episode, max_steps, t_steps, scores = 0, 5000, 0, []
+    episode, max_steps, t_steps, scores = 0, 10, 0, []
     intr = []
     l = []
     l_i = []
@@ -86,12 +86,13 @@ def worker(name, input_shape, n_actions, global_agent,
         # with global_idx.get_lock():
         #    global_idx.value += 1
         if name == '1':
-            loss_i = T.sum(L_I)
-            l_i.append(loss_i)
-            loss_f = T.sum(L_F)
-            l_f.append(loss_f)
-            b = T.sum(loss)
-            l.append(b.detach().numpy())
+            local_agent.save_models()
+            # loss_i = T.sum(L_I)
+            # l_i.append(loss_i)
+            # loss_f = T.sum(L_F)
+            # l_f.append(loss_f)
+            # b = T.sum(loss)
+            # l.append(b.detach().numpy())
             a = T.sum(intrinsic_reward)
             intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)
@@ -114,7 +115,7 @@ def worker(name, input_shape, n_actions, global_agent,
                    delimiter=",",
                    fmt='% s')
 
-        np.savetxt("ICM_ON_LOSS_111.csv",
+        '''np.savetxt("ICM_ON_LOSS_111.csv",
                    l,
                    delimiter=",",
                    fmt='% s')
@@ -125,5 +126,5 @@ def worker(name, input_shape, n_actions, global_agent,
         np.savetxt("L_F_111.csv",
                    l_f,
                    delimiter=",",
-                   fmt='% s')
+                   fmt='% s')'''
         # plot_learning_curve_with_shaded_error(x, scores, 'ICM_shaded_error_5000.png')

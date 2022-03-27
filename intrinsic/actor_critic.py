@@ -3,6 +3,7 @@ import torch as T
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.distributions import Categorical
+import os
 
 
 class Encoder(nn.Module):
@@ -52,6 +53,8 @@ class ActorCritic(nn.Module):
         self.gru = nn.GRUCell(feature_dims, 256)
         self.pi = nn.Linear(256, n_actions)
         self.v = nn.Linear(256, 1)
+        self.checkpoint_file = os.path.join('intrinsic/', 'actor')
+        self.actor_critic = ActorCritic
 
     # It will take a state/image and a hidden state for our GRU as an input
     # def forward(self, state, hx):
@@ -72,6 +75,12 @@ class ActorCritic(nn.Module):
 
         # return predicted action, value, log probability and hidden state
         return action.numpy()[0], v, log_prob, hx
+
+    def save_models(self):
+        self.actor_critic.save(self.checkpoint_file)
+        print('... saving models ...')
+
+
 
     def calc_R(self, done, rewards, values):
         values = T.cat(values).squeeze()

@@ -37,6 +37,7 @@ class Step(gym.Wrapper):
     def __init__(self, env, repeat=4):
         super(Step, self).__init__(env)
         env.seed(111)
+        print(env.seed(111))
         self.repeat = repeat
         self.shape = env.observation_space.low.shape
         # print(env.observation_space.shape, "shape")
@@ -111,13 +112,9 @@ class StackFrames(gym.ObservationWrapper):
 
 def make_atari(env_name, shape=(42, 42, 1), repeat=4):
     env = gym.make(env_name)
+    env.seed(111)
+    print(env.seed(111))
     env = Step(env, repeat)
-    env.seed(111)
-    print(env.seed(111))
     env = PreprocessFrame(shape, env)
-    env.seed(111)
-    print(env.seed(111))
     env = StackFrames(env, repeat)
-    env.seed(111)
-    print(env.seed(111))
     return env

@@ -56,7 +56,7 @@ class ActorCritic(nn.Module):
         self.pi = nn.Linear(256, n_actions)
         self.v = nn.Linear(256, 1)
         # self.checkpoint_file = os.path.join('intrinsic/', 'actor')
-        self.actor_critic = ActorCritic(input_dims=input_dims, n_actions=n_actions)
+        # self.actor_critic = ActorCritic(input_dims=input_dims, n_actions=n_actions)
 
     # It will take a state/image and a hidden state for our GRU as an input
     # def forward(self, state, hx):

@@ -30,7 +30,7 @@ def make_env(env_name, shape=(42, 42, 1)):
     env = PreprocessFrame(shape, env)
     return env'''
 
-
+#
 # Step the environment with the given action Repeat action, sum reward, and max over last observations
 class Step(gym.Wrapper):
     def __init__(self, env, repeat=4):

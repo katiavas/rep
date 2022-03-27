@@ -1,3 +1,5 @@
+import pickle
+
 import numpy as np
 import torch as T
 import torch.nn as nn
@@ -77,11 +79,10 @@ class ActorCritic(nn.Module):
         return action.numpy()[0], v, log_prob, hx
 
     def save_models(self):
-        # self.actor_critic.save(self.checkpoint_file)
-        np.save(os.path.join('./', 'actor'), self.actor_critic)
+        with open(os.path.join('./', 'fn.pickle'), 'wb') as handle:
+            pickle.dump(self.actor_critic, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        # np.save(os.path.join('./', 'actor'), self.actor_critic)
         print('... saving models ...')
-
-
 
     def calc_R(self, done, rewards, values):
         values = T.cat(values).squeeze()

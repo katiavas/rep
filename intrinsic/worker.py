@@ -89,7 +89,6 @@ def worker(name, input_shape, n_actions, global_agent,
         # with global_idx.get_lock():
         #    global_idx.value += 1
         if name == '1':
-            local_agent.save_models()
             # loss_i = T.sum(L_I)
             # l_i.append(loss_i)
             # loss_f = T.sum(L_F)

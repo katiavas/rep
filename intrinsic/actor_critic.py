@@ -53,7 +53,7 @@ class ActorCritic(nn.Module):
         self.gru = nn.GRUCell(feature_dims, 256)
         self.pi = nn.Linear(256, n_actions)
         self.v = nn.Linear(256, 1)
-        self.checkpoint_file = os.path.join('intrinsic/', 'actor')
+        # self.checkpoint_file = os.path.join('intrinsic/', 'actor')
         self.actor_critic = ActorCritic
 
     # It will take a state/image and a hidden state for our GRU as an input
@@ -77,7 +77,9 @@ class ActorCritic(nn.Module):
         return action.numpy()[0], v, log_prob, hx
 
     def save_models(self):
-        self.actor_critic.save(self.checkpoint_file)
+        # self.actor_critic.save(self.checkpoint_file)
+        np.save(os.path.join('intrinsic/', 'actor'), self.actor_critic)
+
         print('... saving models ...')
 
 

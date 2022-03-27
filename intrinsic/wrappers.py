@@ -2,7 +2,8 @@ import collections
 import cv2
 import numpy as np
 import gym
-
+import random
+import torch as T
 # https://livebook.manning.com/book/deep-reinforcement-learning-in-action/chapter-8/v-7/63
 '''
 class PreprocessFrame(gym.ObservationWrapper):
@@ -35,7 +36,12 @@ def make_env(env_name, shape=(42, 42, 1)):
 class Step(gym.Wrapper):
     def __init__(self, env, repeat=4):
         super(Step, self).__init__(env)
-        env.seed(111)
+        SEED = 1111
+        env.seed(SEED)
+        random.seed(SEED)
+        np.random.seed(SEED)
+        T.manual_seed(SEED)
+
         self.repeat = repeat
         self.shape = env.observation_space.low.shape
         # print(env.observation_space.shape, "shape")

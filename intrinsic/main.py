@@ -15,6 +15,9 @@ os.environ['OMP_NUM_THREADS'] = '1'
 # wandb.init(project='icm', entity="katiavas", dir='./')
 
 if __name__ == '__main__':
+    env1 = 'ALE/Breakout-v5'
+    env = gym.make(env1)
+    env.seed(111)
     SEED = 111
     random.seed(SEED)
     np.random.seed(SEED)
@@ -23,9 +26,6 @@ if __name__ == '__main__':
     global_ep = mp.Value('i', 0)
     # env_id = 'PongNoFrameskip-v4'
     # env_id = 'MiniWorld-FourRooms-v0'
-    env1 = 'ALE/Breakout-v5'
-    env = gym.make(env1)
-    env.seed(111)
     # env_id = 'CartPole-v1'
     n_threads = 12
     # n_actions = 4

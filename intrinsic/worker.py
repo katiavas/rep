@@ -71,7 +71,7 @@ def worker(name, input_shape, n_actions, global_agent,
                                         global_agent.parameters()):
                     global_param._grad = local_param.grad
                 optimizer.step()
-                local_agent.save('actor')
+                # local_agent.save('actor')
                 local_agent.load_state_dict(global_agent.state_dict())
 
 

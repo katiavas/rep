@@ -1,7 +1,7 @@
 import os
 import torch.multiprocessing as mp
 from parallel_env import ParallelEnv
-import torch
+import torch as T
 import numpy as np
 import random
 # import wandb
@@ -13,6 +13,10 @@ os.environ['OMP_NUM_THREADS'] = '1'
 
 # wandb.init(project='icm', entity="katiavas", dir='./')
 
+SEED = 111
+random.seed(SEED)
+np.random.seed(SEED)
+T.manual_seed(SEED)
 if __name__ == '__main__':
     mp.set_start_method('spawn', force=True)
     global_ep = mp.Value('i', 0)

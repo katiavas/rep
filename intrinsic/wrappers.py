@@ -33,8 +33,9 @@ def make_env(env_name, shape=(42, 42, 1)):
 
 # Step the environment with the given action Repeat action, sum reward, and max over last observations
 class Step(gym.Wrapper):
-    def __init__(self, env=None, repeat=4):
+    def __init__(self, env, repeat=4):
         super(Step, self).__init__(env)
+        env.seed(111)
         self.repeat = repeat
         self.shape = env.observation_space.low.shape
         # print(env.observation_space.shape, "shape")

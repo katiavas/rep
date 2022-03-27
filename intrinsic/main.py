@@ -18,6 +18,7 @@ if __name__ == '__main__':
     random.seed(SEED)
     np.random.seed(SEED)
     torch.manual_seed(SEED)
+
     mp.set_start_method('spawn', force=True)
     global_ep = mp.Value('i', 0)
     # env_id = 'PongNoFrameskip-v4'

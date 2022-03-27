@@ -38,6 +38,7 @@ class Step(gym.Wrapper):
         super(Step, self).__init__(env)
         SEED = 1111
         env.seed(SEED)
+        print(env.seed(SEED))
         random.seed(SEED)
         np.random.seed(SEED)
         T.manual_seed(SEED)

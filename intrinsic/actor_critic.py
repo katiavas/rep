@@ -85,7 +85,7 @@ class ActorCritic(nn.Module):
         print('... saving models ...')
 
     def load_models(self):
-        np.load(os.path.join('./', 'actor'))
+        np.load(os.path.join('./', 'actor.npy'))
 
 
 

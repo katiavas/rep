@@ -72,8 +72,6 @@ class ICM(nn.Module):
         self.dense1 = nn.Linear(feature_dims + 1, 256)
         self.phi_hat_new = nn.Linear(256, feature_dims)
 
-        self.icm = ICM(input_dims)
-
         device = T.device('cpu')
         self.to(device)
 
@@ -99,9 +97,9 @@ class ICM(nn.Module):
 
         return phi_new, pi_logits, phi_hat_new
 
-    def save_models(self):
+    def save_models(self, input_dims):
         # self.actor_critic.save(self.checkpoint_file)
-        np.save(os.path.join('./', 'icm'), self.icm)
+        np.save(os.path.join('./', 'icm'), ICM(input_dims))
         print('... saving models ...')
 
 

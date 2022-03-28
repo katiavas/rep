@@ -13,14 +13,19 @@ from utils import plot_learning_curve_with_shaded_error
 def worker(name, input_shape, n_actions, global_agent,
            optimizer, env_id, n_threads, global_idx, global_icm,
            icm_optimizer, icm):
+    LOAD = True
     T_MAX = 20
 
-    local_agent = ActorCritic(input_shape, n_actions)
-    local_agent.save_models(input_dims=input_shape, n_actions=n_actions)
+    if LOAD:
+        local_agent = ActorCritic(input_shape, n_actions).load_models()
+    else:
+        local_agent = ActorCritic(input_shape, n_actions)
+        local_agent.save_models(input_dims=input_shape, n_actions=n_actions)
+
 
     if icm:
         local_icm = ICM(input_shape, n_actions)
-        local_icm.save_models()
+        local_icm.save_models(input_dims=input_shape)
     else:
         local_icm = None
         intrinsic_reward = None

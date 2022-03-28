@@ -84,6 +84,11 @@ class ActorCritic(nn.Module):
         np.save(os.path.join('./', 'actor'), ActorCritic(input_dims=input_dims, n_actions=n_actions))
         print('... saving models ...')
 
+    def load_models(self):
+        np.load(os.path.join('./', 'actor'))
+
+
+
     def calc_R(self, done, rewards, values):
         values = T.cat(values).squeeze()
 

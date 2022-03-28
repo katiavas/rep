@@ -30,12 +30,12 @@ def worker(name, input_shape, n_actions, global_agent,
         # local_agent.eval()
         # local_agent = ActorCritic.load_models()
         # print(local_agent)
-        local_agent = T.load('actor_weights1.pt')
+        local_agent = T.load('actor_weights1.pth')
         local_agent.eval()
 
     else:
         local_agent = ActorCritic(input_shape, n_actions)
-        T.save(local_agent, 'actor_weights1.pt')
+        T.save(local_agent, 'actor_weights1.pth')
         # T.save(local_agent.state_dict(), 'actor_weights.pth')
         # local_agent = ActorCritic(input_shape, n_actions)
         # loc = local_agent.save_models(input_dims=input_shape, n_actions=n_actions)
@@ -45,12 +45,12 @@ def worker(name, input_shape, n_actions, global_agent,
         if LOAD:
             # local_icm = ICM(input_shape, n_actions)
             # local_icm.load_state_dict(T.load('icm_weights.pth'))
-            local_icm = T.load('icm_weights1.pt')
+            local_icm = T.load('icm_weights1.pth')
             local_icm.eval()
         else:
             local_icm = ICM(input_shape, n_actions)
             # T.save(local_icm.state_dict(), 'icm_weights.pth')
-            T.save(local_icm, 'icm_weights1.pt')
+            T.save(local_icm, 'icm_weights1.pth')
     else:
         local_icm = None
         intrinsic_reward = None

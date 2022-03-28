@@ -21,7 +21,8 @@ def worker(name, input_shape, n_actions, global_agent,
         print(local_agent)
     else:
         local_agent = ActorCritic(input_shape, n_actions)
-        local_agent.save_models(input_dims=input_shape, n_actions=n_actions)
+        loc = local_agent.save_models(input_dims=input_shape, n_actions=n_actions)
+        print(loc)
     # local_agent = ActorCritic(input_shape, n_actions)
 
     if icm:

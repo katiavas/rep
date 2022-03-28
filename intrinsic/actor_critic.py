@@ -79,9 +79,9 @@ class ActorCritic(nn.Module):
         return action.numpy()[0], v, log_prob, hx
 
     def save_models(self, input_dims, n_actions):
-        '''with open(os.path.join('./', 'fn.pickle'), 'wb') as handle:
-            pickle.dump(self.actor_critic, handle, protocol=pickle.HIGHEST_PROTOCOL)'''
-        np.save(os.path.join('./', 'actor'), ActorCritic(input_dims=input_dims, n_actions=n_actions))
+        with open(os.path.join('./', 'fn.pickle'), 'wb') as handle:
+            pickle.dump(ActorCritic(input_dims, n_actions), handle, protocol=pickle.HIGHEST_PROTOCOL)
+        np.save(os.path.join('./', 'actor1'), ActorCritic(input_dims=input_dims, n_actions=n_actions))
         print('... saving models ...')
 
     def load_models(self):

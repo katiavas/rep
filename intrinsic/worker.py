@@ -13,7 +13,7 @@ from utils import plot_learning_curve_with_shaded_error
 def worker(name, input_shape, n_actions, global_agent,
            optimizer, env_id, n_threads, global_idx, global_icm,
            icm_optimizer, icm):
-    LOAD = True
+    LOAD = False
     T_MAX = 20
 
     if LOAD:

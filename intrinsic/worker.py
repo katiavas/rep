@@ -25,14 +25,18 @@ def worker(name, input_shape, n_actions, global_agent,
     T.manual_seed(SEED)
 
     if LOAD:
-        local_agent = ActorCritic(input_shape, n_actions)
-        local_agent.load_state_dict(T.load('actor_weights.pth'))
-        local_agent.eval()
+        # local_agent = ActorCritic(input_shape, n_actions)
+        # local_agent.load_state_dict(T.load('actor_weights.pth'))
+        # local_agent.eval()
         # local_agent = ActorCritic.load_models()
         # print(local_agent)
+        local_agent = T.load('actor_weights1.pt')
+        local_agent.eval()
+
     else:
         local_agent = ActorCritic(input_shape, n_actions)
-        T.save(local_agent.state_dict(), 'actor_weights.pth')
+        T.save(local_agent, 'actor_weights1.pt')
+        # T.save(local_agent.state_dict(), 'actor_weights.pth')
         # local_agent = ActorCritic(input_shape, n_actions)
         # loc = local_agent.save_models(input_dims=input_shape, n_actions=n_actions)
         # print(loc)

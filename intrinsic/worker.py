@@ -14,8 +14,15 @@ from utils import plot_learning_curve_with_shaded_error
 def worker(name, input_shape, n_actions, global_agent,
            optimizer, env_id, n_threads, global_idx, global_icm,
            icm_optimizer, icm):
-    LOAD = False
+    LOAD = True
+    frame_buffer = [input_shape[1], input_shape[2], 1]
+    env = make_atari(env_id, shape=frame_buffer)
     T_MAX = 20
+    SEED = 111
+    env.seed(SEED)
+    random.seed(SEED)
+    np.random.seed(SEED)
+    T.manual_seed(SEED)
 
     if LOAD:
         local_agent = ActorCritic(input_shape, n_actions)
@@ -30,10 +37,6 @@ def worker(name, input_shape, n_actions, global_agent,
         # loc = local_agent.save_models(input_dims=input_shape, n_actions=n_actions)
         # print(loc)
 
-
-
-
-
     if icm:
         local_icm = ICM(input_shape, n_actions)
         local_icm.save_models(input_dims=input_shape)
@@ -43,8 +46,8 @@ def worker(name, input_shape, n_actions, global_agent,
 
     memory = Memory()
 
-    frame_buffer = [input_shape[1], input_shape[2], 1]
-    env = make_atari(env_id, shape=frame_buffer)
+    # frame_buffer = [input_shape[1], input_shape[2], 1]
+    # env = make_atari(env_id, shape=frame_buffer)
 
     episode, max_steps, t_steps, scores = 0, 10, 0, []
     intr = []

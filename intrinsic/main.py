@@ -15,13 +15,8 @@ os.environ['OMP_NUM_THREADS'] = '1'
 # wandb.init(project='icm', entity="katiavas", dir='./')
 
 if __name__ == '__main__':
-    env1 = 'ALE/Breakout-v5'
-    env = gym.make(env1)
-    env.seed(111)
-    SEED = 111
-    random.seed(SEED)
-    np.random.seed(SEED)
-    T.manual_seed(SEED)
+    env_id  = 'ALE/Breakout-v5'
+    # env = gym.make(env1)
     mp.set_start_method('spawn', force=True)
     global_ep = mp.Value('i', 0)
     # env_id = 'PongNoFrameskip-v4'
@@ -33,7 +28,7 @@ if __name__ == '__main__':
     input_shape = [4, 42, 42]
     ICM = False
     # wandb.run.name = env_id+'/'+str(SEED) + '/ICM='+str(ICM)
-    env = ParallelEnv(env_id=env, num_threads=n_threads,
+    env = ParallelEnv(env_id=env_id, num_threads=n_threads,
                       n_actions=n_actions, global_idx=global_ep,
                       input_shape=input_shape, icm=ICM)
 

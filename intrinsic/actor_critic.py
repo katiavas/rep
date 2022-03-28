@@ -84,7 +84,8 @@ class ActorCritic(nn.Module):
         np.save(os.path.join('./', 'actor1'), ActorCritic(input_dims=input_dims, n_actions=n_actions))
         print('... saving models ...')
 
-    def load_models(self):
+    @staticmethod
+    def load_models():
         np.load(os.path.join('./', 'fn.pickle'), allow_pickle = True)
 
 

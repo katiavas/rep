@@ -14,7 +14,7 @@ from utils import plot_learning_curve_with_shaded_error
 def worker(name, input_shape, n_actions, global_agent,
            optimizer, env_id, n_threads, global_idx, global_icm,
            icm_optimizer, icm):
-    LOAD = True
+    LOAD = False
     frame_buffer = [input_shape[1], input_shape[2], 1]
     env = make_atari(env_id, shape=frame_buffer)
     T_MAX = 20
@@ -43,12 +43,14 @@ def worker(name, input_shape, n_actions, global_agent,
 
     if icm:
         if LOAD:
-            local_icm = ICM(input_shape, n_actions)
-            local_icm.load_state_dict(T.load('icm_weights.pth'))
+            # local_icm = ICM(input_shape, n_actions)
+            # local_icm.load_state_dict(T.load('icm_weights.pth'))
+            local_icm = T.load('icm_weights1.pt')
             local_icm.eval()
         else:
             local_icm = ICM(input_shape, n_actions)
-            T.save(local_icm.state_dict(), 'icm_weights.pth')
+            # T.save(local_icm.state_dict(), 'icm_weights.pth')
+            T.save(local_icm, 'icm_weights1.pt')
     else:
         local_icm = None
         intrinsic_reward = None

@@ -97,10 +97,10 @@ class ICM(nn.Module):
 
         return phi_new, pi_logits, phi_hat_new
 
-    def save_models(self, input_dims):
+    '''def save_models(self, input_dims):
         # self.actor_critic.save(self.checkpoint_file)
         np.save(os.path.join('./', 'icm'), ICM(input_dims))
-        print('... saving models ...')
+        print('... saving models ...')'''
 
 
     '''This prediction along with the true next state are passed to a mean-squared error (or some other error) function 

@@ -17,7 +17,7 @@ def worker(name, input_shape, n_actions, global_agent,
     T_MAX = 20
 
     if LOAD:
-        local_agent = ActorCritic(input_shape, n_actions).load_models()
+        local_agent = ActorCritic.load_models()
         print(local_agent)
     else:
         local_agent = ActorCritic(input_shape, n_actions)

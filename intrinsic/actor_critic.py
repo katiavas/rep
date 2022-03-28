@@ -78,17 +78,15 @@ class ActorCritic(nn.Module):
         # return predicted action, value, log probability and hidden state
         return action.numpy()[0], v, log_prob, hx
 
-    def save_models(self, input_dims, n_actions):
-        '''with open(os.path.join('./', 'fn.pickle'), 'wb') as handle:
-            pickle.dump(ActorCritic(input_dims, n_actions), handle, protocol=pickle.HIGHEST_PROTOCOL)'''
+    '''def save_models(self, input_dims, n_actions):
+        with open(os.path.join('./', 'fn.pickle'), 'wb') as handle:
+            pickle.dump(ActorCritic(input_dims, n_actions), handle, protocol=pickle.HIGHEST_PROTOCOL)
         np.save(os.path.join('./', 'actor1'), ActorCritic(input_dims=input_dims, n_actions=n_actions))
         print('... saving models ...')
 
     @staticmethod
     def load_models():
-        np.load(os.path.join('./', 'actor1.npy'), allow_pickle = True)
-
-
+        np.load(os.path.join('./', 'actor1.npy'), allow_pickle = True)'''
 
     def calc_R(self, done, rewards, values):
         values = T.cat(values).squeeze()

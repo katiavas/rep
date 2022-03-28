@@ -5,6 +5,7 @@ from icm import ICM
 from memory import Memory
 from utils import plot_learning_curve
 from wrappers import make_atari
+# import torchvision.models as models
 import random
 from utils import plot_learning_curve_with_shaded_error
 # import wandb
@@ -17,13 +18,21 @@ def worker(name, input_shape, n_actions, global_agent,
     T_MAX = 20
 
     if LOAD:
-        local_agent = ActorCritic.load_models()
-        print(local_agent)
+        local_agent = ActorCritic(input_shape, n_actions)
+        local_agent.load_state_dict(T.load('actor_weights.pth'))
+        local_agent.eval()
+        # local_agent = ActorCritic.load_models()
+        # print(local_agent)
     else:
         local_agent = ActorCritic(input_shape, n_actions)
+        T.save(local_agent.state_dict(), 'actor_weights.pth')
+        # local_agent = ActorCritic(input_shape, n_actions)
         # loc = local_agent.save_models(input_dims=input_shape, n_actions=n_actions)
         # print(loc)
-    # local_agent = ActorCritic(input_shape, n_actions)
+
+
+
+
 
     if icm:
         local_icm = ICM(input_shape, n_actions)
@@ -81,8 +90,6 @@ def worker(name, input_shape, n_actions, global_agent,
                 optimizer.step()
                 # local_agent.save('actor')
                 local_agent.load_state_dict(global_agent.state_dict())
-                print(local_agent)
-
 
                 if icm:
                     for local_param, global_param in zip(

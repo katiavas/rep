@@ -47,7 +47,7 @@ class Encoder(nn.Module):
 class ActorCritic(nn.Module):
     def __init__(self, input_dims, n_actions, gamma=0.99, tau=1.0, feature_dims=288):
         super(ActorCritic, self).__init__()
-
+        self.seed = 111
         self.gamma = gamma
         self.tau = tau
         self.encoder = Encoder(input_dims)

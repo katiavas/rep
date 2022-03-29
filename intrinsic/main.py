@@ -36,7 +36,7 @@ if __name__ == '__main__':
     input_shape = [4, 42, 42]
     ICM = True
     # wandb.run.name = env_id+'/'+str(SEED) + '/ICM='+str(ICM)
-    env = ParallelEnv(env_id=gym_env, num_threads=n_threads,
+    env = ParallelEnv(env_id=env_id, num_threads=n_threads,
                       n_actions=n_actions, global_idx=global_ep,
                       input_shape=input_shape, icm=ICM)
 

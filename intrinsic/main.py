@@ -11,6 +11,7 @@ env_id = 'ALE/Breakout-v5'
 gym_env = gym.make(env_id)
 SEED = 111
 gym_env.seed(SEED)
+gym_env.action_space.seed(SEED)
 random.seed(SEED)
 np.random.seed(SEED)
 T.manual_seed(SEED)

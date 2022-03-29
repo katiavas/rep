@@ -29,6 +29,9 @@ def worker(name, input_shape, n_actions, global_agent,
 
     frame_buffer = [input_shape[1], input_shape[2], 1]
     env = make_atari(env_id, shape=frame_buffer)
+    env.seed(SEED)
+    env.action_space.seed(SEED)
+    env.observation_space.seed(SEED)
     T_MAX = 20
 
     if LOAD:

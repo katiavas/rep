@@ -109,16 +109,8 @@ class StackFrames(gym.ObservationWrapper):
 
 
 def make_atari(env_name, shape=(42, 42, 1), repeat=4):
-    SEED = 111
-    random.seed(SEED)
-    np.random.seed(SEED)
-    T.manual_seed(SEED)
-    T.cuda.manual_seed(SEED)
     T.use_deterministic_algorithms(True)
     env = gym.make(env_name)
-    env.seed(SEED)
-    env.action_space.seed(SEED)
-    env.observation_space.seed(SEED)
     # env.seed(111)
     env = Step(env, repeat)
     env = PreprocessFrame(shape, env)

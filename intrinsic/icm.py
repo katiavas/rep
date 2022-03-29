@@ -65,19 +65,27 @@ class ICM(nn.Module):
         self.alpha = alpha
         self.beta = beta
         self.encoder = Encoder(input_dims)
-
+        # inverse model:Given a succession of states what actions was taken
         self.inverse = nn.Linear(feature_dims * 2, 256)
+        # Give us the logits of our policy.
+        # We are going to pass this over the cross entropy function
+        # so were not going to be doing aany soft max activation
         self.pi_logits = nn.Linear(256, n_actions)
-
+        # Forward Model
+        # Given a state and action what is going to be the next state/representation
+        # (takes the feature representations plus the action)
         self.dense1 = nn.Linear(feature_dims + 1, 256)
+        # Resulting state representation/ predicted new_state
         self.phi_hat_new = nn.Linear(256, feature_dims)
 
         device = T.device('cpu')
         self.to(device)
 
-    ''' The prediction module takes in a state St and action at and produces a prediction for the subsequent state S t+1 '''
+    ''' The prediction module takes in a state St 
+    and action at and produces a prediction for the subsequent state S t+1 '''
 
     def forward(self, obs, new_obs, action):
+        # Pass the state and new_state through our convolutional layer to get the features representations
         phi = self.encoder(obs)
         with T.no_grad():
             phi_new = self.encoder(new_obs)
@@ -86,6 +94,7 @@ class ICM(nn.Module):
         phi_new = phi_new.to(T.float)
 
         ''' We have to concatenate a state and action and pass it through the inverse layer'''
+        # concatenate phi and phi_new
         inverse = self.inverse(T.cat([phi, phi_new], dim=1))
         pi_logits = self.pi_logits(inverse)
 

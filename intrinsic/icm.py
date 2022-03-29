@@ -8,12 +8,12 @@ import os
 class Encoder(nn.Module):
     def __init__(self, input_dims, feature_dim=288):
         super(Encoder, self).__init__()
-        
+
         self.conv1 = nn.Conv2d(input_dims[0], 32, (3, 3), stride=2, padding=1)
         self.conv2 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
         self.conv3 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
         self.conv4 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
-        
+
     def forward(self, img):
         enc = F.elu(self.conv1(img))
         enc = F.elu(self.conv2(enc))
@@ -98,8 +98,9 @@ class ICM(nn.Module):
         inverse = self.inverse(T.cat([phi, phi_new], dim=1))
         pi_logits = self.pi_logits(inverse)
 
-        # from [T] to [T, 1]
+        # Forward Operation reshape action from [T] to [T, 1]
         action = action.reshape((action.size()[0], 1))
+        # concatenate state and action to get the predicted state phi_hat_new
         forward_input = T.cat([phi, action], dim=1)
         dense = self.dense1(forward_input)
         phi_hat_new = self.phi_hat_new(dense)
@@ -111,16 +112,15 @@ class ICM(nn.Module):
         np.save(os.path.join('./', 'icm'), ICM(input_dims))
         print('... saving models ...')'''
 
-
     '''This prediction along with the true next state are passed to a mean-squared error (or some other error) function 
     which produces the prediction error'''
-
     def calc_loss(self, states, new_states, actions):
         # don't need [] b/c these are lists of states
         states = T.tensor(states, dtype=T.float)
         actions = T.tensor(actions, dtype=T.float)
         new_states = T.tensor(new_states, dtype=T.float)
 
+        # Get the state, new state and pass it through our forward operation function
         phi_new, pi_logits, phi_hat_new = self.forward(states, new_states, actions)
 
         inverse_loss = nn.CrossEntropyLoss()

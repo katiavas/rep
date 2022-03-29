@@ -14,12 +14,7 @@ os.environ['OMP_NUM_THREADS'] = '1'
 # wandb.init(project='icm', entity="katiavas", dir='./')
 
 if __name__ == '__main__':
-    SEED = 111
     env_id = 'ALE/Breakout-v5'
-    random.seed(SEED)
-    np.random.seed(SEED)
-    T.manual_seed(SEED)
-    T.cuda.manual_seed(SEED)
     # gym_env = gym.make(env_id)
     # gym_env.seed(SEED)
     # gym_env.action_space.seed(SEED)

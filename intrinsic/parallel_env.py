@@ -11,11 +11,6 @@ import numpy as np
 class ParallelEnv:
     def __init__(self, env_id, global_idx,
                  input_shape, n_actions, num_threads, icm=False):
-        SEED =111
-        random.seed(SEED)
-        np.random.seed(SEED)
-        T.manual_seed(SEED)
-        T.cuda.manual_seed(SEED)
 
         names = [str(i) for i in range(num_threads)]
 

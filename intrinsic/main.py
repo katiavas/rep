@@ -7,15 +7,7 @@ import random
 import gym
 # import wandb
 from memory import Memory
-env_id = 'ALE/Breakout-v5'
-gym_env = gym.make(env_id)
-SEED = 111
-gym_env.seed(SEED)
-gym_env.action_space.seed(SEED)
-random.seed(SEED)
-np.random.seed(SEED)
-T.manual_seed(SEED)
-T.cuda.manual_seed(SEED)
+
 
 os.environ['OMP_NUM_THREADS'] = '1'
 # os.environ['WANDB_START_METHOD'] = 'thread'
@@ -23,6 +15,15 @@ os.environ['OMP_NUM_THREADS'] = '1'
 
 if __name__ == '__main__':
     # env_id = 'ALE/Breakout-v5'
+    SEED = 111
+    env_id = 'ALE/Breakout-v5'
+    random.seed(SEED)
+    np.random.seed(SEED)
+    T.manual_seed(SEED)
+    T.cuda.manual_seed(SEED)
+    gym_env = gym.make(env_id)
+    gym_env.seed(SEED)
+    gym_env.action_space.seed(SEED)
     mp.set_start_method('spawn', force=True)
     global_ep = mp.Value('i', 0)
     # env_id = 'PongNoFrameskip-v4'

@@ -20,7 +20,7 @@ def worker(name, input_shape, n_actions, global_agent,
            icm_optimizer, icm):
 
     LOAD = False
-    SEED = 1
+    SEED = 111
     random.seed(SEED)
     np.random.seed(SEED)
     T.manual_seed(SEED)

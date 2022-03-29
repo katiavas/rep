@@ -10,7 +10,6 @@ class SharedAdam(T.optim.Adam):
                  weight_decay=0):
         super(SharedAdam, self).__init__(params, lr=lr, betas=betas,
                                          eps=eps, weight_decay=weight_decay)
-        T.manual_seed(5)
         # self.defaults['seed_base'] = seed
         # Iterate over our parameter groups
         for group in self.param_groups:

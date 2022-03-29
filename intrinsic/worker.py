@@ -1,3 +1,5 @@
+import pickle
+
 import numpy as np
 import torch as T
 from actor_critic import ActorCritic
@@ -16,7 +18,7 @@ from utils import plot_learning_curve_with_shaded_error
 def worker(name, input_shape, n_actions, global_agent,
            optimizer, env_id, n_threads, global_idx, global_icm,
            icm_optimizer, icm):
-    LOAD = True
+    LOAD = False
     frame_buffer = [input_shape[1], input_shape[2], 1]
     env = make_atari(env_id, shape=frame_buffer)
     T_MAX = 20
@@ -32,9 +34,9 @@ def worker(name, input_shape, n_actions, global_agent,
         # local_agent.eval()
         # local_agent = ActorCritic.load_models()
         # print(local_agent)
-        local_agent = T.load('actor_weights1.pt')
-        local_agent.eval()
-
+        # local_agent = T.load('actor_weights1.pt')
+        # local_agent.eval()
+        local_agent = pickle.load(open('trained_actor.pickle', 'rb'))
     else:
         local_agent = ActorCritic(input_shape, n_actions)
         # T.save(local_agent.state_dict(), 'actor_weights.pth')
@@ -46,10 +48,11 @@ def worker(name, input_shape, n_actions, global_agent,
         if LOAD:
             # local_icm = ICM(input_shape, n_actions)
             # local_icm.load_state_dict(T.load('icm_weights.pth'))
-            local_icm = T.load('icm_weights1.pt')
-            local_icm.eval()
+            # local_icm = T.load('icm_weights1.pt')
+            # local_icm.eval()
             # with T.no_grad():
             #   local_icm(ICM(input_shape, n_actions))
+            local_icm = pickle.load(open('trained_icm.pickle', 'rb'))
         else:
             local_icm = ICM(input_shape, n_actions)
             # T.save(local_icm.state_dict(), 'icm_weights.pth')
@@ -122,9 +125,13 @@ def worker(name, input_shape, n_actions, global_agent,
         #    global_idx.value += 1
         if name == '1':
             if (LOAD == False):
-                T.save(local_agent, 'actor_weights1.pt')
+                with open('trained_actor.pickle') as file:
+                    pickle.dump(local_agent, file)
+                # T.save(local_agent, 'actor_weights1.pt')
                 if icm:
-                    T.save(local_icm, 'icm_weights1.pt')
+                    with open('trained_icm.pickle') as file:
+                        pickle.dump(local_icm, file)
+                    # T.save(local_icm, 'icm_weights1.pt')
             # loss_i = T.sum(L_I)
             # l_i.append(loss_i)
             # loss_f = T.sum(L_F)

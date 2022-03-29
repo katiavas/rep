@@ -14,7 +14,7 @@ os.environ['OMP_NUM_THREADS'] = '1'
 # wandb.init(project='icm', entity="katiavas", dir='./')
 
 if __name__ == '__main__':
-    SEED = 111
+    SEED = 1
     env_id = 'ALE/Breakout-v5'
     random.seed(SEED)
     np.random.seed(SEED)
@@ -24,7 +24,7 @@ if __name__ == '__main__':
     # gym_env.seed(SEED)
     # gym_env.action_space.seed(SEED)
     # gym_env.observation_space.seed(SEED)
-    T.use_deterministic_algorithms(True)
+    # T.use_deterministic_algorithms(True)
     mp.set_start_method('spawn', force=True)
     global_ep = mp.Value('i', 0)
     # env_id = 'PongNoFrameskip-v4'

@@ -19,7 +19,6 @@ if __name__ == '__main__':
     # gym_env.seed(SEED)
     # gym_env.action_space.seed(SEED)
     # gym_env.observation_space.seed(SEED)
-    T.use_deterministic_algorithms(True)
     mp.set_start_method('spawn', force=True)
     global_ep = mp.Value('i', 0)
     # env_id = 'PongNoFrameskip-v4'

@@ -20,6 +20,12 @@ def worker(name, input_shape, n_actions, global_agent,
            icm_optimizer, icm):
 
     LOAD = False
+    SEED = 111
+    random.seed(SEED)
+    np.random.seed(SEED)
+    T.manual_seed(SEED)
+    T.cuda.manual_seed(SEED)
+
     frame_buffer = [input_shape[1], input_shape[2], 1]
     env = make_atari(env_id, shape=frame_buffer)
     T_MAX = 20

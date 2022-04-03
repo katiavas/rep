@@ -45,12 +45,15 @@ class Encoder(nn.Module):
 
 
 class ActorCritic(nn.Module):
-    def __init__(self, input_dims, n_actions, gamma=0.99, tau=1.0, feature_dims=288):
+    def __init__(self, input_dims, n_actions, gamma=0.99, tau=1.0, feature_dims=288, seed=111):
         super(ActorCritic, self).__init__()
-        self.seed = 111
+        self.seed = seed
         self.gamma = gamma
         self.tau = tau
         self.encoder = Encoder(input_dims)
+
+        # self.input = nn.Linear(*input_dims, 256)
+        # self.dense = nn.Linear(256, 256)
 
         self.gru = nn.GRUCell(feature_dims, 256)
         self.pi = nn.Linear(256, n_actions)
@@ -61,6 +64,8 @@ class ActorCritic(nn.Module):
     # It will take a state/image and a hidden state for our GRU as an input
     # def forward(self, state, hx):
     def forward(self, img, hx):
+        # img = F.relu(self.input(img))
+        # img = F.relu(self.dense(img))
 
         state = self.encoder(img)
         hx = self.gru(state, hx)
@@ -107,19 +112,23 @@ class ActorCritic(nn.Module):
 
     def calc_loss(self, new_state, hx, done,
                   rewards, values, log_probs, intrinsic_reward=None):
-
+        # if we are supplying an intrinsic reward them we want to add the reward from ICM
         if intrinsic_reward is not None:
+            # convert r_i_t to a numpy array because r_i_t is a tensor while rewards is a list of floating point values
             rewards += intrinsic_reward.detach().numpy()
 
         returns = self.calc_R(done, rewards, values)
-
+        # calculate generalised advantage
+        # We need a value function for the state one step after our horizon
+        # get the first element because other elements that the forward function returns are not the value function
+        # (we want the element v )
         next_v = T.zeros(1, 1) if done else self.forward(T.tensor(
                                         [new_state], dtype=T.float), hx)[1]
         values.append(next_v.detach())
         values = T.cat(values).squeeze()
         log_probs = T.cat(log_probs)
         rewards = T.tensor(rewards)
-
+        #                   state of time at t+1  state of time at t
         delta_t = rewards + self.gamma * values[1:] - values[:-1]
         n_steps = len(delta_t)
         gae = np.zeros(n_steps)
@@ -127,6 +136,10 @@ class ActorCritic(nn.Module):
             for k in range(0, n_steps-t):
                 temp = (self.gamma*self.tau)**k * delta_t[t+k]
                 gae[t] += temp
+        '''generalised advantage estimate : https://arxiv.org/pdf/1506.02438.pdf'''
+        # There is gonna be an advantage for each time step in the sequence
+        # So gae is gonna be a batch of states, T in length
+        # So we have an advantage for each time step, which is proportional to a sum of all the rewards that follow
         gae = T.tensor(gae, dtype=T.float)
 
         actor_loss = -(log_probs * gae).sum()

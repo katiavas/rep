@@ -4,6 +4,13 @@ import torch.nn.functional as F
 import numpy as np
 import os
 
+'''In the inverse model you want to predict the action the agent took to cause this state to transition from time t to t+1
+So you are comparing an integer vs an actual label/ the actual action the agent took
+Multi-class classification problem
+This is a cross entropy loss between the predicted action and the actual action the agent took'''
+"The loss for the forward model is the mse between the predicted state at time t+1 and the actua state at time t+1  "
+"So we have two losses : one that comes from the inverse model and one that comes from the forward model "
+
 
 class Encoder(nn.Module):
     def __init__(self, input_dims, feature_dim=288):
@@ -69,43 +76,43 @@ class ICM(nn.Module):
         self.inverse = nn.Linear(feature_dims * 2, 256)
         # Give us the logits of our policy.
         # We are going to pass this over the cross entropy function
-        # so were not going to be doing aany soft max activation
+        # so were not going to be doing any soft max activation
         self.pi_logits = nn.Linear(256, n_actions)
         # Forward Model
         # Given a state and action what is going to be the next state/representation
         # (takes the feature representations plus the action)
         self.dense1 = nn.Linear(feature_dims + 1, 256)
         # Resulting state representation/ predicted new_state
-        self.phi_hat_new = nn.Linear(256, feature_dims)
+        self.predicted_new_state = nn.Linear(256, feature_dims)
 
         device = T.device('cpu')
         self.to(device)
 
     ''' The prediction module takes in a state St 
     and action at and produces a prediction for the subsequent state S t+1 '''
-
+    # Forward model takes the action and the current state and predicts the next state
     def forward(self, obs, new_obs, action):
         # Pass the state and new_state through our convolutional layer to get the features representations
-        phi = self.encoder(obs)
+        state = self.encoder(obs)
         with T.no_grad():
-            phi_new = self.encoder(new_obs)
+            new_state = self.encoder(new_obs)
 
-        phi = phi.to(T.float)
-        phi_new = phi_new.to(T.float)
+        state = state.to(T.float)
+        new_state = new_state.to(T.float)
 
         ''' We have to concatenate a state and action and pass it through the inverse layer'''
-        # concatenate phi and phi_new
-        inverse = self.inverse(T.cat([phi, phi_new], dim=1))
+        # concatenate state(features at time step t) and new_state(features at time step t+1)
+        inverse = self.inverse(T.cat([state, new_state], dim=1))
         pi_logits = self.pi_logits(inverse)
 
         # Forward Operation reshape action from [T] to [T, 1]
         action = action.reshape((action.size()[0], 1))
         # concatenate state and action to get the predicted state phi_hat_new
-        forward_input = T.cat([phi, action], dim=1)
+        forward_input = T.cat([state, action], dim=1)
         dense = self.dense1(forward_input)
-        phi_hat_new = self.phi_hat_new(dense)
+        predicted_new_state = self.predicted_new_state(dense)
 
-        return phi_new, pi_logits, phi_hat_new
+        return new_state, pi_logits, predicted_new_state
 
     '''def save_models(self, input_dims):
         # self.actor_critic.save(self.checkpoint_file)
@@ -121,13 +128,13 @@ class ICM(nn.Module):
         new_states = T.tensor(new_states, dtype=T.float)
 
         # Get the state, new state and pass it through our forward operation function
-        phi_new, pi_logits, phi_hat_new = self.forward(states, new_states, actions)
+        new_state, pi_logits, predicted_new_state = self.forward(states, new_states, actions)
 
         inverse_loss = nn.CrossEntropyLoss()
         L_I = (1 - self.beta) * inverse_loss(pi_logits, actions.to(T.long))
 
         forward_loss = nn.MSELoss()
-        L_F = self.beta * forward_loss(phi_hat_new, phi_new)
+        L_F = self.beta * forward_loss(predicted_new_state, new_state)
 
-        intrinsic_reward = self.alpha * 0.5 * ((phi_hat_new - phi_new).pow(2)).mean(dim=1)
+        intrinsic_reward = self.alpha * 0.5 * ((predicted_new_state - new_state).pow(2)).mean(dim=1)
         return intrinsic_reward, L_I, L_F

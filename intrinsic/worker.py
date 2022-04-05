@@ -25,7 +25,6 @@ def worker(name, input_shape, n_actions, global_agent,
     np.random.seed(SEED)
     T.manual_seed(SEED)
     T.cuda.manual_seed(SEED)
-    T.use_deterministic_algorithms(True)
 
     frame_buffer = [input_shape[1], input_shape[2], 1]
     env = make_atari(env_id, shape=frame_buffer)
@@ -70,7 +69,6 @@ def worker(name, input_shape, n_actions, global_agent,
     else:
         local_icm = None
         intrinsic_reward = None
-
 
     memory = Memory()
 
@@ -163,11 +161,11 @@ def worker(name, input_shape, n_actions, global_agent,
     if name == '1':
         x = [z for z in range(episode)]
         # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
-        np.savetxt("Breakout_same_encoders_ICM_score.csv",
+        np.savetxt("Breakout_separate_encoders_ICM_score.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("Breakout_same_encoders_ICM_intr.csv",
+        np.savetxt("Breakout_separate_encoders_ICM_intr.csv",
                    intr,
                    delimiter=",",
                    fmt='% s')

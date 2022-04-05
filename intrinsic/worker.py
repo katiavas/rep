@@ -70,7 +70,6 @@ def worker(name, input_shape, n_actions, global_agent,
         local_icm = None
         intrinsic_reward = None
 
-
     memory = Memory()
 
     # frame_buffer = [input_shape[1], input_shape[2], 1]

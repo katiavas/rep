@@ -50,8 +50,8 @@ class ActorCritic(nn.Module):
         self.seed = seed
         self.gamma = gamma
         self.tau = tau
-        self.encoder = Encoder(input_dims)
-        # self.l4_encoder = Encoder(input_dims)
+        # self.encoder = Encoder(input_dims)
+        self.l4_encoder = Encoder(input_dims)
         # self.l5_encoder = Encoder(input_dims)
 
         # self.input = nn.Linear(*input_dims, 256)
@@ -68,7 +68,7 @@ class ActorCritic(nn.Module):
     def forward(self, img, hx):
         # img = F.relu(self.input(img))
         # img = F.relu(self.dense(img))
-        state = self.encoder(img)
+        state = self.l4_encoder(img)
         # state = self.l4_encoder(img)
         hx = self.gru(state, hx)
 

@@ -16,7 +16,6 @@ class ParallelEnv:
         np.random.seed(SEED)
         T.manual_seed(SEED)
         T.cuda.manual_seed(SEED)
-        T.use_deterministic_algorithms(True)
 
         names = [str(i) for i in range(num_threads)]
 

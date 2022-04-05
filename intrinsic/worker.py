@@ -25,7 +25,6 @@ def worker(name, input_shape, n_actions, global_agent,
     np.random.seed(SEED)
     T.manual_seed(SEED)
     T.cuda.manual_seed(SEED)
-    T.use_deterministic_algorithms(True)
 
     frame_buffer = [input_shape[1], input_shape[2], 1]
     env = make_atari(env_id, shape=frame_buffer)

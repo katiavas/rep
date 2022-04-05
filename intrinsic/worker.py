@@ -34,7 +34,7 @@ def worker(name, input_shape, n_actions, global_agent,
     env.observation_space.seed(SEED)
     T_MAX = 20
 
-    if LOAD:
+    '''if LOAD:
         # local_agent = ActorCritic(input_shape, n_actions)
         # local_agent.load_state_dict(T.load('actor_weights.pth'))
         # local_agent = T.load('actor_weights1.pt')
@@ -45,9 +45,9 @@ def worker(name, input_shape, n_actions, global_agent,
         # T.save(local_agent.state_dict(), 'actor_weights.pth')
         # local_agent = ActorCritic(input_shape, n_actions)
         # loc = local_agent.save_models(input_dims=input_shape, n_actions=n_actions)
-        # print(loc)
+        # print(loc)'''
 
-    if icm:
+    '''if icm:
         if LOAD:
             # local_icm = ICM(input_shape, n_actions)
             # local_icm.load_state_dict(T.load('icm_weights.pth'))
@@ -61,7 +61,16 @@ def worker(name, input_shape, n_actions, global_agent,
             # T.save(local_icm.state_dict(), 'icm_weights.pth')
     else:
         local_icm = None
+        intrinsic_reward = None'''
+    local_agent = ActorCritic(input_shape, n_actions)
+
+    if icm:
+        local_icm = ICM(input_shape, n_actions)
+        # T.save(local_icm.state_dict(), 'icm_weights.pth')
+    else:
+        local_icm = None
         intrinsic_reward = None
+
 
     memory = Memory()
 
@@ -127,22 +136,22 @@ def worker(name, input_shape, n_actions, global_agent,
         # with global_idx.get_lock():
         #    global_idx.value += 1
         if name == '1':
-            if (LOAD == False):
+            '''if (LOAD == False):
                 with open('trained_actor.pickle', 'wb') as file:
                     pickle.dump(local_agent, file)
                 # T.save(local_agent, 'actor_weights1.pt')
                 if icm:
                     with open('trained_icm.pickle', 'wb') as file:
                         pickle.dump(local_icm, file)
-                    # T.save(local_icm, 'icm_weights1.pt')
+                    # T.save(local_icm, 'icm_weights1.pt')'''
             # loss_i = T.sum(L_I)
             # l_i.append(loss_i)
             # loss_f = T.sum(L_F)
             # l_f.append(loss_f)
             # b = T.sum(loss)
             # l.append(b.detach().numpy())
-            # a = T.sum(intrinsic_reward)
-            # intr.append(a.detach().numpy())  # for plotting intrinsic reward
+            a = T.sum(intrinsic_reward)
+            intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)
             avg_score = np.mean(scores[-100:])
             avg_score_5000 = np.mean(scores[max(0, episode - 5000): episode + 1])
@@ -154,14 +163,14 @@ def worker(name, input_shape, n_actions, global_agent,
     if name == '1':
         x = [z for z in range(episode)]
         # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
-        '''np.savetxt("Breakout_111_ICM.csv",
+        np.savetxt("Breakout_same_encoders_ICM_score.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("Breakout_111_ICM_intr.csv",
+        np.savetxt("Breakout_same_encoders_ICM_intr.csv",
                    intr,
                    delimiter=",",
-                   fmt='% s')'''
+                   fmt='% s')
 
         '''np.savetxt("ICM_ON_LOSS_111.csv",
                    l,

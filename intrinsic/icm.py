@@ -71,10 +71,10 @@ class ICM(nn.Module):
         super(ICM, self).__init__()
         self.alpha = alpha
         self.beta = beta
-        # self.encoder = Encoder(input_dims)
+        self.encoder = Encoder(input_dims)
 
-        self.l4_encoder = Encoder(input_dims)
-        self.l5_encoder = Encoder(input_dims)
+        # self.l4_encoder = Encoder(input_dims)
+        # self.l5_encoder = Encoder(input_dims)
         # inverse model:Given a succession of states what actions was taken
         self.inverse = nn.Linear(feature_dims * 2, 256)
         # Give us the logits of our policy.
@@ -96,11 +96,11 @@ class ICM(nn.Module):
     # Forward model takes the action and the current state and predicts the next state
     def forward(self, obs, new_obs, action):
         # Pass the state and new_state through our convolutional layer to get the features representations
-        state = self.l4_encoder(obs)
-        # state = self.encoder(obs)
+        # state = self.l4_encoder(obs)
+        state = self.encoder(obs)
         with T.no_grad():
-            # new_state = self.encoder(new_obs)
-            new_state = self.l5_encoder(new_obs)
+            new_state = self.encoder(new_obs)
+            # new_state = self.l5_encoder(new_obs)
 
         state = state.to(T.float)
         new_state = new_state.to(T.float)

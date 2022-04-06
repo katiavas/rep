@@ -50,7 +50,7 @@ class ActorCritic(nn.Module):
         self.seed = seed
         self.gamma = gamma
         self.tau = tau
-        self.encoder = Encoder(input_dims)
+        # self.encoder = Encoder(input_dims)
         self.l4_encoder = Encoder(input_dims)
         # self.l5_encoder = Encoder(input_dims)
 
@@ -68,8 +68,8 @@ class ActorCritic(nn.Module):
     def forward(self, img, hx):
         # img = F.relu(self.input(img))
         # img = F.relu(self.dense(img))
-        # state = self.l4_encoder(img)
-        state = self.encoder(img)
+        state = self.l4_encoder(img)
+        # state = self.encoder(img)
         hx = self.gru(state, hx)
 
         # Pass hidden state into our pi and v layer to get our logs for our policy(pi) and out value function

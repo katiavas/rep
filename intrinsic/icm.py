@@ -13,7 +13,7 @@ This is a cross entropy loss between the predicted action and the actual action 
 
 
 class Encoder(nn.Module):
-    def __init__(self, input_dims, feature_dim=288):
+    '''def __init__(self, input_dims, feature_dim=288):
         super(Encoder, self).__init__()
 
         self.conv1 = nn.Conv2d(input_dims[0], 32, (3, 3), stride=2, padding=1)
@@ -29,9 +29,9 @@ class Encoder(nn.Module):
         # [T, 32, 3, 3] to [T, 288]
         enc_flatten = T.flatten(enc, start_dim=1)
         # conv = enc.view(enc.size()[0], -1).to(T.float)
-        return enc_flatten
+        return enc_flatten'''
 
-    '''def __init__(self, input_dims, feature_dim=288):
+    def __init__(self, input_dims, feature_dim=288):
         super(Encoder, self).__init__()
 
         self.conv1 = nn.Conv2d(input_dims[0], 32, (3, 3), stride=2, padding=1)
@@ -63,7 +63,7 @@ class Encoder(nn.Module):
         # conv = enc.view(enc.size()[0], -1).to(T.float)
         features = self.fc1(enc_flatten)
 
-        return features'''
+        return features
 
 
 class ICM(nn.Module):
@@ -71,10 +71,10 @@ class ICM(nn.Module):
         super(ICM, self).__init__()
         self.alpha = alpha
         self.beta = beta
-        self.encoder = Encoder(input_dims)
+        # self.encoder = Encoder(input_dims)
 
-        # self.l4_encoder = Encoder(input_dims)
-        # self.l5_encoder = Encoder(input_dims)
+        self.l4_encoder = Encoder(input_dims)
+        self.l5_encoder = Encoder(input_dims)
         # inverse model:Given a succession of states what actions was taken
         self.inverse = nn.Linear(feature_dims * 2, 256)
         # Give us the logits of our policy.
@@ -96,11 +96,11 @@ class ICM(nn.Module):
     # Forward model takes the action and the current state and predicts the next state
     def forward(self, obs, new_obs, action):
         # Pass the state and new_state through our convolutional layer to get the features representations
-        # state = self.l4_encoder(obs)
+        state = self.l4_encoder(obs)
         state = self.encoder(obs)
         with T.no_grad():
-            new_state = self.encoder(new_obs)
-            # new_state = self.l5_encoder(new_obs)
+            # new_state = self.encoder(new_obs)
+            new_state = self.l5_encoder(new_obs)
 
         state = state.to(T.float)
         new_state = new_state.to(T.float)

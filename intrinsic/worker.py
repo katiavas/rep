@@ -75,7 +75,7 @@ def worker(name, input_shape, n_actions, global_agent,
     # frame_buffer = [input_shape[1], input_shape[2], 1]
     # env = make_atari(env_id, shape=frame_buffer)
 
-    episode, max_steps, t_steps, scores = 0, 5000, 0, []
+    episode, max_steps, t_steps, scores = 0, 10, 0, []
     intr = []
     l = []
     l_i = []
@@ -144,8 +144,9 @@ def worker(name, input_shape, n_actions, global_agent,
                     # T.save(local_icm, 'icm_weights1.pt')'''
             # loss_i = T.sum(L_I)
             # l_i.append(loss_i)
-            # loss_f = T.sum(L_F)
-            # l_f.append(loss_f)
+            loss_f = T.sum(L_F)
+            l_f.append(loss_f)
+            print(l_f)
             # b = T.sum(loss)
             # l.append(b.detach().numpy())
             a = T.sum(intrinsic_reward)

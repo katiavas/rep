@@ -27,7 +27,6 @@ if __name__ == '__main__':
     mp.set_start_method('spawn', force=True)
     global_ep = mp.Value('i', 0)
     # env_id = 'PongNoFrameskip-v4'
-    # env_id = 'MiniWorld-FourRooms-v0'
     # env_id = 'CartPole-v1'
     n_threads = 12
     # n_actions = 4

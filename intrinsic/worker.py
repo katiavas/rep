@@ -171,6 +171,12 @@ def worker(name, input_shape, n_actions, global_agent,
                    delimiter=",",
                    fmt='% s')
 
+        np.savetxt("L_F_111.csv",
+                   l_f,
+                   delimiter=",",
+                   fmt='% s')
+
+
         '''np.savetxt("ICM_ON_LOSS_111.csv",
                    l,
                    delimiter=",",

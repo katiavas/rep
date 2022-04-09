@@ -146,7 +146,6 @@ def worker(name, input_shape, n_actions, global_agent,
             # l_i.append(loss_i)
             loss_f = T.sum(L_F)
             l_f.append(loss_f.detach().numpy())
-            print(l_f)
             b = T.sum(loss)
             l.append(b.detach().numpy())
             a = T.sum(intrinsic_reward)
@@ -175,7 +174,7 @@ def worker(name, input_shape, n_actions, global_agent,
                    l_f,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("ICM_ON_LOSS_111.csv",
+        np.savetxt("ICM_ON_LOSS.csv",
                    l,
                    delimiter=",",
                    fmt='% s')

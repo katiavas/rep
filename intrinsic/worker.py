@@ -144,8 +144,8 @@ def worker(name, input_shape, n_actions, global_agent,
                     # T.save(local_icm, 'icm_weights1.pt')'''
             loss_i = T.sum(L_I)
             l_i.append(loss_i.detach().numpy())
-            loss_f = T.sum(L_F)
-            l_f.append(loss_f.detach().numpy())
+            # loss_f = T.sum(L_F)
+            # l_f.append(loss_f.detach().numpy())
             b = T.sum(loss)
             l.append(b.detach().numpy())
             a = T.sum(intrinsic_reward)

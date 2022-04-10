@@ -142,8 +142,8 @@ def worker(name, input_shape, n_actions, global_agent,
                     with open('trained_icm.pickle', 'wb') as file:
                         pickle.dump(local_icm, file)
                     # T.save(local_icm, 'icm_weights1.pt')'''
-            # loss_i = T.sum(L_I)
-            # l_i.append(loss_i)
+            loss_i = T.sum(L_I)
+            l_i.append(loss_i.detach().numpy())
             loss_f = T.sum(L_F)
             l_f.append(loss_f.detach().numpy())
             b = T.sum(loss)
@@ -170,8 +170,8 @@ def worker(name, input_shape, n_actions, global_agent,
                    delimiter=",",
                    fmt='% s')
 
-        np.savetxt("L_F_111.csv",
-                   l_f,
+        np.savetxt("L_I_111.csv",
+                   l_i,
                    delimiter=",",
                    fmt='% s')
         np.savetxt("ICM_ON_LOSS.csv",

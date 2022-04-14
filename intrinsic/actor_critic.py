@@ -49,9 +49,8 @@ class ActorCritic(nn.Module):
         super(ActorCritic, self).__init__()
         self.gamma = gamma
         self.tau = tau
-        # self.encoder = Encoder(input_dims)
-        self.l4_encoder = Encoder(input_dims)
-        print("...")
+        self.encoder = Encoder(input_dims)
+        # self.l4_encoder = Encoder(input_dims)
         # self.l5_encoder = Encoder(input_dims)
 
         # self.input = nn.Linear(*input_dims, 256)

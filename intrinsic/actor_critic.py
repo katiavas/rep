@@ -45,13 +45,12 @@ class Encoder(nn.Module):
 
 
 class ActorCritic(nn.Module):
-    def __init__(self, input_dims, n_actions, gamma=0.99, tau=1.0, feature_dims=288, seed=111):
+    def __init__(self, input_dims, n_actions, gamma=0.99, tau=1.0, feature_dims=288):
         super(ActorCritic, self).__init__()
-        self.seed = seed
         self.gamma = gamma
         self.tau = tau
-        self.encoder = Encoder(input_dims)
-        # self.l4_encoder = Encoder(input_dims)
+        # self.encoder = Encoder(input_dims)
+        self.l4_encoder = Encoder(input_dims)
         # self.l5_encoder = Encoder(input_dims)
 
         # self.input = nn.Linear(*input_dims, 256)
@@ -68,8 +67,8 @@ class ActorCritic(nn.Module):
     def forward(self, img, hx):
         # img = F.relu(self.input(img))
         # img = F.relu(self.dense(img))
-        # state = self.l4_encoder(img)
-        state = self.encoder(img)
+        state = self.l4_encoder(img)
+        # state = self.encoder(img)
         hx = self.gru(state, hx)
 
         # Pass hidden state into our pi and v layer to get our logs for our policy(pi) and out value function

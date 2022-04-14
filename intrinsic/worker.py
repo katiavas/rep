@@ -5,11 +5,9 @@ import torch as T
 from actor_critic import ActorCritic
 from icm import ICM
 from memory import Memory
-from utils import plot_learning_curve
 from wrappers import make_atari
 # import torchvision.models as models
 import random
-from utils import plot_learning_curve_with_shaded_error
 
 
 # import wandb
@@ -154,27 +152,29 @@ def worker(name, input_shape, n_actions, global_agent,
             avg_score = np.mean(scores[-100:])
             avg_score_5000 = np.mean(scores[max(0, episode - 5000): episode + 1])
             print('ICM episode {} thread {} of {} steps {:.2f}M score {:.2f} '
-                  'avg score (100) {:.2f}'.format(
-                episode, name, n_threads,
+                  'intrinsic_reward {:.5f} avg score (100) {:.1f}'.format(
+                 episode, name, n_threads,
                 t_steps / 1e6, score,
+                T.sum(intrinsic_reward),
                 avg_score))
+
     if name == '1':
         x = [z for z in range(episode)]
         # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
-        np.savetxt("Breakout_same_encoders_ICM_score8.csv",
+        np.savetxt("Breakout_separate_encoders_ICM_score_.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("Breakout_same_encoders_ICM_intr8.csv",
+        np.savetxt("Breakout_separate_encoders_ICM_intr_.csv",
                    intr,
                    delimiter=",",
                    fmt='% s')
 
-        np.savetxt("L_I_0_same.csv",
+        np.savetxt("L_I_0_separate_.csv",
                    l_i,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("ICM_ON_LOSS0_same.csv",
+        np.savetxt("ICM_ON_LOSS_separate_.csv",
                    l,
                    delimiter=",",
                    fmt='% s')

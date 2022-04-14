@@ -15,12 +15,10 @@ This is a cross entropy loss between the predicted action and the actual action 
 class Encoder(nn.Module):
     '''def __init__(self, input_dims, feature_dim=288):
         super(Encoder, self).__init__()
-
         self.conv1 = nn.Conv2d(input_dims[0], 32, (3, 3), stride=2, padding=1)
         self.conv2 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
         self.conv3 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
         self.conv4 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
-
     def forward(self, img):
         enc = F.elu(self.conv1(img))
         enc = F.elu(self.conv2(enc))
@@ -93,15 +91,15 @@ class ICM(nn.Module):
 
     ''' The prediction module takes in a state St 
     and action at and produces a prediction for the subsequent state S t+1 '''
+
     # Forward model takes the action and the current state and predicts the next state
     def forward(self, obs, new_obs, action):
-
         # Pass the state and new_state through our convolutional layer to get the features representations
-        # state = self.l4_encoder(obs)
-        '''state = self.encoder(obs)
+        ''' state = self.l4_encoder(obs)
+        # state = self.encoder(obs)
         with T.no_grad():
-            new_state = self.encoder(new_obs)
-            # new_state = self.l5_encoder(new_obs)'''
+            # new_state = self.encoder(new_obs)
+            new_state = self.l5_encoder(new_obs)'''
 
         state = self.l4_encoder(obs)
         new_state = self.l5_encoder(new_obs)
@@ -130,6 +128,7 @@ class ICM(nn.Module):
 
     '''This prediction along with the true next state are passed to a mean-squared error (or some other error) function 
     which produces the prediction error'''
+
     def calc_loss(self, states, new_states, actions):
         # don't need [] b/c these are lists of states
         states = T.tensor(states, dtype=T.float)

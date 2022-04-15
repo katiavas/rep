@@ -32,11 +32,11 @@ if __name__ == '__main__':
     # n_actions = 4
     n_actions = 4
     input_shape = [4, 42, 42]
-    ICM = True
+    ICM = False
     # wandb.run.name = env_id+'/'+str(SEED) + '/ICM='+str(ICM)
     env = ParallelEnv(env_id=env_id, num_threads=n_threads,
                       n_actions=n_actions, global_idx=global_ep,
-                      input_shape=input_shape, icm=ICM)
+                      input_shape=input_shape, icm=False)
 
 # CartPole ++> n_actions = 2 , input_shape/input_dims = 4
 # Acrobot --> n_actions = 3 , input_shape/input_dims = 6

@@ -97,14 +97,14 @@ class ICM(nn.Module):
     # Forward model takes the action and the current state and predicts the next state
     def forward(self, obs, new_obs, action):
         # Pass the state and new_state through our convolutional layer to get the features representations
-        ''' state = self.l4_encoder(obs)
-        # state = self.encoder(obs)
+        # state = self.l4_encoder(obs)
+        state = self.encoder(obs)
         with T.no_grad():
-            # new_state = self.encoder(new_obs)
-            new_state = self.l5_encoder(new_obs)'''
+            new_state = self.encoder(new_obs)
+            # new_state = self.l5_encoder(new_obs)
 
-        state = self.l4_encoder(obs)
-        new_state = self.l5_encoder(new_obs)
+        # state = self.l4_encoder(obs)
+        # new_state = self.l5_encoder(new_obs)
 
         state = state.to(T.float)
         new_state = new_state.to(T.float)

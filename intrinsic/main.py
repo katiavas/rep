@@ -1,9 +1,6 @@
 import os
 import torch.multiprocessing as mp
 from parallel_env import ParallelEnv
-import torch as T
-import numpy as np
-import random
 # import wandb
 from memory import Memory
 
@@ -14,17 +11,13 @@ os.environ['OMP_NUM_THREADS'] = '1'
 # wandb.init(project='icm', entity="katiavas", dir='./')
 if __name__ == '__main__':
     # env_id = 'ALE/Breakout-v5'
-    # gym_env = gym.make(env_id)
-    # gym_env.seed(SEED)
-    # gym_env.action_space.seed(SEED)
-    # gym_env.observation_space.seed(SEED)
     mp.set_start_method('spawn', force=True)
     global_ep = mp.Value('i', 0)
-    env_id = 'Pong-v0'
+    # env_id = 'Pong-v0'
     # env_id = 'CartPole-v1'
     n_threads = 12
-    # n_actions = 4
-    n_actions = 6
+    n_actions = 4
+    # n_actions = 6
 
     input_shape = [4, 42, 42]
     ICM = False

@@ -28,7 +28,8 @@ if __name__ == '__main__':
     # env_id = 'CartPole-v1'
     n_threads = 12
     # n_actions = 4
-    n_actions = 2
+    n_actions = 6
+
     input_shape = [4, 42, 42]
     ICM = False
     # wandb.run.name = env_id+'/'+str(SEED) + '/ICM='+str(ICM)

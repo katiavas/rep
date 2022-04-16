@@ -4,7 +4,6 @@ from parallel_env import ParallelEnv
 import torch as T
 import numpy as np
 import random
-import gym
 # import wandb
 from memory import Memory
 

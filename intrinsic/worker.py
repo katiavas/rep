@@ -157,7 +157,7 @@ def worker(name, input_shape, n_actions, global_agent,
                   'avg score (100) {:.2f}' 'intr {}' .format(
                 episode, name, n_threads,
                 t_steps / 1e6, score,
-                avg_score, intrinsic_reward))
+                avg_score, intr))
     if name == '1':
         x = [z for z in range(episode)]
         # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')

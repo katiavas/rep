@@ -135,14 +135,14 @@ def worker(name, input_shape, n_actions, global_agent,
                     with open('trained_icm.pickle', 'wb') as file:
                         pickle.dump(local_icm, file)
                     # T.save(local_icm, 'icm_weights1.pt')'''
-            # loss_i = T.sum(L_I)
-            # l_i.append(loss_i.detach().numpy())
-            # loss_f = T.sum(L_F)
-            # l_f.append(loss_f.detach().numpy())
+            loss_i = T.sum(L_I)
+            l_i.append(loss_i.detach().numpy())
+            loss_f = T.sum(L_F)
+            l_f.append(loss_f.detach().numpy())
             b = T.sum(loss)
             l.append(b.detach().numpy())
-            # a = T.sum(intrinsic_reward)
-            # intr.append(a.detach().numpy())  # for plotting intrinsic reward
+            a = T.sum(intrinsic_reward)
+            intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)
             avg_score = np.mean(scores[-100:])
             avg_score_5000 = np.mean(scores[max(0, episode - 5000): episode + 1])

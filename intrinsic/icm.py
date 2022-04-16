@@ -71,10 +71,10 @@ class ICM(nn.Module):
         super(ICM, self).__init__()
         self.alpha = alpha
         self.beta = beta
-        # self.encoder = Encoder(input_dims)
+        self.encoder = Encoder(input_dims)
 
-        self.l4_encoder = Encoder(input_dims)
-        self.l5_encoder = Encoder(input_dims)
+        # self.l4_encoder = Encoder(input_dims)
+        # self.l5_encoder = Encoder(input_dims)
         # inverse model:Given a succession of states what actions was taken
         self.inverse = nn.Linear(feature_dims * 2, 256)
         # Give us the logits of our policy.

@@ -9,10 +9,11 @@ import torch as T
 # https://livebook.manning.com/book/deep-reinforcement-learning-in-action/chapter-8/v-7/63
 # Step the environment with the given action Repeat action, sum reward, and max over last observations
 class Step(gym.Wrapper):
-    def __init__(self, env, repeat=4):
+    def __init__(self, env, repeat=4, fire_first = True):
         super(Step, self).__init__(env)
         self.repeat = repeat
         self.shape = env.observation_space.low.shape
+        self.fire_first = fire_first
         # print(env.observation_space.shape, "shape")
         # print(env.observation_space.high.shape, "high")
 
@@ -31,6 +32,9 @@ class Step(gym.Wrapper):
 
     def reset(self):
         obs = self.env.reset()
+        if self.fire_first:
+            assert self.env.unwrapped.get_action_meanings()[1] == 'FIRE'
+            obs, _, _, _ = self.env_step(1)
         return obs
 
 

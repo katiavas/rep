@@ -75,7 +75,7 @@ def worker(name, input_shape, n_actions, global_agent,
     # frame_buffer = [input_shape[1], input_shape[2], 1]
     # env = make_atari(env_id, shape=frame_buffer)
 
-    episode, max_steps, t_steps, scores = 0, 5000, 0, []
+    episode, max_steps, t_steps, scores = 0, 10000, 0, []
     intr = []
     l = []
     l_i = []
@@ -148,37 +148,37 @@ def worker(name, input_shape, n_actions, global_agent,
             # l_f.append(loss_f.detach().numpy())
             b = T.sum(loss)
             l.append(b.detach().numpy())
-            # a = T.sum(intrinsic_reward)
-            # intr.append(a.detach().numpy())  # for plotting intrinsic reward
+            a = T.sum(intrinsic_reward)
+            intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)
             avg_score = np.mean(scores[-100:])
             avg_score_5000 = np.mean(scores[max(0, episode - 5000): episode + 1])
             print('ICM episode {} thread {} of {} steps {:.2f}M score {:.2f} '
-                  'avg score (100) {:.2f}'.format(
+                  'avg score (100) {:.2f}' 'intr {}' .format(
                 episode, name, n_threads,
                 t_steps / 1e6, score,
-                avg_score))
+                avg_score, intrinsic_reward))
     if name == '1':
         x = [z for z in range(episode)]
         # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
-        '''np.savetxt("Breakout_separate_encoders_ICM_score5.csv",
+        '''np.savetxt("Breakout_separate_encoders_ICM_score6.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("Breakout_separate_encoders_ICM_intr5.csv",
+        np.savetxt("Breakout_separate_encoders_ICM_intr6.csv",
                    intr,
                    delimiter=",",
                    fmt='% s')
 
-        np.savetxt("L_I_5.csv",
+        np.savetxt("L_I_6.csv",
                    l_i,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("ICM_ON_LOSS5.csv",
+        np.savetxt("ICM_ON_LOSS6.csv",
                    l,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("L_F_5.csv",
+        np.savetxt("L_F_6.csv",
                    l_f,
                    delimiter=",",
                    fmt='% s')'''

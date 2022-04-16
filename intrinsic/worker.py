@@ -154,10 +154,10 @@ def worker(name, input_shape, n_actions, global_agent,
             avg_score = np.mean(scores[-100:])
             avg_score_5000 = np.mean(scores[max(0, episode - 5000): episode + 1])
             print('ICM episode {} thread {} of {} steps {:.2f}M score {:.2f} '
-                  'avg score (100) {:.2f}' 'intr {}' .format(
+                  'avg score (100) {:.2f}'.format(
                 episode, name, n_threads,
                 t_steps / 1e6, score,
-                avg_score, intr))
+                avg_score))
     if name == '1':
         x = [z for z in range(episode)]
         # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')

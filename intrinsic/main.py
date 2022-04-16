@@ -13,7 +13,6 @@ SEED = 111
 os.environ['OMP_NUM_THREADS'] = '1'
 # os.environ['WANDB_START_METHOD'] = 'thread'
 # wandb.init(project='icm', entity="katiavas", dir='./')
-os.environ['PYTHONHASHSEED'] = str(SEED)
 if __name__ == '__main__':
     # env_id = 'ALE/Breakout-v5'
     random.seed(SEED)

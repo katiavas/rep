@@ -154,35 +154,35 @@ def worker(name, input_shape, n_actions, global_agent,
     if name == '1':
         x = [z for z in range(episode)]
         # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
-        '''np.savetxt("Breakout_same_encoders_ICM_score10000.csv",
+        np.savetxt("Breakout_separate_encoders_ICM_score210000.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("Breakout_same_encoders_ICM_intr10000.csv",
+        np.savetxt("Breakout_separate_encoders_ICM_intr210000.csv",
                    intr,
                    delimiter=",",
                    fmt='% s')
 
-        np.savetxt("L_I_10000_same.csv",
+        np.savetxt("L_I_210000_separate.csv",
                    l_i,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("ICM_ON_LOSS10000_same.csv",
+        np.savetxt("ICM_ON_LOSS210000_separate.csv",
                    l,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("L_F_10000_same.csv",
+        np.savetxt("L_F_210000_separate.csv",
                    l_f,
                    delimiter=",",
-                   fmt='% s')'''
-        np.savetxt("A3C_score1_10000.csv",
+                   fmt='% s')
+        '''np.savetxt("A3C_score1_10000.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
         np.savetxt("A3C_LOSS1_10000.csv",
                    l,
                    delimiter=",",
-                   fmt='% s')
+                   fmt='% s')'''
 
 
 

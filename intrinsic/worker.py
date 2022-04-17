@@ -135,10 +135,10 @@ def worker(name, input_shape, n_actions, global_agent,
                     with open('trained_icm.pickle', 'wb') as file:
                         pickle.dump(local_icm, file)
                     # T.save(local_icm, 'icm_weights1.pt')'''
-            # loss_i = T.sum(L_I)
-            # l_i.append(loss_i.detach().numpy())
-            # loss_f = T.sum(L_F)
-            # l_f.append(loss_f.detach().numpy())
+            loss_i = T.sum(L_I)
+            l_i.append(loss_i.detach().numpy())
+            loss_f = T.sum(L_F)
+            l_f.append(loss_f.detach().numpy())
             b = T.sum(loss)
             l.append(b.detach().numpy())
             # a = T.sum(intrinsic_reward)
@@ -154,24 +154,24 @@ def worker(name, input_shape, n_actions, global_agent,
     if name == '1':
         x = [z for z in range(episode)]
         # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
-        np.savetxt("Breakout_separate_encoders_ICM_score210000.csv",
+        np.savetxt("Breakout_separate_encoders_ICM_score35000.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("Breakout_separate_encoders_ICM_intr210000.csv",
+        np.savetxt("Breakout_separate_encoders_ICM_intr35000.csv",
                    intr,
                    delimiter=",",
                    fmt='% s')
 
-        np.savetxt("L_I_210000_separate.csv",
+        np.savetxt("L_I_35000_separate.csv",
                    l_i,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("ICM_ON_LOSS210000_separate.csv",
+        np.savetxt("ICM_ON_LOSS35000_separate.csv",
                    l,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("L_F_210000_separate.csv",
+        np.savetxt("L_F_350000_separate.csv",
                    l_f,
                    delimiter=",",
                    fmt='% s')

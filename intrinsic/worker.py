@@ -26,7 +26,7 @@ def worker(name, input_shape, n_actions, global_agent,
     # env.observation_space.seed(SEED)
     T_MAX = 20
 
-    if LOAD:
+    '''if LOAD:
         # local_agent = ActorCritic(input_shape, n_actions)
         # local_agent.load_state_dict(T.load('actor_weights.pth'))
         local_agent = T.load('actor_weights1.pt')
@@ -51,17 +51,16 @@ def worker(name, input_shape, n_actions, global_agent,
             # T.save(local_icm.state_dict(), 'icm_weights.pth')
     else:
         local_icm = None
-        intrinsic_reward = None
+        intrinsic_reward = None'''
 
-
-    '''local_agent = ActorCritic(input_shape, n_actions)
+    local_agent = ActorCritic(input_shape, n_actions)
 
     if icm:
         local_icm = ICM(input_shape, n_actions)
         # T.save(local_icm.state_dict(), 'icm_weights.pth')
     else:
         local_icm = None
-        intrinsic_reward = None'''
+        intrinsic_reward = None
 
     memory = Memory()
 
@@ -154,7 +153,7 @@ def worker(name, input_shape, n_actions, global_agent,
     if name == '1':
         x = [z for z in range(episode)]
         # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
-        np.savetxt("Breakout_same_encoders_ICM_score55000.csv",
+        '''np.savetxt("Breakout_same_encoders_ICM_score55000.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
@@ -174,15 +173,15 @@ def worker(name, input_shape, n_actions, global_agent,
         np.savetxt("L_F_450000_same.csv",
                    l_f,
                    delimiter=",",
-                   fmt='% s')
-        '''np.savetxt("A3C_score1_10000.csv",
+                   fmt='% s')'''
+        np.savetxt("A3C_score2_10000.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("A3C_LOSS1_10000.csv",
+        np.savetxt("A3C_LOSS2_10000.csv",
                    l,
                    delimiter=",",
-                   fmt='% s')'''
+                   fmt='% s')
 
 
 

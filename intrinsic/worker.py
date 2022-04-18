@@ -17,7 +17,7 @@ def worker(name, input_shape, n_actions, global_agent,
            optimizer, env_id, n_threads, global_idx, global_icm,
            icm_optimizer, icm):
 
-    LOAD = True
+    LOAD = False
 
     frame_buffer = [input_shape[1], input_shape[2], 1]
     env = make_atari(env_id, shape=frame_buffer)
@@ -68,7 +68,7 @@ def worker(name, input_shape, n_actions, global_agent,
     # frame_buffer = [input_shape[1], input_shape[2], 1]
     # env = make_atari(env_id, shape=frame_buffer)
 
-    episode, max_steps, t_steps, scores = 0, 10, 0, []
+    episode, max_steps, t_steps, scores = 0, 5000, 0, []
     intr = []
     l = []
     l_i = []

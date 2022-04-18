@@ -17,7 +17,7 @@ def worker(name, input_shape, n_actions, global_agent,
            optimizer, env_id, n_threads, global_idx, global_icm,
            icm_optimizer, icm):
 
-    LOAD = False
+    LOAD = True
 
     frame_buffer = [input_shape[1], input_shape[2], 1]
     env = make_atari(env_id, shape=frame_buffer)
@@ -154,16 +154,16 @@ def worker(name, input_shape, n_actions, global_agent,
     if name == '1':
         x = [z for z in range(episode)]
         # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
-        np.savetxt("Breakout_same_encoders_ICM_score45000.csv",
+        np.savetxt("Breakout_same_encoders_ICM_scoreload.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("Breakout_same_encoders_ICM_intr45000.csv",
+        np.savetxt("Breakout_same_encoders_ICM_intrload.csv",
                    intr,
                    delimiter=",",
                    fmt='% s')
 
-        np.savetxt("L_I_45000_same.csv",
+        np.savetxt("L_I_45000_load.csv",
                    l_i,
                    delimiter=",",
                    fmt='% s')

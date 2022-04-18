@@ -138,8 +138,8 @@ def worker(name, input_shape, n_actions, global_agent,
             # l_i.append(loss_i.detach().numpy())
             # loss_f = T.sum(L_F)
             # l_f.append(loss_f.detach().numpy())
-            # b = T.sum(loss)
-            # l.append(b.detach().numpy())
+            b = T.sum(loss)
+            l.append(b.detach().numpy())
             # a = T.sum(intrinsic_reward)
             # intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)

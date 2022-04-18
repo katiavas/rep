@@ -30,7 +30,7 @@ def worker(name, input_shape, n_actions, global_agent,
         # local_agent = ActorCritic(input_shape, n_actions)
         # local_agent.load_state_dict(T.load('actor_weights.pth'))
         local_agent = T.load('actor_weights1.pt')
-        # local_agent.eval()
+        local_agent.eval()
         # local_agent = pickle.load(open('trained_actor.pickle', 'rb'))
     else:
         local_agent = ActorCritic(input_shape, n_actions)

@@ -26,49 +26,49 @@ def worker(name, input_shape, n_actions, global_agent,
     # env.observation_space.seed(SEED)
     T_MAX = 20
 
-    '''if LOAD:
+    if LOAD:
         # local_agent = ActorCritic(input_shape, n_actions)
         # local_agent.load_state_dict(T.load('actor_weights.pth'))
-        # local_agent = T.load('actor_weights1.pt')
+        local_agent = T.load('actor_weights1.pt')
         # local_agent.eval()
-        local_agent = pickle.load(open('trained_actor.pickle', 'rb'))
+        # local_agent = pickle.load(open('trained_actor.pickle', 'rb'))
     else:
         local_agent = ActorCritic(input_shape, n_actions)
-        # T.save(local_agent.state_dict(), 'actor_weights.pth')
-        # local_agent = ActorCritic(input_shape, n_actions)
         # loc = local_agent.save_models(input_dims=input_shape, n_actions=n_actions)
-        # print(loc)'''
+        # print(loc)
 
-    '''if icm:
+    if icm:
         if LOAD:
             # local_icm = ICM(input_shape, n_actions)
             # local_icm.load_state_dict(T.load('icm_weights.pth'))
-            # local_icm = T.load('icm_weights1.pt')
+            local_icm = T.load('icm_weights1.pt')
             # local_icm.eval()
             # with T.no_grad():
             #   local_icm(ICM(input_shape, n_actions))
-            local_icm = pickle.load(open('trained_icm.pickle', 'rb'))
+            # local_icm = pickle.load(open('trained_icm.pickle', 'rb'))
         else:
             local_icm = ICM(input_shape, n_actions)
             # T.save(local_icm.state_dict(), 'icm_weights.pth')
     else:
         local_icm = None
-        intrinsic_reward = None'''
-    local_agent = ActorCritic(input_shape, n_actions)
+        intrinsic_reward = None
+
+
+    '''local_agent = ActorCritic(input_shape, n_actions)
 
     if icm:
         local_icm = ICM(input_shape, n_actions)
         # T.save(local_icm.state_dict(), 'icm_weights.pth')
     else:
         local_icm = None
-        intrinsic_reward = None
+        intrinsic_reward = None'''
 
     memory = Memory()
 
     # frame_buffer = [input_shape[1], input_shape[2], 1]
     # env = make_atari(env_id, shape=frame_buffer)
 
-    episode, max_steps, t_steps, scores = 0, 5000, 0, []
+    episode, max_steps, t_steps, scores = 0, 5, 0, []
     intr = []
     l = []
     l_i = []
@@ -127,14 +127,14 @@ def worker(name, input_shape, n_actions, global_agent,
         # with global_idx.get_lock():
         #    global_idx.value += 1
         if name == '1':
-            '''if (LOAD == False):
+            if (LOAD == False):
                 with open('trained_actor.pickle', 'wb') as file:
-                    pickle.dump(local_agent, file)
-                # T.save(local_agent, 'actor_weights1.pt')
+                    # pickle.dump(local_agent, file)
+                    T.save(local_agent, 'actor_weights1.pt')
                 if icm:
                     with open('trained_icm.pickle', 'wb') as file:
-                        pickle.dump(local_icm, file)
-                    # T.save(local_icm, 'icm_weights1.pt')'''
+                        # pickle.dump(local_icm, file)
+                        T.save(local_icm, 'icm_weights1.pt')
             loss_i = T.sum(L_I)
             l_i.append(loss_i.detach().numpy())
             loss_f = T.sum(L_F)
@@ -154,24 +154,24 @@ def worker(name, input_shape, n_actions, global_agent,
     if name == '1':
         x = [z for z in range(episode)]
         # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
-        np.savetxt("Breakout_separate_encoders_ICM_score45000.csv",
+        np.savetxt("Breakout_same_encoders_ICM_score45000.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("Breakout_separate_encoders_ICM_intr45000.csv",
+        np.savetxt("Breakout_same_encoders_ICM_intr45000.csv",
                    intr,
                    delimiter=",",
                    fmt='% s')
 
-        np.savetxt("L_I_34000_separate.csv",
+        np.savetxt("L_I_45000_same.csv",
                    l_i,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("ICM_ON_LOSS45000_separate.csv",
+        np.savetxt("ICM_ON_LOSS45000_same.csv",
                    l,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("L_F_450000_separate.csv",
+        np.savetxt("L_F_450000_same.csv",
                    l_f,
                    delimiter=",",
                    fmt='% s')

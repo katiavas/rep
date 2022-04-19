@@ -153,24 +153,24 @@ def worker(name, input_shape, n_actions, global_agent,
     if name == '1':
         x = [z for z in range(episode)]
         # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
-        np.savetxt("Breakout_separate_encoders_ICM_score7500.csv",
+        np.savetxt("Breakout_separate_encoders_ICM_score8500.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("Breakout_separate_encoders_ICM_intr75000.csv",
+        np.savetxt("Breakout_separate_encoders_ICM_intr85000.csv",
                    intr,
                    delimiter=",",
                    fmt='% s')
 
-        np.savetxt("L_I_75000_separate.csv",
+        np.savetxt("L_I_85000_separate.csv",
                    l_i,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("ICM_ON_LOSS75000_separate.csv",
+        np.savetxt("ICM_ON_LOSS85000_separate.csv",
                    l,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("L_F_750000_separate.csv",
+        np.savetxt("L_F_850000_separate.csv",
                    l_f,
                    delimiter=",",
                    fmt='% s')

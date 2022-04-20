@@ -12,6 +12,7 @@ class Encoder(nn.Module):
 
     def __init__(self, input_dims, feature_dim=288):
         super(Encoder, self).__init__()
+        # in channels, out channels, kernel size, stride, padding
         self.conv1 = nn.Conv2d(input_dims[0], 32, (3, 3), stride=2, padding=1)
         self.conv2 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
         self.conv3 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
@@ -23,10 +24,11 @@ class Encoder(nn.Module):
 
     def get_conv_out(self, input_dims):
         img = T.zeros(1, *input_dims)
-        x = self.conv1(img)
-        x = self.conv2(x)
-        x = self.conv3(x)
-        x = self.conv4(x)
+        x = self.conv1(img)  # torch.Size([1, 32, 21, 21])
+        x = self.conv2(x)  # torch.Size([1, 32, 11, 11])
+        x = self.conv3(x)  # torch.Size([1, 32, 6, 6]) 3
+        x = self.conv4(x)  # torch.Size([1, 32, 3, 3])
+
         shape = x.size()[0]*x.size()[1]*x.size()[2]*x.size()[3]
         # return int(np.prod(x.size()))
         return shape

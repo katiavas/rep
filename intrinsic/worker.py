@@ -67,7 +67,7 @@ def worker(name, input_shape, n_actions, global_agent,
     # frame_buffer = [input_shape[1], input_shape[2], 1]
     # env = make_atari(env_id, shape=frame_buffer)
 
-    episode, max_steps, t_steps, scores = 0, 5000, 0, []
+    episode, max_steps, t_steps, scores = 0, 10000, 0, []
     intr = []
     l = []
     l_i = []
@@ -153,24 +153,24 @@ def worker(name, input_shape, n_actions, global_agent,
     if name == '1':
         x = [z for z in range(episode)]
         # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
-        np.savetxt("Breakout_separate_encoders_ICM_score115000.csv",
+        np.savetxt("Pong_separate_encoders_ICM_score115000.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("Breakout_separate_encoders_ICM_intr115000.csv",
+        np.savetxt("Pong_separate_encoders_ICM_intr115000.csv",
                    intr,
                    delimiter=",",
                    fmt='% s')
 
-        np.savetxt("L_I_115000_separate.csv",
+        np.savetxt("L_I_Pong_separate.csv",
                    l_i,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("ICM_ON_LOSS115000_separate.csv",
+        np.savetxt("ICM_ON_Pong_separate.csv",
                    l,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("L_F_1150000_separate.csv",
+        np.savetxt("L_F_Pong_separate.csv",
                    l_f,
                    delimiter=",",
                    fmt='% s')

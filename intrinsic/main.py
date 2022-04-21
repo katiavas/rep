@@ -13,7 +13,7 @@ if __name__ == '__main__':
     env_id = 'ALE/Breakout-v5'
     mp.set_start_method('spawn', force=True)
     global_ep = mp.Value('i', 0)
-    # env_id = 'PongFrameNoSkip4'
+    env_id = 'PongFrameNoSkip-v4'
     # env_id = 'CartPole-v1'
     n_threads = 12
     n_actions = 4

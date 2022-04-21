@@ -14,10 +14,11 @@ if __name__ == '__main__':
     mp.set_start_method('spawn', force=True)
     global_ep = mp.Value('i', 0)
     env_id = 'PongNoFrameskip-v4'
+
     # env_id = 'CartPole-v1'
     n_threads = 12
-    n_actions = 4
-    # n_actions = 6
+    # n_actions = 4
+    n_actions = 6
 
     input_shape = [4, 42, 42]
     ICM = False

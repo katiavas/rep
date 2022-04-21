@@ -89,6 +89,7 @@ class StackFrames(gym.ObservationWrapper):
 
 def make_atari(env_name, shape=(42, 42, 1), repeat=4):
     env = gym.make(env_name)
+    print(env.action_space)
     # env.seed(111)
     env = Step(env, repeat)
     env = PreprocessFrame(shape, env)

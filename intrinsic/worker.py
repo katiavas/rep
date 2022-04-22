@@ -123,14 +123,14 @@ def worker(name, input_shape, n_actions, global_agent,
         # with global_idx.get_lock():
         #    global_idx.value += 1
         if name == '1':
-            if (LOAD == False):
+            '''if (LOAD == False):
                 with open('trained_actor.pickle', 'wb') as file:
                     # pickle.dump(local_agent, file)
                     T.save(local_agent, 'actor_weights1.pt')
                 if icm:
                     with open('trained_icm.pickle', 'wb') as file:
                         # pickle.dump(local_icm, file)
-                        T.save(local_icm, 'icm_weights1.pt')
+                        T.save(local_icm, 'icm_weights1.pt')'''
             loss_i = T.sum(L_I)
             l_i.append(loss_i.detach().numpy())
             loss_f = T.sum(L_F)

@@ -13,7 +13,6 @@ This is a cross entropy loss between the predicted action and the actual action 
 
 
 class Encoder(nn.Module):
-    class Encoder(nn.Module):
 
         def __init__(self, input_dims, feature_dim=288):
             super(Encoder, self).__init__()

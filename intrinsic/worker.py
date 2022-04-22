@@ -164,7 +164,7 @@ def worker(name, input_shape, n_actions, global_agent,
                    l,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("L_F_Breakout_random_separate15000.csv",
+        np.savetxt("L_F_Breakout_separate15000.csv",
                    l_f,
                    delimiter=",",
                    fmt='% s')

@@ -29,3 +29,5 @@ class Memory:
         return self.states, self.actions, self.rewards, self.new_states,\
                self.values, self.log_probs
 
+''' The share memory function is where all the different agents share their memories with each other so that they can
+learn from each other's experience'''

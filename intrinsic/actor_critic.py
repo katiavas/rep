@@ -12,6 +12,34 @@ class Encoder(nn.Module):
 
     def __init__(self, input_dims, feature_dim=288):
         super(Encoder, self).__init__()
+        self.conv1 = nn.Conv2d(input_dims[0], 32, (3, 3), stride=2, padding=1)
+        self.conv2 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
+        self.conv3 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
+        self.conv4 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
+
+    def calc_conv_output(self, input_dims):
+        img = T.zeros(1, *input_dims)
+        x = self.conv1(img)
+        x = self.conv2(x)
+        x = self.conv3(x)
+        x = self.conv4(x)
+        shape = x.size()[0] * x.size()[1] * x.size()[2] * x.size()[3]
+        # return int(np.prod(x.size()))
+        return shape
+
+    def forward(self, img):
+        enc = F.elu(self.conv1(img))
+        enc = F.elu(self.conv2(enc))
+        enc = F.elu(self.conv3(enc))
+        enc = F.elu(self.conv4(enc))
+
+        # enc_flatten = T.flatten(enc, start_dim=1)
+        enc_flatten = enc.view((enc.size()[0], -1))
+
+        return enc_flatten
+
+    '''def __init__(self, input_dims, feature_dim=288):
+        super(Encoder, self).__init__()
         # in channels, out channels, kernel size, stride, padding
         self.conv1 = nn.Conv2d(input_dims[0], 32, (3, 3), stride=2, padding=1)
         self.conv2 = nn.Conv2d(32, 32, (3, 3), stride=2, padding=1)
@@ -34,6 +62,7 @@ class Encoder(nn.Module):
         return shape
 
     def forward(self, img):
+        # forward propagate through the neural network and get outputs for the actor and the critic
         enc = F.elu(self.conv1(img))
         enc = F.elu(self.conv2(enc))
         enc = F.elu(self.conv3(enc))
@@ -43,12 +72,14 @@ class Encoder(nn.Module):
         # enc_flatten = enc.view((enc.size()[0], -1))
         features = self.fc1(enc_flatten)
 
-        return features
+        return features'''
 
 
 class ActorCritic(nn.Module):
     def __init__(self, input_dims, n_actions, gamma=0.99, tau=1.0, feature_dims=288):
         super(ActorCritic, self).__init__()
+        # Initialisation function of the Actor Critic model , where the cnn's are made
+        # and connections to the actor and critic models are made
         self.gamma = gamma
         self.tau = tau
         self.encoder = Encoder(input_dims)
@@ -59,8 +90,8 @@ class ActorCritic(nn.Module):
         # self.dense = nn.Linear(256, 256)
 
         self.gru = nn.GRUCell(feature_dims, 256)
-        self.pi = nn.Linear(256, n_actions)
-        self.v = nn.Linear(256, 1)
+        self.pi = nn.Linear(256, n_actions)  # Actor Linear Q values of each action are outputs / our policy pi
+        self.v = nn.Linear(256, 1)  # Critic Linear V(s) is output
         # self.checkpoint_file = os.path.join('intrinsic/', 'actor')
         # self.actor_critic = ActorCritic(input_dims=input_dims, n_actions=n_actions)
 
@@ -75,13 +106,13 @@ class ActorCritic(nn.Module):
 
         # Pass hidden state into our pi and v layer to get our logs for our policy(pi) and out value function
         pi = self.pi(hx)
-        v = self.v(hx)
+        v = self.v(hx) # calculate the value function, of being in th estate the agent is actually in
 
         # Choose action function/ Get the actual probability distribution
-        probs = T.softmax(pi, dim=1) # soft max activation on the first dimension
+        probs = T.softmax(pi, dim=1) # soft max activation on the first dimension of our policy--> prob distribution/
         dist = Categorical(probs)
-        action = dist.sample()
-        log_prob = dist.log_prob(action)
+        action = dist.sample() # sample the action from the probability distribution of the actions
+        log_prob = dist.log_prob(action) # The log prob of the action undertaken
 
         # return predicted action, value, log probability and hidden state
         return action.numpy()[0], v, log_prob, hx
@@ -156,3 +187,8 @@ class ActorCritic(nn.Module):
         return total_loss
 
 
+''' They share experience by assing up of all of their individual critic values into a big shared one. 
+By sharing this experience they can see what states have high rewards and what the other agents have explored
+ in the environment'''
+"There is only on eneural network all agents share. This means that all agent share common weights and this " \
+"leads to training being easier"

@@ -6,8 +6,6 @@ from icm import ICM
 from memory import Memory
 from wrappers import make_atari
 # import torchvision.models as models
-
-
 # import wandb
 
 
@@ -19,6 +17,7 @@ def worker(name, input_shape, n_actions, global_agent,
 
     frame_buffer = [input_shape[1], input_shape[2], 1]
     env = make_atari(env_id, shape=frame_buffer)
+    env.render()
     # # env.seed(SEED)
     # env.action_space.seed(SEED)
     # env.observation_space.seed(SEED)
@@ -65,7 +64,7 @@ def worker(name, input_shape, n_actions, global_agent,
     # frame_buffer = [input_shape[1], input_shape[2], 1]
     # env = make_atari(env_id, shape=frame_buffer)
 
-    episode, max_steps, t_steps, scores = 0, 5000, 0, []
+    episode, max_steps, t_steps, scores = 0, 15000, 0, []
     intr = []
     l = []
     l_i = []
@@ -144,30 +143,30 @@ def worker(name, input_shape, n_actions, global_agent,
             avg_score = np.mean(scores[-100:])
             avg_score_5000 = np.mean(scores[max(0, episode - 5000): episode + 1])
             print('ICM episode {} thread {} of {} steps {:.2f}M score {:.2f} '
-                  'avg score (100) {:.2f}''intrinsic {:.5f}'.format(
+                  'avg score (100) {:.2f}'' intrinsic {:.9f}'.format(
                 episode, name, n_threads,
                 t_steps / 1e6, score,
                 avg_score, T.sum(intrinsic_reward)))
     if name == '1':
         x = [z for z in range(episode)]
-        np.savetxt("Breakout_random_separate_encoders_ICM_score1.csv",
+        np.savetxt("Breakout_separate_encoders_ICM_score15000.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("Breakout_random_separate_encoders_ICM_intr1.csv",
+        np.savetxt("Breakout_separate_encoders_ICM_intr15000.csv",
                    intr,
                    delimiter=",",
                    fmt='% s')
 
-        np.savetxt("L_I_Breakout_random_separate1.csv",
+        np.savetxt("L_I_Breakout_separate15000.csv",
                    l_i,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("ICM_ON_Breakout_random_separate1.csv",
+        np.savetxt("ICM_ON_Breakout_separate15000.csv",
                    l,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("L_F_Breakout_random_separate1.csv",
+        np.savetxt("L_F_Breakout_random_separate15000.csv",
                    l_f,
                    delimiter=",",
                    fmt='% s')

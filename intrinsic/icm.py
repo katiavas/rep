@@ -67,7 +67,7 @@ class Encoder(nn.Module):
 
 
 class ICM(nn.Module):
-    def __init__(self, input_dims, n_actions=6, alpha=0.1, beta=0.2, feature_dims=288):
+    def __init__(self, input_dims, n_actions=4, alpha=0.1, beta=0.2, feature_dims=288):
         super(ICM, self).__init__()
         self.alpha = alpha
         self.beta = beta
@@ -102,9 +102,9 @@ class ICM(nn.Module):
         with T.no_grad():
             new_state = self.encoder(new_obs)
             # new_state = self.l5_encoder(new_obs)'''
-
-        state = self.l4_encoder(obs)
-        new_state = self.l5_encoder(new_obs)
+        with T.no_grad():
+            state = self.l4_encoder(obs)
+            new_state = self.l5_encoder(new_obs)
 
         state = state.to(T.float)
         new_state = new_state.to(T.float)

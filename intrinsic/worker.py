@@ -4,10 +4,8 @@ import torch as T
 from actor_critic import ActorCritic
 from icm import ICM
 from memory import Memory
-from utils import plot_learning_curve
 from wrappers import make_atari
 # import torchvision.models as models
-from utils import plot_learning_curve_with_shaded_error
 
 
 # import wandb
@@ -134,43 +132,42 @@ def worker(name, input_shape, n_actions, global_agent,
                     with open('trained_icm.pickle', 'wb') as file:
                         # pickle.dump(local_icm, file)
                         T.save(local_icm, 'icm_weights1.pt')
-            # loss_i = T.sum(L_I)
-            # l_i.append(loss_i.detach().numpy())
-            # loss_f = T.sum(L_F)
-            # l_f.append(loss_f.detach().numpy())
+            loss_i = T.sum(L_I)
+            l_i.append(loss_i.detach().numpy())
+            loss_f = T.sum(L_F)
+            l_f.append(loss_f.detach().numpy())
             b = T.sum(loss)
             l.append(b.detach().numpy())
-            # a = T.sum(intrinsic_reward)
-            # intr.append(a.detach().numpy())  # for plotting intrinsic reward
+            a = T.sum(intrinsic_reward)
+            intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)
             avg_score = np.mean(scores[-100:])
             avg_score_5000 = np.mean(scores[max(0, episode - 5000): episode + 1])
             print('ICM episode {} thread {} of {} steps {:.2f}M score {:.2f} '
-                  'avg score (100) {:.2f}'.format(
+                  'avg score (100) {:.2f}''intrinsic {:.5f}'.format(
                 episode, name, n_threads,
                 t_steps / 1e6, score,
-                avg_score))
+                avg_score, T.sum(intrinsic_reward)))
     if name == '1':
         x = [z for z in range(episode)]
-        # plot_learning_curve(x, scores, 'Cartpole_pixels_ICM.png')
-        np.savetxt("Pong_separate_encoders_ICM_score115000.csv",
+        np.savetxt("Breakout_random_separate_encoders_ICM_score1.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("Pong_separate_encoders_ICM_intr115000.csv",
+        np.savetxt("Breakout_random_separate_encoders_ICM_intr1.csv",
                    intr,
                    delimiter=",",
                    fmt='% s')
 
-        np.savetxt("L_I_Pong_separate.csv",
+        np.savetxt("L_I_Breakout_random_separate1.csv",
                    l_i,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("ICM_ON_Pong_separate.csv",
+        np.savetxt("ICM_ON_Breakout_random_separate1.csv",
                    l,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("L_F_Pong_separate.csv",
+        np.savetxt("L_F_Breakout_random_separate1.csv",
                    l_f,
                    delimiter=",",
                    fmt='% s')

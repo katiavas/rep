@@ -10,7 +10,7 @@ os.environ['OMP_NUM_THREADS'] = '1'
 # os.environ['WANDB_START_METHOD'] = 'thread'
 # wandb.init(project='icm', entity="katiavas", dir='./')
 if __name__ == '__main__':
-    env_id = 'Breakout-v0'
+    env_id = 'ALE/Breakout-v5'
     mp.set_start_method('spawn', force=True)
     global_ep = mp.Value('i', 0)
     # env_id = 'PongNoFrameskip-v4'

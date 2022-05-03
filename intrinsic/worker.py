@@ -129,29 +129,29 @@ def worker(name, input_shape, n_actions, global_agent,
                     with open('trained_icm.pickle', 'wb') as file:
                         # pickle.dump(local_icm, file)
                         T.save(local_icm, 'icm_weights1.pt')'''
-            loss_i = T.sum(L_I)
-            l_i.append(loss_i.detach().numpy())
-            loss_f = T.sum(L_F)
-            l_f.append(loss_f.detach().numpy())
+            # loss_i = T.sum(L_I)
+            # l_i.append(loss_i.detach().numpy())
+            # loss_f = T.sum(L_F)
+            # l_f.append(loss_f.detach().numpy())
             b = T.sum(loss)
             l.append(b.detach().numpy())
-            a = T.sum(intrinsic_reward)
-            intr.append(a.detach().numpy())  # for plotting intrinsic reward
+            # a = T.sum(intrinsic_reward)
+            # intr.append(a.detach().numpy())  # for plotting intrinsic reward
             scores.append(score)
             avg_score = np.mean(scores[-100:])
             avg_score_5000 = np.mean(scores[max(0, episode - 5000): episode + 1])
             print('ICM episode {} thread {} of {} steps {:.2f}M score {:.2f} '
-                  'avg score (100) {:.2f}'' intrinsic {:.9f}'.format(
+                  'avg score (100) {:.2f}'.format(
                 episode, name, n_threads,
                 t_steps / 1e6, score,
-                avg_score, T.sum(intrinsic_reward)))
+                avg_score))
     if name == '1':
         x = [z for z in range(episode)]
-        np.savetxt("Breakout_separate_encoders_ICM_score15000.csv",
+        ''' np.savetxt("Breakout_separate_encoders_ICM_score5000.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("Breakout_separate_encoders_ICM_intr15000.csv",
+        np.savetxt("Breakout_separate_encoders_ICM_intr5000.csv",
                    intr,
                    delimiter=",",
                    fmt='% s')
@@ -167,15 +167,15 @@ def worker(name, input_shape, n_actions, global_agent,
         np.savetxt("L_F_Breakout_separate15000.csv",
                    l_f,
                    delimiter=",",
-                   fmt='% s')
-        '''np.savetxt("A3C_score2_10000.csv",
+                   fmt='% s')'''
+        np.savetxt("A3C_score5_5000.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("A3C_LOSS2_10000.csv",
+        np.savetxt("A3C_LOSS5_5000.csv",
                    l,
                    delimiter=",",
-                   fmt='% s')'''
+                   fmt='% s')
 
 
 

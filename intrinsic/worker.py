@@ -62,7 +62,7 @@ def worker(name, input_shape, n_actions, global_agent,
     # frame_buffer = [input_shape[1], input_shape[2], 1]
     # env = make_atari(env_id, shape=frame_buffer)
 
-    episode, max_steps, t_steps, scores = 0, 10000, 0, []
+    episode, max_steps, t_steps, scores = 0, 5000, 0, []
     intr = []
     l = []
     l_i = []
@@ -168,11 +168,11 @@ def worker(name, input_shape, n_actions, global_agent,
                    l_f,
                    delimiter=",",
                    fmt='% s')'''
-        np.savetxt("A3C_score5_5000.csv",
+        np.savetxt("A3C_score5_5000_.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("A3C_LOSS5_5000.csv",
+        np.savetxt("A3C_LOSS5_5000_.csv",
                    l,
                    delimiter=",",
                    fmt='% s')

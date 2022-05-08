@@ -168,11 +168,11 @@ def worker(name, input_shape, n_actions, global_agent,
                    l_f,
                    delimiter=",",
                    fmt='% s')'''
-        np.savetxt("A3C_score7_5000_.csv",
+        np.savetxt("A3C_score8_5000_.csv",
                    scores,
                    delimiter=",",
                    fmt='% s')
-        np.savetxt("A3C_LOSS7_5000_.csv",
+        np.savetxt("A3C_LOSS8_5000_.csv",
                    l,
                    delimiter=",",
                    fmt='% s')
